@@ -1,6 +1,7 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <sstream>
 
 enum Token_Value{
 	NAME, NUMBER, END,
@@ -12,6 +13,7 @@ double number_value;
 std::string string_value;
 std::map<std::string, double> table;
 int number_of_errors = 0;
+std::istream* input;
 
 Token_Value curr_tok = PRINT;
 
@@ -27,7 +29,7 @@ Token_Value get_token(){
 	char ch;
 
 	do {
-		if(!std::cin.get(ch))
+		if(!input->get(ch))
 			return curr_tok = END;
 	} while (ch != '\n' && isspace(ch));
 
@@ -47,17 +49,17 @@ Token_Value get_token(){
 		return curr_tok = Token_Value(ch);
 	default:
 		if(isdigit(ch) || ch == '.'){
-			std::cin.putback(ch);
-			std::cin >> number_value;
+			input->putback(ch);
+			*input >> number_value;
 			return curr_tok = NUMBER;
 		}
 		if(isalpha(ch)){
 			string_value = ch;
-			while(std::cin.get(ch) && isalnum(ch))
+			while(input->get(ch) && isalnum(ch))
 				string_value.push_back(ch);
 			if(string_value == "exit")
 				return curr_tok = END;
-			std::cin.putback(ch);
+			input->putback(ch);
 			return curr_tok = NAME;
 		}
 		error("wrong keyword");
@@ -136,11 +138,19 @@ double expr(bool get){
 	}
 }
 
-int main(){
+int main(int argc, char* argv[]){
+	switch(argc){
+		case 1:
+			input = &std::cin;
+			break;
+		default:
+			input = new std::istringstream(argv[1]);
+			break;
+	}
 	table["pi"] = 3.1415926535897932385;
 	table["e"] = 2.7182818284590452354;
 
-	while(std::cin) {
+	while(*input){
 		get_token();
 		if(curr_tok == END)
 			break;
@@ -149,5 +159,7 @@ int main(){
 		std::cout << expr(false) << "\n";
 	}
 
+	if(input != &std::cin)
+		delete input;
 	return number_of_errors;
 }
