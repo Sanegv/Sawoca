@@ -1,0 +1,8 @@
+PROJECT_NAME		= "Calculator"
+PROJECT_BRIEF		= "An interactive calculator with variables"
+OUTPUT_DIRECTORY	= ./docs
+INPUT				= .
+FILE_PATTERNS		= *.cpp *.h
+RECURSIVE			= NO
+GENERATE_LATEX		= NO
+GENERATE_HTML		= YES
