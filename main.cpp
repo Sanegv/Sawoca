@@ -1,6 +1,9 @@
 /**
  * @file main.cpp
  * @brief Interactive calculator with variables.
+ *
+ * @author Bjarne Stroustrup
+ * @author Sanegv
  */
 #include <string>
 #include <map>
