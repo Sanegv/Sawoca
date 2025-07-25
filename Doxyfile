@@ -4,6 +4,6 @@ PROJECT_AUTHORS		= "Bjarne Stroustrup" "Sanegv"
 OUTPUT_DIRECTORY	= ./docs
 INPUT				= .
 FILE_PATTERNS		= *.cpp *.h
-RECURSIVE			= NO
+RECURSIVE			= YES
 GENERATE_LATEX		= NO
 GENERATE_HTML		= YES

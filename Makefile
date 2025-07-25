@@ -1,20 +1,28 @@
-FLAGS= -Wall -Wextra -g
-CC= g++
-TARGET= calc
-SRCS= main.cpp lexer.cpp parser.cpp
-HDRS= lexer.h parser.h
+FLAGS = -Wall -Wextra -g
+CC = g++
 
-OBJS= $(SRCS:.cpp=.o)
+SRC_DIR = sources
+HDR_DIR = headers
+BUILD_DIR = build
+
+TARGET = $(BUILD_DIR)/calc
+
+SRCS = $(addprefix $(SRC_DIR)/, main.cpp lexer.cpp parser.cpp)
+HDRS = $(addprefix $(HDR_DIR)/, lexer.h parser.h)
+
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS) $(HDRS)
+$(TARGET): $(OBJS)
 	$(CC) $(FLAGS) -o $(TARGET) $(OBJS)
 
-$(OBJS): $(HDRS) $(SRCS)
- 
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HDRS)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(FLAGS) -I$(HDR_DIR) -c $< -o $@
+
 doc: Doxyfile
 	doxygen Doxyfile
 
 clean:
-	$(RM) $(TARGET) *.o *.~	
+	$(RM) $(TARGET) $(BUILD_DIR)/*.o *~

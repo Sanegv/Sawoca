@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['error_0',['error',['../main_8cpp.html#a309e0c5ca8130278e85e03b7c99ab62f',1,'main.cpp']]],
-  ['expr_1',['expr',['../main_8cpp.html#ae6ccbd565a008881a0bf9bbf1f469c84',1,'main.cpp']]]
+  ['error_0',['error',['../classCalc_1_1Parser.html#a101270d999ee5391b95cd199ed19200d',1,'Calc::Parser']]],
+  ['expr_1',['expr',['../classCalc_1_1Parser.html#a49c0738a987f76340702e85b123073ed',1,'Calc::Parser']]]
 ];
