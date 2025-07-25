@@ -95,11 +95,18 @@ $(function(){initNavTree('main_8cpp.html','',''); });
 
 <p>Instantiates a parser depending on the input, and calls it.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="lexer_8h_source.html">../headers/lexer.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &quot;<a class="el" href="lexer_8h_source.html">../headers/lexer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="parser_8h_source.html">../headers/parser.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a97ee70a8770dc30d06c744b24eb2fcfc" id="r_a97ee70a8770dc30d06c744b24eb2fcfc"><td class="memItemLeft" align="right" valign="top"><a id="a97ee70a8770dc30d06c744b24eb2fcfc" name="a97ee70a8770dc30d06c744b24eb2fcfc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>help</b> ()</td></tr>
+<tr class="memdesc:a97ee70a8770dc30d06c744b24eb2fcfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the help menu. <br /></td></tr>
+<tr class="memitem:aa7c3d80e1750f408126e4c9086499929" id="r_aa7c3d80e1750f408126e4c9086499929"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7c3d80e1750f408126e4c9086499929">flags</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:aa7c3d80e1750f408126e4c9086499929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the arguments of the program to choose a mode.  <br /></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top"><a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, char *argv[])</td></tr>
 </table>
@@ -108,7 +115,39 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, ch
 <dl class="section author"><dt>Author</dt><dd>Bjarne Stroustrup </dd>
 <dd>
 Sanegv </dd></dl>
-</div></div><!-- contents -->
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="aa7c3d80e1750f408126e4c9086499929" name="aa7c3d80e1750f408126e4c9086499929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c3d80e1750f408126e4c9086499929">&#9670;&#160;</a></span>flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char flags </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parses the arguments of the program to choose a mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>the count of the program's passed arguments (including the program's name) </td></tr>
+    <tr><td class="paramname">argv</td><td>the value of the program's arguments.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the mode with which the program should run. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

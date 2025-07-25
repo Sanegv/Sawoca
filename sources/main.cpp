@@ -7,6 +7,7 @@
  */
 
 #include <cstring>
+#include <fstream>
 #include "../headers/lexer.h"
 #include "../headers/parser.h"
 
@@ -56,6 +57,9 @@ char flags(int argc, char* argv[]){
 	if(!strcmp(argv[1], "-e") || !strcmp(argv[1], "--evaluate"))
 		return 'e';
 
+	if(!strcmp(argv[1], "-f") || !strcmp(argv[1], "--file"))
+		return 'f';
+
 	if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help"))
 		return 'h';
 
@@ -72,11 +76,21 @@ int main(int argc, char* argv[]){
 		case 'e':
 			lexer = new Calc::Lexer(new std::istringstream(argv[2]));
 			break;
+		case 'f': {
+				std::ifstream* f = new std::ifstream(argv[2]);
+				if(!f->is_open()){
+					std::cerr << "Error: cannot open file. Using default\
+interactive mode instead.\n";
+					lexer = new Calc::Lexer(&std::cin);
+				} else
+					lexer = new Calc::Lexer(f);
+			}
+			break;
 		case 'h':
 			help();
 			return 0;
 		default:
-			std::cout << "Error: unknown flag \"" << argv[1] << ". Using \
+			std::cerr << "Error: unknown flag \"" << argv[1] << ". Using \
 default interactive mode instead.\n"; 
 			lexer = new Calc::Lexer(&std::cin);
 			break;

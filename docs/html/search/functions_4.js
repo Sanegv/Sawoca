@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['term_0',['term',['../classCalc_1_1Parser.html#a34df93b342c958a3c82f88087a5abf46',1,'Calc::Parser']]]
+  ['lexer_0',['Lexer',['../classCalc_1_1Lexer.html#ae6b9288cee065a5b66b7409ea563be73',1,'Calc::Lexer::Lexer()'],['../classCalc_1_1Lexer.html#ae3c21f5caebeedb2c89273a717e7fd95',1,'Calc::Lexer::Lexer(std::istream *input)']]]
 ];
