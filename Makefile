@@ -5,7 +5,7 @@ SRC_DIR = sources
 HDR_DIR = headers
 BUILD_DIR = build
 
-TARGET = $(BUILD_DIR)/calc
+TARGET = $(BUILD_DIR)/swc
 
 SRCS = $(addprefix $(SRC_DIR)/, main.cpp lexer.cpp parser.cpp)
 HDRS = $(addprefix $(HDR_DIR)/, lexer.h parser.h)
@@ -24,5 +24,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HDRS)
 doc: Doxyfile
 	doxygen Doxyfile
 
+run: all
+	./$(TARGET)
 clean:
 	$(RM) $(TARGET) $(BUILD_DIR)/*.o *~

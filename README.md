@@ -15,7 +15,6 @@ Simply use the `make` command. The executable will be created in `builds`.
 
 ## todo
 
-- add options in args to choose the entry point
 - read from files
 - unit tests (oof)
 - add token classes
