@@ -6,8 +6,7 @@ points numbers, with the ability to store data in variables.
 ## Usage
 
 Either run the calc binary as is to open a CLI (that you can exit by typing 
-`exit`) or pass your formula as an argument to the program. Several instructions
-can be separated by a semicolon `;`.
+`exit`) or use the -h or --help flag to show the different options.
 
 ## Installation
 
