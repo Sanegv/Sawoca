@@ -33,7 +33,7 @@ flags:\n\
     -h, --help\n\
         Show the help (this) menu.\n\n\
     -i, --interactive\n\
-        Opens the interactive CLI. Similar to not using flags.\n\n\
+        Opens the interactive CLI. This is the default mode.\n\n\
 -----------------------------------------------------------------------------\n\
 \n";
 }
@@ -51,16 +51,16 @@ char flags(int argc, char* argv[]){
 	if(argc == 0)
 		return 0;
 
-	if(argc == 1 || !strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive"))
+	if(argc == 1 || std::string(argv[1]) == "-i" || std::string(argv[1]) == "--interactive")
 		return 'i';
 
-	if(!strcmp(argv[1], "-e") || !strcmp(argv[1], "--evaluate"))
+	if(std::string(argv[1]) == "-e" || std::string(argv[1]) == "--evaluate")
 		return 'e';
 
-	if(!strcmp(argv[1], "-f") || !strcmp(argv[1], "--file"))
+	if(std::string(argv[1]) == "-f" || std::string(argv[1]) == "--file")
 		return 'f';
 
-	if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help"))
+	if(std::string(argv[1]) == "-h" || std::string(argv[1]) == "--help")
 		return 'h';
 
 	return 0;
