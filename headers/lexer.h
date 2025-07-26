@@ -16,7 +16,7 @@ namespace Calc {
 	/**
  	* @brief The different values a lexer token can have.
  	*/
-	enum Token_Value{
+	enum Token_Type{
 		NAME, ///< The name of a variable
 		NUMBER, ///< A litteral double
 		END, ///< The end of the stream to parse
@@ -37,7 +37,7 @@ namespace Calc {
 	*/
 	class Lexer {
 	private:		
-		Token_Value curr_tok = PRINT;
+		Token_Type curr_tok = PRINT;
 		double number_value; 
 		std::string string_value;
 		std::istream* input;
@@ -73,14 +73,14 @@ namespace Calc {
 		*
 		* @return The token type.
 		*/
-		Token_Value get_token(Parser* parser, double(Parser::*error)(std::string));
+		Token_Type get_token(Parser* parser, double(Parser::*error)(std::string));
 
 		/**
 		* @brief Accessor of the current token field.
 		*
 		* @return a copy ofthe last token that was lexed.
 		*/
-		Token_Value get_curr_tok() const;
+		Token_Type get_curr_tok() const;
 
 		/**
 		* @brief Accessor of the current string value for @ref NAME tokens.

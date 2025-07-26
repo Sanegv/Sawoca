@@ -1,6 +1,6 @@
 #include "../headers/lexer.h"
 
-Calc::Token_Value Calc::Lexer::get_token(Calc::Parser* parser, double(Calc::Parser::*error)(std::string)){
+Calc::Token_Type Calc::Lexer::get_token(Calc::Parser* parser, double(Calc::Parser::*error)(std::string)){
 	char ch;
 
 	//consume whitespaces
@@ -19,7 +19,7 @@ Calc::Token_Value Calc::Lexer::get_token(Calc::Parser* parser, double(Calc::Pars
 
 	//operators
 	case '+': case '-':	case '*': case '/':	case '(': case ')':	case '=':
-		return curr_tok = Calc::Token_Value(ch);
+		return curr_tok = Calc::Token_Type(ch);
 
 	default:
 		//number
@@ -58,7 +58,7 @@ Calc::Lexer::~Lexer(){
 		delete input;
 }
 
-Calc::Token_Value Calc::Lexer::get_curr_tok() const {
+Calc::Token_Type Calc::Lexer::get_curr_tok() const {
 	return curr_tok;
 }
 
