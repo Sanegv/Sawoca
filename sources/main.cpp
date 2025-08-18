@@ -67,6 +67,15 @@ char flags(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]){
+
+	std::map<std::string, double> table;
+	table["test"] = 4.2;
+	Calc::Token* tok = new Calc::Name_Token("test", table);
+	std::cout << tok->get_value() << " " << tok->get_type() << "\n";
+	delete tok;
+
+	return 0;
+
 	//choose the input mode
 	Calc::Lexer* lexer;
 	switch(flags(argc, argv)){

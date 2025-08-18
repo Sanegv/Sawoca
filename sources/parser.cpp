@@ -118,3 +118,45 @@ int Calc::Parser::parse(){
 
 	return number_of_errors;
 }
+
+Calc::Token::Token(Calc::Token_Type type) : type(type) {}
+
+Calc::Token_Type Calc::Token::get_type(){
+	return type;
+}
+
+Calc::Number_Token::Number_Token() : Token(Calc::NUMBER), value(0.0) {}
+Calc::Number_Token::Number_Token(double value) : 
+	Token(Calc::NUMBER), value(value) {}
+
+double Calc::Number_Token::get_value(){
+	return value;
+}
+
+Calc::Name_Token::Name_Token(
+		std::string name, std::map<std::string, double>& variables
+		) : Token(Calc::NAME), name(name), variables(variables) {}
+
+double Calc::Name_Token::get_value(){
+	return variables[name];
+}
+
+Calc::Operator_Token::Operator_Token(
+	char op, 
+	std::unique_ptr<Operator_Token> LHS,
+	std::unique_ptr<Operator_Token> RHS
+) : Token(op), op(op), LHS(std::move(LHS)), RHS(std::move(RHS)) {}
+
+double Calc::Operator_Token::get_value() {
+	switch(op){
+	case '+':
+		return LHS->get_value() + RHS->get_value();
+	case '-':
+		return LHS->get_value() - RHS->get_value();
+	case '*':
+		return LHS->get_value() * RHS->get_value();
+	case '/':
+		double right = RHS->get_value();
+		if(!right)
+			throw "dibision by zero";
+		return LHS->get_value() / right;
