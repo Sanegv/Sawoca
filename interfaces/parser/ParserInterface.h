@@ -14,6 +14,7 @@ namespace Language {
             ParserI()                           = delete;
             ParserI(const ParserI&)             = delete;
             ParserI& operator=(const ParserI&)  = delete;
+
         public:
             ParserI(LexerI* lexer) : lexer(lexer) {}
             virtual Language::Tokens::TokenI* parse() = 0;
