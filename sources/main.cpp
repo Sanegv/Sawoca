@@ -6,10 +6,10 @@
  * @author Sanegv
  */
 
-#include <cstring>
 #include <fstream>
 #include "../headers/lexer.h"
 #include "../headers/parser.h"
+#include "../implem/tokens/headers/NameToken.h"
 
 /**
  * @brief Prints the help menu.
@@ -70,8 +70,8 @@ int main(int argc, char* argv[]){
 
 	std::map<std::string, double> table;
 	table["test"] = 4.2;
-	Calc::Token* tok = new Calc::Name_Token("test", table);
-	std::cout << tok->get_value() << " " << tok->get_type() << "\n";
+	Sawoca::Token* tok = new Sawoca::Name_Token("test", table);
+	std::cout << tok->get_value() << " " << tok->get_string_type() << "\n";
 	delete tok;
 
 	return 0;
