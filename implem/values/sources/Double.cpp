@@ -11,10 +11,6 @@ double Double::get_val() const{
     return val;
 }
 
-Value_Type Double::get_type() const {
-    return type;
-}
-
 std::string Double::get_string_type() const {
     return std::string("double");
 }

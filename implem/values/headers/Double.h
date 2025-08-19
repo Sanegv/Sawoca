@@ -12,7 +12,6 @@ namespace Sawoca {
         Double(double d);
         double get_val() const;
 
-        virtual Value_Type get_type()           const override;
         virtual std::string get_string_type()   const override;
 
         virtual ValueI* add(const ValueI* const)       const override;

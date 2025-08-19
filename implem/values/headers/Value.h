@@ -1,7 +1,7 @@
 #ifndef DEFINE_SAWOCA_VALUE
 #define DEFINE_SAWOCA_VALUE
 
-#include "string"
+#include <string>
 
 #include "../../../interfaces/values/ValueInterface.h"
 
@@ -12,15 +12,14 @@ namespace Sawoca {
 
     class Value : public Language::Values::ValueI {
     private:
+        Value_Type type;
+        
         //do not use
         Value() = delete;
-
-    protected:
-        Value_Type type;
         
     public:
         Value(Value_Type type) : type(type) {}
-        virtual Value_Type get_type()           const = 0;
+        Value_Type get_type() const {return type;}
         virtual std::string get_string_type()   const = 0;
     };
 }
