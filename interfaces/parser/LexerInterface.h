@@ -16,7 +16,7 @@ namespace Language {
             LexerI& operator=(const LexerI&)    = delete;
         public:
             LexerI(Tokens::TokenFactoryI* fatory) : fatory(fatory) {}
-            Tokens::TokenI* get_token();
+            virtual Tokens::TokenI* get_token() = 0;
         };
     }
 }
