@@ -1,4 +1,5 @@
 #include "../headers/Double.h"
+#include <sstream>
 
 using namespace Sawoca;
 
@@ -44,7 +45,8 @@ Language::Values::ValueI* Double::add(const ValueI* const v) const {
         case DOUBLE:
             return new Double(val+cast_to_double(vp)->get_val()); 
         default:
-            throw "cannot add type " + get_string_type() + " and type " + vp->get_string_type();
+            throw "cannot add type " + get_string_type() + " and type " + 
+                vp->get_string_type();
             return nullptr;
     }
 }
@@ -56,7 +58,8 @@ Language::Values::ValueI* Double::sub(const ValueI* const v) const{
         case DOUBLE:
             return new Double(val-cast_to_double(vp)->get_val()); 
         default:
-            throw "cannot sub type " + get_string_type() + " and type " + vp->get_string_type();
+            throw "cannot sub type " + get_string_type() + " and type " + 
+                vp->get_string_type();
             return nullptr;
     }
 }
@@ -68,7 +71,8 @@ Language::Values::ValueI* Double::mul(const ValueI* const v) const{
         case DOUBLE:
             return new Double(val*cast_to_double(vp)->get_val()); 
         default:
-            throw "cannot mul type " + get_string_type() + " and type " + vp->get_string_type();
+            throw "cannot mul type " + get_string_type() + " and type " + 
+                vp->get_string_type();
             return nullptr;
     }
 }
@@ -85,9 +89,15 @@ Language::Values::ValueI* Double::div(const ValueI* const v) const{
                 return new Double(val/d); 
             }
         default:
-            throw "cannot add type " + get_string_type() + " and type " + vp->get_string_type();
+            throw "cannot add type " + get_string_type() + " and type " + 
+                vp->get_string_type();
             return nullptr;
     }
+}
+
+Language::Values::ValueI* Double::operator-(){
+    val = -val;
+    return this;
 }
 
 Language::Values::ValueI* Double::operator+(const ValueI* const v) const {
@@ -102,3 +112,69 @@ Language::Values::ValueI* Double::operator*(const ValueI* const v) const {
 Language::Values::ValueI* Double::operator/(const ValueI* const v) const {
     return this->div(v);
 }
+
+Language::Values::ValueI& Double::operator+=(const Language::Values::ValueI& v){
+    const Value* const vp = cast_to_value(&v);
+
+    switch (vp->get_type()) {
+        case DOUBLE:
+            val += cast_to_double(vp)->get_val();
+        default:
+            throw "cannot add type " + get_string_type() + " and type " +
+                vp->get_string_type();
+    }
+
+    return *this;
+}
+
+Language::Values::ValueI& Double::operator-=(const Language::Values::ValueI& v){
+    const Value* const vp = cast_to_value(&v);
+
+    switch (vp->get_type()) {
+        case DOUBLE:
+            val -= cast_to_double(vp)->get_val();
+        default:
+            throw "cannot sub type " + get_string_type() + " and type " +
+                vp->get_string_type();
+    }
+
+    return *this;
+}
+Language::Values::ValueI& Double::operator*=(const Language::Values::ValueI& v){
+    const Value* const vp = cast_to_value(&v);
+
+    switch (vp->get_type()) {
+        case DOUBLE:
+            val *= cast_to_double(vp)->get_val();
+        default:
+            throw "cannot mul type " + get_string_type() + " and type " +
+                vp->get_string_type();
+    }
+
+    return *this;
+}
+Language::Values::ValueI& Double::operator/=(const Language::Values::ValueI& v){
+    const Value* const vp = cast_to_value(&v);
+
+    switch (vp->get_type()) {
+        case DOUBLE:
+            {
+                double d = cast_to_double(vp)->get_val();
+                if(d == 0) 
+                    throw "division by zero";
+                val /= d; 
+            }
+        default:
+            throw "cannot div type " + get_string_type() + " and type " +
+                vp->get_string_type();
+    }
+
+    return *this;
+}
+
+std::string Double::string() const{
+    std::ostringstream stream;
+    stream << val;
+    return stream.str();
+}
+
