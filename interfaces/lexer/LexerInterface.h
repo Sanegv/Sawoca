@@ -5,7 +5,7 @@
 #include "../tokens/TokenFactoryInterface.h"
 
 namespace Language {
-    namespace Parser {
+    namespace Lexer {
         class LexerI {
         private:
             //do not use
