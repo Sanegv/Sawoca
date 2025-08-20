@@ -19,18 +19,22 @@ namespace Sawoca {
 	*/
 	class Parser : Language::Parser::ParserI {
 	private:
-		std::map<std::string, double> table;
+		std::map<std::string, Language::Values::ValueI*>& table;
 		int number_of_errors = 0;
 
 		//don't use
 		Parser(const Parser&) = delete;
 		Parser& operator=(const Parser&) = delete;
+		Parser();
 	
 	public:
 		/**
-		* @brief Creates a new parser. 
-		*/
-		Parser();
+		 * @brief Creates a new parser that will use the given variables.
+		 *
+		 * @param variables the map that will store the variables.
+		 */
+		Parser(std::map<std::string, Language::Values::ValueI*>& variables);
+
 
 		/**
 		* @brief Standard destructor for the parser.

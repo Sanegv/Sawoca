@@ -8,10 +8,10 @@
 using namespace Sawoca;
 
 //\cond PRIVATE
-void init_table(std::map<std::string, double>* table){
+void init_table(std::map<std::string, Language::Values::ValueI*>* table){
 	if(table){
-		(*table)["pi"] = 3.1415926535897932385;
-		(*table)["e"]  = 2.7182818284590452354;
+		(*table)["pi"] = new Double(3.1415926535897932385);
+		(*table)["e"]  = new Double(2.7182818284590452354);
 	}
 }
 
@@ -34,7 +34,9 @@ const Double* const cast_to_double(const Language::Values::ValueI* const v){
 }
 //\endcond
 
-Parser::Parser(){
+Parser::Parser(
+		std::map<std::string, Language::Values::ValueI*>& variables
+) : table(variables) {
 	init_table(&table);
 }
 
