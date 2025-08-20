@@ -3,7 +3,6 @@
 
 #include <string>
 #include <map>
-#include <memory>
 
 #include "../../../interfaces/tokens/TokenInterface.h"
 #include "Token.h"
@@ -15,18 +14,13 @@ namespace Sawoca {
 	class Operator_Token : public Token {
 	private:
 		char op;
-		std::unique_ptr<Token> LHS, RHS;
 
 		//do not use
 		Operator_Token() = delete;
 		Operator_Token(const Operator_Token&) = delete;
 		Operator_Token& operator=(const Operator_Token&) = delete;
 	public:
-		Operator_Token(
-			char op, 
-			std::unique_ptr<Operator_Token> LHS,
-			std::unique_ptr<Operator_Token> RHS
-		);
+		Operator_Token(char op);
 		virtual const Language::Values::ValueI* get_value() const override;
 		virtual std::string get_string_type() const override;
 	};

@@ -4,14 +4,8 @@
 using namespace Sawoca;
 
 
-Operator_Token::Operator_Token(
-    char op, 
-    std::unique_ptr<Operator_Token> LHS,
-    std::unique_ptr<Operator_Token> RHS
-) : Token(static_cast<Token_Type>(op)),
-    op(op),
-    LHS(std::move(LHS)), 
-    RHS(std::move(RHS)) {
+Operator_Token::Operator_Token(char op) 
+	: Token(static_cast<Token_Type>(op)), op(op) {
     switch (op) {
 		case '+': 
 		case '-': 
@@ -24,17 +18,7 @@ Operator_Token::Operator_Token(
 }
 
 const Language::Values::ValueI* Operator_Token::get_value() const {
-    switch (op) {    
-		case '+': 
-            return *LHS->get_value() + RHS->get_value();
-		case '-': 
-            return *LHS->get_value() - RHS->get_value();
-		case '*': 
-            return *LHS->get_value() * RHS->get_value();
-		case '/': 
-            return *LHS->get_value() / RHS->get_value();
-    }
-    return LHS->get_value() ;
+	throw "cannot get value of operator";
 }
 
 std::string Operator_Token::get_string_type() const {
