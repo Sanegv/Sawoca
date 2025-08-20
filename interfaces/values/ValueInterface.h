@@ -13,6 +13,8 @@ namespace Language {
             virtual ValueI* operator*(const ValueI* const) const = 0;
             virtual ValueI* div(const ValueI* const)       const = 0;
             virtual ValueI* operator/(const ValueI* const) const = 0;
+
+            virtual ~ValueI() = default;
         };
     }
 }

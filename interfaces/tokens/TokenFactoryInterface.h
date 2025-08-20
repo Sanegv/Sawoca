@@ -7,7 +7,7 @@ namespace Language {
     namespace Tokens {
         class TokenFactoryI {
             public:
-                TokenI* create_token();
+                virtual TokenI* create_token() = 0;
         };
     }
 }

@@ -25,7 +25,7 @@ namespace Sawoca {
 	*/
 	class Lexer : public Language::Parser::LexerI {
 	private:		
-		Token_Type curr_tok = PRINT;
+		Language::Tokens::TokenI* curr_tok;
 		double number_value; 
 		std::string string_value;
 		std::istream* input;

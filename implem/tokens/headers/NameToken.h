@@ -15,7 +15,9 @@ namespace Sawoca {
 	class Name_Token : public Token {
 	private:
 		std::string name;
-		std::map<std::string, double>& variables;
+		std::map<std::string, Language::Values::ValueI*>& variables;
+
+		//do not use
 		Name_Token() = delete;
 	public:
 		/**
@@ -24,7 +26,10 @@ namespace Sawoca {
 		 * @param name the name of the variable.
 		 * @param variables a reference to the table of all variables.
 		 */
-		Name_Token(std::string name, std::map<std::string, double>& variables);
+		Name_Token(
+			std::string name,
+			std::map<std::string, Language::Values::ValueI*>& variables
+		);
 		~Name_Token() = default;
 
 		/**
@@ -33,7 +38,7 @@ namespace Sawoca {
 		 *
 		 * @return the value of the variable of name `name` in the table.
 		 */
-		virtual Language::Values::ValueI get_value() const override;
+		virtual const Language::Values::ValueI* get_value() const override;
 		virtual std::string get_string_type() const override;
 	};
 }

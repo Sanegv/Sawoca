@@ -15,7 +15,6 @@ Simply use the `make` command. The executable will be created in `builds`.
 ## todo
 
 - unit tests (oof)
-- add token classes
 - improve error higlighting
 - **add functions**
 - **add other types**

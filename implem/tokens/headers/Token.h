@@ -62,7 +62,7 @@ namespace Sawoca {
 		 *
 		 * @return the evaluated value of the token and its branches in the AST.
 		 */
-		virtual Language::Values::ValueI get_value() const override = 0;
+		virtual const Language::Values::ValueI* get_value() const override = 0;
 	};
 }
 

@@ -9,7 +9,7 @@ namespace Sawoca {
     public:
         PrintToken();
         std::string get_string_type() const override;
-        Language::Values::ValueI get_value() const override;    
+        Language::Values::ValueI* get_value() const override;    
     };
 }
 

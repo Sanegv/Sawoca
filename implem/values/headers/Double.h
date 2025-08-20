@@ -4,7 +4,7 @@
 #include "Value.h"
 
 namespace Sawoca {
-    class Double  : Value {
+    class Double  : public Value {
     private:
         double val;
     public: 

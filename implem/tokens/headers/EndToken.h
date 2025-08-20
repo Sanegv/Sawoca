@@ -5,11 +5,11 @@
 #include "../../../interfaces/tokens/TokenInterface.h"
 
 namespace Sawoca {
-    class EndToken : Token {
+    class EndToken : public Token {
     public:
         EndToken();
-        std::string get_string_type() const override;
-        Language::Values::ValueI get_value() const override;    
+        virtual std::string get_string_type() const override;
+        virtual const Language::Values::ValueI* get_value() const override;    
     };
 }
 

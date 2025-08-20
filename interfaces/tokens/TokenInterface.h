@@ -7,7 +7,7 @@ namespace Language {
     namespace Tokens {
         class TokenI {
         public:
-            virtual Values::ValueI get_value() const = 0;
+            virtual const Values::ValueI* get_value() const = 0;
         };
     }
 }

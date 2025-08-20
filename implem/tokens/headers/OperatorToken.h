@@ -16,6 +16,8 @@ namespace Sawoca {
 	private:
 		char op;
 		std::unique_ptr<Token> LHS, RHS;
+
+		//do not use
 		Operator_Token() = delete;
 		Operator_Token(const Operator_Token&) = delete;
 		Operator_Token& operator=(const Operator_Token&) = delete;
@@ -25,7 +27,7 @@ namespace Sawoca {
 			std::unique_ptr<Operator_Token> LHS,
 			std::unique_ptr<Operator_Token> RHS
 		);
-		virtual Language::Values::ValueI get_value() const override;
+		virtual const Language::Values::ValueI* get_value() const override;
 		virtual std::string get_string_type() const override;
 	};
 }
