@@ -22,7 +22,7 @@ namespace Sawoca {
 	* @brief The lexer class is responsible for reading an input stream and 
 	* returning tokens.
 	*/
-	class Lexer : public Language::Parser::LexerI {
+	class Lexer : public Language::Lexer::LexerI {
 	private:		
 		Language::Tokens::TokenI* curr_tok;
 		double number_value; 
