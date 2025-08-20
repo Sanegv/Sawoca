@@ -5,9 +5,8 @@
 #include <sstream>
 #include <iostream>
 
-#include "../../../interfaces/parser/LexerInterface.h"
+#include "../../../interfaces/lexer/LexerInterface.h"
 #include "../../tokens/headers/Token.h"
-#include "../../../interfaces/tokens/TokenFactoryInterface.h"
 
 /**
  *@file lexer.h
@@ -36,36 +35,16 @@ namespace Sawoca {
 
 	public:
 		/**
-		* @brief Creates a new Lexer that will read stdin with the default
-		* Sawoca Token Factory.
+		* @brief Creates a new Lexer that will read stdin.
 		*/
 		Lexer();
 
 		/**
-		* @brief Creates a new Lexer that will read the given input stream with 
-		* the default Sawoca Token Factory.
+		* @brief Creates a new Lexer that will read the given input stream .
 		*
 		* @param input A pointer to an input stream.
 		*/
 		Lexer(std::istream* input);
-
-		/**
-		 * @brief Creates a new lexer that will read stdin and use the given
-		 * Token Factory.
-		 *
-		 * @param factory A pointer to the factory to use.
-		 */
-		Lexer(Language::Tokens::TokenFactoryI* factory);
-
-		/**
-		 * @brief Creates a new lexer that will read the given input stream and
-		 * use the given Token Factory
-		 *
-		 * @param input A pointer to an input stream.
-		 * @param factory A pointer to the factory to use.
-		 *
-		 */
-		Lexer(std::istream* input, Language::Tokens::TokenFactoryI* factory);
 
 		/**
 		* @brief The destructor will free the input stream if it's not stdin.
