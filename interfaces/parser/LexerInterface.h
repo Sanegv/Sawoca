@@ -8,14 +8,16 @@ namespace Language {
     namespace Parser {
         class LexerI {
         private:
-            Tokens::TokenFactoryI* fatory;
-
             //do not use
             LexerI()                            = delete;
             LexerI(const LexerI&)               = delete;
             LexerI& operator=(const LexerI&)    = delete;
+        
+        protected:
+            Tokens::TokenFactoryI* factory;
+
         public:
-            LexerI(Tokens::TokenFactoryI* fatory) : fatory(fatory) {}
+            LexerI(Tokens::TokenFactoryI* factory) : factory(factory) {}
             virtual Tokens::TokenI* get_token() = 0;
         };
     }
