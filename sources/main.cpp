@@ -10,8 +10,6 @@
 #include <fstream>
 #include "../implem/lexer/headers/Lexer.h"
 #include "../implem/parser/headers/Parser.h"
-#include "../implem/tokens/headers/NameToken.h"
-#include "../implem/values/headers/Double.h"
 
 /**
  * @brief Prints the help menu.
@@ -69,18 +67,6 @@ char flags(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]){
-
-	std::map<std::string, Language::Values::ValueI*> table;
-	table["test"] = new Sawoca::Double(4.2);
-	Sawoca::Token* tok = new Sawoca::Name_Token("test", table);
-	const Sawoca::Double* d =
-		dynamic_cast<const Sawoca::Double*>(tok->get_value());
-	std::cout << d->get_val() << " " << d->get_string_type() << "\n";
-	delete table["test"];
-	delete tok;
-
-	return 0;
-
 	//choose the input mode
 	Sawoca::Lexer* lexer;
 	std::map<std::string, Language::Values::ValueI*> variables;
@@ -121,8 +107,8 @@ default interactive mode instead.\n";
 	std::vector<Language::Tokens::TokenI*> tokens;
 	try {
 		tokens = lexer->lex();
-	} catch (std::exception e) {
-		std::cerr << "Error during lexing: " << e.what() << ".\n";
+	} catch (std::exception* e) {
+		std::cerr << "Error during lexing: " << e->what() << ".\n";
 
 		for(Language::Tokens::TokenI* token : tokens)
 			delete token;
@@ -142,8 +128,8 @@ default interactive mode instead.\n";
 	// main loop
 	try{
 		parser.parse(tokens);
-	} catch (std::exception e) {
-		std::cerr << "Error during parsing: " << e.what() << ".\n";
+	} catch (std::exception* e) {
+		std::cerr << "Error during parsing: " << e->what() << ".\n";
 
 		for(Language::Tokens::TokenI* token : tokens)
 			delete token;
