@@ -8,8 +8,8 @@ namespace Sawoca {
     class PrintToken : public Token {
     public:
         PrintToken();
-        std::string get_string_type() const override;
-        Language::Values::ValueI* get_value() const override;    
+        virtual std::string get_string_type() const override;
+        virtual const Language::Values::ValueI* get_value() const override;    
     };
 }
 

@@ -11,6 +11,6 @@ std::string Name_Token::get_string_type() const{
     return "NAME";
 }
 
-Language::Values::ValueI* Name_Token::get_value() const{
+const Language::Values::ValueI* Name_Token::get_value() const{
     return variables[name];
 }
