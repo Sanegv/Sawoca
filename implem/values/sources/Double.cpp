@@ -119,9 +119,11 @@ Language::Values::ValueI& Double::operator+=(const Language::Values::ValueI& v){
     switch (vp->get_type()) {
         case DOUBLE:
             val += cast_to_double(vp)->get_val();
+            break;
         default:
             throw "cannot add type " + get_string_type() + " and type " +
                 vp->get_string_type();
+            break;
     }
 
     return *this;
@@ -133,9 +135,11 @@ Language::Values::ValueI& Double::operator-=(const Language::Values::ValueI& v){
     switch (vp->get_type()) {
         case DOUBLE:
             val -= cast_to_double(vp)->get_val();
+            break;
         default:
             throw "cannot sub type " + get_string_type() + " and type " +
                 vp->get_string_type();
+            break;
     }
 
     return *this;
@@ -146,9 +150,11 @@ Language::Values::ValueI& Double::operator*=(const Language::Values::ValueI& v){
     switch (vp->get_type()) {
         case DOUBLE:
             val *= cast_to_double(vp)->get_val();
+            break;
         default:
             throw "cannot mul type " + get_string_type() + " and type " +
                 vp->get_string_type();
+            break;
     }
 
     return *this;
@@ -164,9 +170,11 @@ Language::Values::ValueI& Double::operator/=(const Language::Values::ValueI& v){
                     throw "division by zero";
                 val /= d; 
             }
+            break;
         default:
             throw "cannot div type " + get_string_type() + " and type " +
                 vp->get_string_type();
+            break;
     }
 
     return *this;
