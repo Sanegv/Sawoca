@@ -1,11 +1,11 @@
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -Iinterfaces -Iinterfaces/lexer -Iinterfaces/parser -Iinterfaces/tokens -Iinterfaces/values
+CXXFLAGS := -std=c++17 -g -Wall -Wextra -Iinterfaces -Iinterfaces/lexer -Iinterfaces/parser -Iinterfaces/tokens -Iinterfaces/values
 
 OBJ_DIR := build
 MODULES := implem/values implem/tokens implem/lexer implem/parser
 MODULE_OBJS := $(OBJ_DIR)/values.o $(OBJ_DIR)/tokens.o $(OBJ_DIR)/lexer.o $(OBJ_DIR)/parser.o
 MAIN_OBJ := $(OBJ_DIR)/main.o
-TARGET := $(OBJ_DIR)/sawoca
+TARGET := $(OBJ_DIR)/swc
 
 all: $(TARGET)
 

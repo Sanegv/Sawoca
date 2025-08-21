@@ -1,6 +1,6 @@
 # Module: lexer
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -I../../interfaces/lexer -I../../interfaces/tokens -I../../interfaces
+CXXFLAGS := -std=c++17 -g -Wall -Wextra -I../../interfaces/lexer -I../../interfaces/tokens -I../../interfaces
 
 SRC_DIR := sources
 HDR_DIR := headers

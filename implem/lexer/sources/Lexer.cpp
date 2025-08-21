@@ -68,8 +68,9 @@ Lexer::Lexer(
 ) : variables(variables), input(input){}
 
 Lexer::~Lexer(){
-	if(input != &std::cin)
+	try{
 		delete input;
+	} catch (void*){}
 }
 
 std::vector<Language::Tokens::TokenI*> Lexer::lex(){
@@ -85,5 +86,6 @@ std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 			return tokens;
 	}
 
+	std::cout << "lexing complete.\n";
 	return tokens;
 }

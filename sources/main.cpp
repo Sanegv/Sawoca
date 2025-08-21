@@ -85,7 +85,7 @@ int main(int argc, char* argv[]){
 		case 'f': {
 				f = new std::ifstream(argv[2]);
 				if(!f->is_open()){
-					std::cerr << "Error: cannot open file. Using default\
+					std::cerr << "Error: cannot open file. Using default \
 interactive mode instead.\n";
 					lexer = new Sawoca::Lexer(variables);
 				} else
@@ -120,8 +120,6 @@ default interactive mode instead.\n";
 	}
 
 	delete lexer;
-	if(f)
-		delete f;
 
 	Sawoca::Parser parser = Sawoca::Parser(variables);
 
@@ -137,8 +135,6 @@ default interactive mode instead.\n";
 
 		return 2;
 	}
-
-	parser.parse(tokens);
 
 	for(Language::Tokens::TokenI* token : tokens)
 		delete token;

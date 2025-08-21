@@ -42,7 +42,7 @@ Parser::Parser(
 
 Language::Values::ValueI* Parser::prim(
     bool get,
-    std::vector<Language::Tokens::TokenI*>::iterator it
+    std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
 	if(get)
 		it++;
@@ -84,7 +84,7 @@ Language::Values::ValueI* Parser::prim(
 
 Language::Values::ValueI* Parser::term(
     bool get,
-    std::vector<Language::Tokens::TokenI*>::iterator it
+    std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
 	Language::Values::ValueI* left = prim(get, it);
 
@@ -105,7 +105,7 @@ Language::Values::ValueI* Parser::term(
 
 Language::Values::ValueI* Parser::expr(
     bool get, 
-    std::vector<Language::Tokens::TokenI*>::iterator it
+    std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
 	Language::Values::ValueI* left = term(get, it);
 
@@ -135,7 +135,7 @@ int Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
 			break;
 		if(tok->get_type() == PRINT)
 			continue;
-        std::cout << static_cast<Value*>(expr(false, it))->string();
+        std::cout << static_cast<Value*>(expr(false, it))->string() << "\n";
 	}
 
 	return number_of_errors;

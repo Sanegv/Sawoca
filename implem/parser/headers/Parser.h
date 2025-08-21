@@ -55,7 +55,7 @@ namespace Sawoca {
 		*/
 		Language::Values::ValueI* prim(
 			bool get,
-			std::vector<Language::Tokens::TokenI*>::iterator it
+			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
 
 		/**
@@ -70,7 +70,7 @@ namespace Sawoca {
 		*/
 		Language::Values::ValueI* term(
 			bool get,
-			std::vector<Language::Tokens::TokenI*>::iterator it
+			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
 
 		/**
@@ -84,7 +84,7 @@ namespace Sawoca {
 		*/
 		Language::Values::ValueI* expr(
 			bool get, 
-			std::vector<Language::Tokens::TokenI*>::iterator it
+			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
 
 		/**
