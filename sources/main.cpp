@@ -120,7 +120,9 @@ default interactive mode instead.\n";
 
 	Sawoca::Parser parser(variables);
 
-	do {
+	do { 
+		tokens.clear();
+
 		try {
 			tokens = lexer->lex();
 		} catch (const std::exception& e) {
@@ -165,15 +167,13 @@ default interactive mode instead.\n";
 			variables.clear();
 			return SWC_PAR_ERR;
 		}
-
-		for(Language::Tokens::TokenI* token : tokens)
-			delete token;
 		variables.clear();
 	} while (
 		static_cast<Sawoca::Token*>(tokens.back())->get_type() != Sawoca::END
 	);
 
-	delete lexer;	
+	tokens.clear();
+	delete lexer;
 
 	return 0;
 }
