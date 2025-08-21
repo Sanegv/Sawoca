@@ -6,10 +6,12 @@
  * @author Sanegv
  */
 
+#include <exception>
 #include <fstream>
-#include "../headers/lexer.h"
-#include "../headers/parser.h"
+#include "../implem/lexer/headers/Lexer.h"
+#include "../implem/parser/headers/Parser.h"
 #include "../implem/tokens/headers/NameToken.h"
+#include "../implem/values/headers/Double.h"
 
 /**
  * @brief Prints the help menu.
@@ -68,31 +70,40 @@ char flags(int argc, char* argv[]){
 
 int main(int argc, char* argv[]){
 
-	std::map<std::string, double> table;
-	table["test"] = 4.2;
+	std::map<std::string, Language::Values::ValueI*> table;
+	table["test"] = new Sawoca::Double(4.2);
 	Sawoca::Token* tok = new Sawoca::Name_Token("test", table);
-	std::cout << tok->get_value() << " " << tok->get_string_type() << "\n";
+	const Sawoca::Double* d =
+		dynamic_cast<const Sawoca::Double*>(tok->get_value());
+	std::cout << d->get_val() << " " << d->get_string_type() << "\n";
+	delete table["test"];
 	delete tok;
 
 	return 0;
 
 	//choose the input mode
-	Calc::Lexer* lexer;
+	Sawoca::Lexer* lexer;
+	std::map<std::string, Language::Values::ValueI*> variables;
+	std::ifstream* f = nullptr;
+
 	switch(flags(argc, argv)){
 		case 'i':
-			lexer = new Calc::Lexer(&std::cin);
+			lexer = new Sawoca::Lexer(variables);
 			break;
 		case 'e':
-			lexer = new Calc::Lexer(new std::istringstream(argv[2]));
+			lexer = new Sawoca::Lexer(
+				variables,
+				new std::istringstream(argv[2])
+			);
 			break;
 		case 'f': {
-				std::ifstream* f = new std::ifstream(argv[2]);
+				f = new std::ifstream(argv[2]);
 				if(!f->is_open()){
 					std::cerr << "Error: cannot open file. Using default\
 interactive mode instead.\n";
-					lexer = new Calc::Lexer(&std::cin);
+					lexer = new Sawoca::Lexer(variables);
 				} else
-					lexer = new Calc::Lexer(f);
+					lexer = new Sawoca::Lexer(variables, f);
 			}
 			break;
 		case 'h':
@@ -101,14 +112,51 @@ interactive mode instead.\n";
 		default:
 			std::cerr << "Error: unknown flag \"" << argv[1] << ". Using \
 default interactive mode instead.\n"; 
-			lexer = new Calc::Lexer(&std::cin);
+			lexer = new Sawoca::Lexer(variables);
 			break;
 	}
 	if(!lexer)
 		return 1;
 
-	Calc::Parser parser = Calc::Parser(lexer);
+	std::vector<Language::Tokens::TokenI*> tokens;
+	try {
+		tokens = lexer->lex();
+	} catch (std::exception e) {
+		std::cerr << "Error during lexing: " << e.what() << ".\n";
+
+		for(Language::Tokens::TokenI* token : tokens)
+			delete token;
+		delete lexer;
+		if(f)
+			delete f;
+
+		return 1;
+	}
+
+	delete lexer;
+	if(f)
+		delete f;
+
+	Sawoca::Parser parser = Sawoca::Parser(variables);
 
 	// main loop
-	return parser.parse(); //lexer is deleted by parser
+	try{
+		parser.parse(tokens);
+	} catch (std::exception e) {
+		std::cerr << "Error during parsing: " << e.what() << ".\n";
+
+		for(Language::Tokens::TokenI* token : tokens)
+			delete token;
+		variables.clear();
+
+		return 2;
+	}
+
+	parser.parse(tokens);
+
+	for(Language::Tokens::TokenI* token : tokens)
+		delete token;
+	variables.clear();
+
+		return 0;
 }

@@ -8,6 +8,7 @@ namespace Language {
         class TokenI {
         public:
             virtual const Values::ValueI* get_value() const = 0;
+            virtual ~TokenI() = default;
         };
     }
 }
