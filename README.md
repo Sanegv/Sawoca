@@ -1,7 +1,8 @@
-# Calc
+# Sawoca
 
-This is a simple pemdas calculator that only uses double precision floating 
-points numbers, with the ability to store data in variables.
+Sanegv's WonderCalc is a simple pemdas calculator that (for now) only uses 
+double precision floating points numbers, with the ability to store data in
+ variables.
 
 ## Usage
 
@@ -10,14 +11,24 @@ Either run the calc binary as is to open a CLI (that you can exit by typing
 
 ## Installation
 
-Simply use the `make` command. The executable will be created in `builds`.
+Simply use the `make` command. The executable will be created as `build/swc`.
 
 ## todo
+
+### immediate improvements
+
+- fix itneractive mode
+- fix name tokens
+- generate doc
+
+### general ideas
 
 - unit tests (oof)
 - improve error higlighting
 - **add functions**
 - **add other types**
+    - int
+    - bool
 
 ## See also
 
