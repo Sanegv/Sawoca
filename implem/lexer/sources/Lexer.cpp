@@ -4,6 +4,7 @@
 #include "../../tokens/headers/NumberToken.h"
 #include "../../tokens/headers/OperatorToken.h"
 #include "../../tokens/headers/PrintToken.h"
+#include <vector>
 
 using namespace Sawoca;
 
@@ -69,4 +70,20 @@ Lexer::Lexer(
 Lexer::~Lexer(){
 	if(input != &std::cin)
 		delete input;
+}
+
+std::vector<Language::Tokens::TokenI*> Lexer::lex(){
+	std::vector<Language::Tokens::TokenI*> tokens;
+		if(!input){
+			tokens.emplace_back(new EndToken);
+			return tokens;
+		}
+	while(true){
+		Token* tok =  static_cast<Token*>(get_token());
+		tokens.push_back(tok);
+		if(tok->get_type() == END)
+			return tokens;
+	}
+
+	return tokens;
 }

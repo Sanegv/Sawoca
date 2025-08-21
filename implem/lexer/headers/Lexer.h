@@ -63,7 +63,9 @@ namespace Sawoca {
 
 
 		/**
-		 *itodo
+		 * @brief Reads the whole stream attribute, and tokenises its content.
+		 *
+		 * @return a vector of Tokens.
 		 */
 		virtual std::vector<Language::Tokens::TokenI*> lex() override;
 
