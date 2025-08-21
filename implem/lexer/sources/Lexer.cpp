@@ -90,7 +90,7 @@ std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 	while(true){
 		Token* tok =  static_cast<Token*>(get_token());
 		tokens.push_back(tok);
-		if(tok->get_type() == END)
+		if(tok->get_type() == END || tok->get_type() == PRINT)
 			return tokens;
 	}
 

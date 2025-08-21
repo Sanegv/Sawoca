@@ -8,13 +8,6 @@
 using namespace Sawoca;
 
 //\cond PRIVATE
-void init_table(std::map<std::string, Language::Values::ValueI*>* table){
-	if(table){
-		(*table)["pi"] = new Double(3.1415926535897932385);
-		(*table)["e"]  = new Double(2.7182818284590452354);
-	}
-}
-
 Token* cast_token(std::vector<Language::Tokens::TokenI*>::iterator it){
     Token* tok = dynamic_cast<Token*>(*it);
     if(!tok)
@@ -36,9 +29,7 @@ const Double* const cast_to_double(const Language::Values::ValueI* const v){
 
 Parser::Parser(
 		std::map<std::string, Language::Values::ValueI*>& variables
-) : table(variables) {
-	init_table(&table);
-}
+) : table(variables) {}
 
 Language::Values::ValueI* Parser::prim(
     bool get,

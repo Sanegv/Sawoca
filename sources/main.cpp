@@ -2,7 +2,6 @@
  * @file main.cpp
  * @brief Instantiates a parser depending on the input, and calls it.
  *
- * @author Bjarne Stroustrup
  * @author Sanegv
  */
 
@@ -10,6 +9,19 @@
 #include <fstream>
 #include "../implem/lexer/headers/Lexer.h"
 #include "../implem/parser/headers/Parser.h"
+#include "../implem/values/headers/Double.h"
+
+static const int CPP_LEX_ERR = 1;
+static const int SWC_LEX_ERR = 2;
+static const int CPP_PAR_ERR = 3;
+static const int SWC_PAR_ERR = 4;
+
+void init_table(std::map<std::string, Language::Values::ValueI*>* table){
+	if(table){
+		(*table)["pi"] = new Sawoca::Double(3.1415926535897932385);
+		(*table)["e"]  = new Sawoca::Double(2.7182818284590452354);
+	}
+}
 
 /**
  * @brief Prints the help menu.
@@ -67,11 +79,11 @@ char flags(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]){
-	//choose the input mode
 	Sawoca::Lexer* lexer;
 	std::map<std::string, Language::Values::ValueI*> variables;
 	std::ifstream* f = nullptr;
 
+	//choose the input mode
 	switch(flags(argc, argv)){
 		case 'i':
 			lexer = new Sawoca::Lexer(variables);
@@ -105,56 +117,63 @@ default interactive mode instead.\n";
 		return 1;
 
 	std::vector<Language::Tokens::TokenI*> tokens;
-	try {
-		tokens = lexer->lex();
-	} catch (const std::exception& e) {
-		std::cerr << "C++ error during lexing: " << e.what() << ".\n";
 
-		for(Language::Tokens::TokenI* token : tokens)
-			delete token;
-		delete lexer;
-		if(f)
-			delete f;
+	Sawoca::Parser parser(variables);
 
-		return 1;
-	} catch (const std::string& e) {
-		std::cerr << "Sawoca error during lexing: " << e << ".\n";
+	do {
+		try {
+			tokens = lexer->lex();
+		} catch (const std::exception& e) {
+			std::cerr << "C++ error during lexing: " << e.what() << ".\n";
 
-		for(Language::Tokens::TokenI* token : tokens)
-			delete token;
-		delete lexer;
-		if(f)
-			delete f;
+			for(Language::Tokens::TokenI* token : tokens)
+				delete token;
+			delete lexer;
+			if(f)
+				delete f;
 
-		return 2;
-	}
+			return CPP_LEX_ERR;
+		} catch (const std::string& e) {
+			std::cerr << "Sawoca error during lexing: " << e << ".\n";
 
-	delete lexer;
+			for(Language::Tokens::TokenI* token : tokens)
+				delete token;
+			delete lexer;
+			if(f)
+				delete f;
 
-	Sawoca::Parser parser = Sawoca::Parser(variables);
+			return SWC_LEX_ERR;
+		}
 
-	// main loop
-	try{
-		parser.parse(tokens);
-	} catch (const std::exception& e) {
-		std::cerr << "C++ error during parsing: " << e.what() << ".\n";
+		//reset variables
+		init_table(&variables);
+
+		try{
+			parser.parse(tokens);
+		} catch (const std::exception& e) {
+			std::cerr << "C++ error during parsing: " << e.what() << ".\n";
+
+			for(Language::Tokens::TokenI* token : tokens)
+				delete token;
+			variables.clear();
+			return CPP_PAR_ERR;
+		} catch (const std::string& e) {
+			std::cout << "Sawoca error during parsing: " << e << ".\n";
+
+			for(Language::Tokens::TokenI* token : tokens)
+				delete token;
+			variables.clear();
+			return SWC_PAR_ERR;
+		}
 
 		for(Language::Tokens::TokenI* token : tokens)
 			delete token;
 		variables.clear();
-		return 3;
-	} catch (const std::string& e) {
-		std::cout << "Sawoca error during parsing: " << e << ".\n";
+	} while (
+		static_cast<Sawoca::Token*>(tokens.back())->get_type() != Sawoca::END
+	);
 
-		for(Language::Tokens::TokenI* token : tokens)
-			delete token;
-		variables.clear();
-		return 4;
-	}
+	delete lexer;	
 
-	for(Language::Tokens::TokenI* token : tokens)
-		delete token;
-	variables.clear();
-
-		return 0;
+	return 0;
 }
