@@ -9,5 +9,5 @@ std::string EndToken::get_string_type() const{
 }
 
 const Language::Values::ValueI* EndToken::get_value() const{
-    throw "END tokens do not hold any value";
+    throw std::string("END tokens do not hold any value");
 }

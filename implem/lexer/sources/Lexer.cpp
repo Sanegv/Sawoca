@@ -53,7 +53,7 @@ Language::Tokens::TokenI* Lexer::get_token(){
 			return new Name_Token(string_value, variables);
 		}
 
-		throw "wrong keyword";
+		throw std::string("wrong keyword");
 		return new PrintToken();
 	}
 }

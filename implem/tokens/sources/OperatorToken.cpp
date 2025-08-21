@@ -18,7 +18,7 @@ Operator_Token::Operator_Token(char op)
 }
 
 const Language::Values::ValueI* Operator_Token::get_value() const {
-	throw "cannot get value of operator";
+	throw std::string("cannot get value of operator");
 }
 
 std::string Operator_Token::get_string_type() const {

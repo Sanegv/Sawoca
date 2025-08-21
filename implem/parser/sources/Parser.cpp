@@ -18,17 +18,17 @@ void init_table(std::map<std::string, Language::Values::ValueI*>* table){
 Token* cast_token(std::vector<Language::Tokens::TokenI*>::iterator it){
     Token* tok = dynamic_cast<Token*>(*it);
     if(!tok)
-        throw "unhandled token type";
+        throw std::string("unhandled token type");
     return tok;
 }
 
 const Double* const cast_to_double(const Language::Values::ValueI* const v){
     if(!v)
-        throw "nullptr dereference";
+        throw std::string("nullptr dereference");
 
     const Double* const dp = dynamic_cast<const Double* const>(v);
     if(!dp)
-        throw "unknown type";
+        throw std::string("unknown type");
 
     return dp;
 }
@@ -72,13 +72,13 @@ Language::Values::ValueI* Parser::prim(
 	{
 		Language::Values::ValueI* e = expr(true, it);
 		if(cast_token(it)->get_type() != RP)
-			throw "expected ')'";
+			throw std::string("expected ')'");
 
 		it++;
 		return e;
 	}
 	default:
-		throw "expected primary";
+		throw std::string("expected primary");
 	}
 }
 

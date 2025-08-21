@@ -107,8 +107,8 @@ default interactive mode instead.\n";
 	std::vector<Language::Tokens::TokenI*> tokens;
 	try {
 		tokens = lexer->lex();
-	} catch (std::exception* e) {
-		std::cerr << "Error during lexing: " << e->what() << ".\n";
+	} catch (const std::exception& e) {
+		std::cerr << "C++ error during lexing: " << e.what() << ".\n";
 
 		for(Language::Tokens::TokenI* token : tokens)
 			delete token;
@@ -117,6 +117,16 @@ default interactive mode instead.\n";
 			delete f;
 
 		return 1;
+	} catch (const std::string& e) {
+		std::cerr << "Sawoca error during lexing: " << e << ".\n";
+
+		for(Language::Tokens::TokenI* token : tokens)
+			delete token;
+		delete lexer;
+		if(f)
+			delete f;
+
+		return 2;
 	}
 
 	delete lexer;
@@ -126,14 +136,20 @@ default interactive mode instead.\n";
 	// main loop
 	try{
 		parser.parse(tokens);
-	} catch (std::exception* e) {
-		std::cerr << "Error during parsing: " << e->what() << ".\n";
+	} catch (const std::exception& e) {
+		std::cerr << "C++ error during parsing: " << e.what() << ".\n";
 
 		for(Language::Tokens::TokenI* token : tokens)
 			delete token;
 		variables.clear();
+		return 3;
+	} catch (const std::string& e) {
+		std::cout << "Sawoca error during parsing: " << e << ".\n";
 
-		return 2;
+		for(Language::Tokens::TokenI* token : tokens)
+			delete token;
+		variables.clear();
+		return 4;
 	}
 
 	for(Language::Tokens::TokenI* token : tokens)

@@ -9,5 +9,5 @@ std::string PrintToken::get_string_type() const{
 }
 
 const Language::Values::ValueI* PrintToken::get_value() const{
-    throw "PRINT tokens do not hold any value";
+    throw std::string("PRINT tokens do not hold any value");
 }

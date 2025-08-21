@@ -18,22 +18,22 @@ std::string Double::get_string_type() const {
 
 const Value* const cast_to_value(const Language::Values::ValueI* const v){
     if(!v)
-        throw "nullptr dereference";
+        throw std::string("nullptr dereference");
 
     const Value* const vp = dynamic_cast<const Value* const>(v);
     if(!vp)
-        throw "values must inherit the Value abstract class";
+        throw std::string("values must inherit the Value abstract class");
 
     return vp;
 }
 
 const Double* const cast_to_double(const Value* const v){
     if(!v)
-        throw "nullptr dereference";
+        throw std::string("nullptr dereference");
 
     const Double* const dp = dynamic_cast<const Double* const>(v);
     if(!dp)
-        throw "false double";
+        throw std::string("false double");
 
     return dp;
 }
@@ -45,8 +45,8 @@ Language::Values::ValueI* Double::add(const ValueI* const v) const {
         case DOUBLE:
             return new Double(val+cast_to_double(vp)->get_val()); 
         default:
-            throw "cannot add type " + get_string_type() + " and type " + 
-                vp->get_string_type();
+            throw std::string("cannot add type " + get_string_type() + " and type " + 
+                vp->get_string_type());
             return nullptr;
     }
 }
@@ -58,8 +58,8 @@ Language::Values::ValueI* Double::sub(const ValueI* const v) const{
         case DOUBLE:
             return new Double(val-cast_to_double(vp)->get_val()); 
         default:
-            throw "cannot sub type " + get_string_type() + " and type " + 
-                vp->get_string_type();
+            throw std::string("cannot sub type " + get_string_type() + " and type " + 
+                vp->get_string_type());
             return nullptr;
     }
 }
@@ -71,8 +71,8 @@ Language::Values::ValueI* Double::mul(const ValueI* const v) const{
         case DOUBLE:
             return new Double(val*cast_to_double(vp)->get_val()); 
         default:
-            throw "cannot mul type " + get_string_type() + " and type " + 
-                vp->get_string_type();
+            throw std::string("cannot mul type " + get_string_type() + " and type " + 
+                vp->get_string_type());
             return nullptr;
     }
 }
@@ -85,12 +85,12 @@ Language::Values::ValueI* Double::div(const ValueI* const v) const{
             {
                 double d = cast_to_double(vp)->get_val();
                 if(d == 0) 
-                    throw "division by zero";
+                    throw std::string("division by zero");
                 return new Double(val/d); 
             }
         default:
-            throw "cannot add type " + get_string_type() + " and type " + 
-                vp->get_string_type();
+            throw std::string("cannot add type " + get_string_type() + " and type " + 
+                vp->get_string_type());
             return nullptr;
     }
 }
@@ -121,8 +121,8 @@ Language::Values::ValueI& Double::operator+=(const Language::Values::ValueI& v){
             val += cast_to_double(vp)->get_val();
             break;
         default:
-            throw "cannot add type " + get_string_type() + " and type " +
-                vp->get_string_type();
+            throw std::string("cannot add type " + get_string_type() + " and type " +
+                vp->get_string_type());
             break;
     }
 
@@ -137,8 +137,8 @@ Language::Values::ValueI& Double::operator-=(const Language::Values::ValueI& v){
             val -= cast_to_double(vp)->get_val();
             break;
         default:
-            throw "cannot sub type " + get_string_type() + " and type " +
-                vp->get_string_type();
+            throw std::string("cannot sub type " + get_string_type() + " and type " +
+                vp->get_string_type());
             break;
     }
 
@@ -152,8 +152,8 @@ Language::Values::ValueI& Double::operator*=(const Language::Values::ValueI& v){
             val *= cast_to_double(vp)->get_val();
             break;
         default:
-            throw "cannot mul type " + get_string_type() + " and type " +
-                vp->get_string_type();
+            throw std::string("cannot mul type " + get_string_type() + " and type " +
+                vp->get_string_type());
             break;
     }
 
@@ -167,13 +167,13 @@ Language::Values::ValueI& Double::operator/=(const Language::Values::ValueI& v){
             {
                 double d = cast_to_double(vp)->get_val();
                 if(d == 0) 
-                    throw "division by zero";
+                    throw std::string("division by zero");
                 val /= d; 
             }
             break;
         default:
-            throw "cannot div type " + get_string_type() + " and type " +
-                vp->get_string_type();
+            throw std::string("cannot div type " + get_string_type() + " and type " +
+                vp->get_string_type());
             break;
     }
 
