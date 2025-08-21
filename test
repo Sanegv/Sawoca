@@ -1,2 +1,0 @@
-#! /bin/bash
-./build/swc -f test.swc
