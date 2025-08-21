@@ -76,9 +76,8 @@ Lexer::Lexer(
 ) : variables(variables), input(input){}
 
 Lexer::~Lexer(){
-	try{
+	if(input != &std::cin)
 		delete input;
-	} catch (void*){}
 }
 
 std::vector<Language::Tokens::TokenI*> Lexer::lex(){
