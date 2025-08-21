@@ -9,6 +9,7 @@ namespace Language {
         class LexerI {
         public:
             virtual std::vector<Tokens::TokenI*> lex() = 0;
+            virtual ~LexerI() = default;
         };
     }
 }

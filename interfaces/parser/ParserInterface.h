@@ -10,6 +10,7 @@ namespace Language {
         public:
             virtual int
                 parse(std::vector<Tokens::TokenI*>) = 0;
+            virtual ~ParserI() = default;
         };
     }
 }
