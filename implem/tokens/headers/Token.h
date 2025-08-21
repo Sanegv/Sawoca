@@ -19,8 +19,8 @@ namespace Sawoca {
 		DIV = '/', ///< A division
 		PRINT = ';', ///< Printing 
 		ASSIGN = '=', ///< An assignment
-		LP = '(', ///< Beginning of a paranthesis
-		RP = ')' ///< End of a paranthesis
+		LP = '(', ///< Beginning of a Par
+		RP = ')' ///< End of a Par
 	};
 
     /**

@@ -44,8 +44,8 @@ namespace Sawoca {
 
 		/**
 		* @brief Parses a primary expression and returns its value.
-		* Calls @ref expr() to parse paranthesis expressions, and returns an 
-		* @ref error() in case of a wrong parameter or an unclosed paranthesis.
+		* Calls @ref expr() to parse Par expressions, and returns an 
+		* @ref error() in case of a wrong parameter or an unclosed Par.
 		*
 		* @param get A boolean that tells the function whether or not to get the
 		*  next token.

@@ -4,6 +4,8 @@
 #include "../../tokens/headers/NumberToken.h"
 #include "../../tokens/headers/OperatorToken.h"
 #include "../../tokens/headers/PrintToken.h"
+#include "../../tokens/headers/LeftParToken.h"
+#include "../../tokens/headers/RightParToken.h"
 #include <vector>
 
 using namespace Sawoca;
@@ -28,8 +30,14 @@ Language::Tokens::TokenI* Lexer::get_token(){
 		return new PrintToken();
 
 	//operators
-	case '+': case '-':	case '*': case '/':	case '(': case ')':	case '=':
+	case '+': case '-':	case '*': case '/': case '=':
 		return new Operator_Token(ch);
+
+	//Paranthesis
+	case '(':
+		return new LeftParToken();
+	case ')':
+		return new RightParToken();
 
 	default:
 		//number
