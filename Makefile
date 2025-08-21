@@ -1,30 +1,33 @@
-FLAGS = -Wall -Wextra -g
-CC = g++
+CXX := g++
+CXXFLAGS := -std=c++17 -Wall -Wextra -Iinterfaces -Iinterfaces/lexer -Iinterfaces/parser -Iinterfaces/tokens -Iinterfaces/values
 
-SRC_DIR = sources
-HDR_DIR = headers
-BUILD_DIR = build
-
-TARGET = $(BUILD_DIR)/swc
-
-SRCS = $(addprefix $(SRC_DIR)/, main.cpp lexer.cpp parser.cpp)
-HDRS = $(addprefix $(HDR_DIR)/, lexer.h parser.h)
-
-OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
+OBJ_DIR := build
+MODULES := implem/values implem/tokens implem/lexer implem/parser
+MODULE_OBJS := $(OBJ_DIR)/values.o $(OBJ_DIR)/tokens.o $(OBJ_DIR)/lexer.o $(OBJ_DIR)/parser.o
+MAIN_OBJ := $(OBJ_DIR)/main.o
+TARGET := $(OBJ_DIR)/sawoca
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(FLAGS) -o $(TARGET) $(OBJS)
+$(TARGET): $(MODULE_OBJS) $(MAIN_OBJ)
+	$(CXX) -o $@ $^
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HDRS)
-	@mkdir -p $(BUILD_DIR)
-	$(CC) $(FLAGS) -I$(HDR_DIR) -c $< -o $@
+$(MAIN_OBJ): sources/main.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-doc: Doxyfile
-	doxygen Doxyfile
+# Appel récursif des Makefiles de modules
+$(OBJ_DIR)/values.o:
+	$(MAKE) -C implem/values
 
-run: all
-	./$(TARGET)
+$(OBJ_DIR)/tokens.o:
+	$(MAKE) -C implem/tokens
+
+$(OBJ_DIR)/lexer.o:
+	$(MAKE) -C implem/lexer
+
+$(OBJ_DIR)/parser.o:
+	$(MAKE) -C implem/parser
+
 clean:
-	$(RM) $(TARGET) $(BUILD_DIR)/*.o *~
+	rm -f $(OBJ_DIR)/*.o $(TARGET)
+	for d in $(MODULES); do $(MAKE) -C $$d clean; done
