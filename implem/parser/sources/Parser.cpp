@@ -62,20 +62,21 @@ Language::Values::ValueI* Parser::prim(
 	case NAME: 
 	{
 		std::string name = get_name(tok);
-		const Double* v = dynamic_cast<const Double*>(table[name]);
         it++;
 		tok = cast_token(it);
 
 		//assignment
 		if(tok->get_type() == ASSIGN){
 			const Double* right = cast_to_double(expr(true, it));
-			if(v)
+			if(const Language::Values::ValueI* v = table[name]){
+				table.erase(table.find(name));
 				delete v;
+			}
 			table[name] = right;
 		}
 
 		if(!table[name])
-			throw "unknown variable " + name;
+			throw "unknown variable \"" + name + "\"";
 		return new Double(cast_to_double(table[name])->get_val());
 	}
 	case MINUS:

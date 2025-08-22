@@ -22,6 +22,7 @@ namespace Sawoca {
         Value_Type get_type() const {return type;}
         virtual std::string get_string_type()   const = 0;
         virtual std::string string()            const = 0;
+        virtual ~Value() = default;
     };
 }
 
