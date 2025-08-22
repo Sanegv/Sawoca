@@ -149,7 +149,9 @@ int Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
 			break;
 		if(tok->get_type() == PRINT)
 			continue;
-        std::cout << static_cast<Value*>(expr(false, it))->string() << "\n";
+		Language::Values::ValueI* eval = expr(false, it);
+        std::cout << static_cast<Value*>(eval)->string() << "\n";
+		delete eval;
 	}
 
 	return number_of_errors;
