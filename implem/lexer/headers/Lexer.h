@@ -17,8 +17,6 @@
  */
 
 namespace Sawoca {
-	class Parser;
-
 	/**
 	* @brief The lexer class is responsible for reading an input stream and 
 	* returning tokens.
@@ -26,7 +24,7 @@ namespace Sawoca {
 	class Lexer : public Language::Lexer::LexerI {
 	private:		
 		std::map<std::string, Language::Values::ValueI*>& variables;
-		std::istream* input;
+		std::istream& input;
 
 		//don't use (yet)
 		Lexer(const Lexer&) = delete;
@@ -34,15 +32,6 @@ namespace Sawoca {
 		Lexer() = delete;
 
 	public:
-		/**
-		* @brief Creates a new Lexer that will read stdin and use the given
-		* variables map.
-		*
-		* @param variables The map of the variables that will be passed to 
-		* Variables Tokens.
-		*/
-		Lexer(std::map<std::string, Language::Values::ValueI*>& variables);
-
 		/**
 		* @brief Creates a new Lexer that will read the given input stream and
 		* use the given variables map.
@@ -53,13 +42,8 @@ namespace Sawoca {
 		*/
 		Lexer(
 			std::map<std::string, Language::Values::ValueI*>& variables, 
-			std::istream* input
+			std::istream& input
 		);
-
-		/**
-		* @brief The destructor will free the input stream if it's not stdin.
-		*/
-		~Lexer();
 
 
 		/**

@@ -17,7 +17,7 @@ Language::Tokens::TokenI* Lexer::get_token(){
 
 	//consume whitespaces
 	do {
-		if(!input->get(ch))
+		if(!input.get(ch))
 			return new EndToken();
 	} while (ch != '\n' && isspace(ch));
 
@@ -42,22 +42,22 @@ Language::Tokens::TokenI* Lexer::get_token(){
 	default:
 		//number
 		if(isdigit(ch) || ch == '.'){
-			input->putback(ch);
-			*input >> number_value;
+			input.putback(ch);
+			input >> number_value;
 			return new Number_Token(number_value);
 		}
 
 		//name
 		if(isalpha(ch)){
 			string_value = ch;
-			while(input->get(ch) && isalnum(ch))
+			while(input.get(ch) && isalnum(ch))
 				string_value.push_back(ch);
 
 			//exit
 			if(string_value == "exit")
 				return new EndToken();
 
-			input->putback(ch);
+			input.putback(ch);
 			return new Name_Token(string_value, variables);
 		}
 
@@ -66,19 +66,10 @@ Language::Tokens::TokenI* Lexer::get_token(){
 	}
 }
 
-
-Lexer::Lexer(std::map<std::string, Language::Values::ValueI*>& variables)
-	: variables(variables), input(&std::cin){}
-
 Lexer::Lexer(
 		std::map<std::string, Language::Values::ValueI*>& variables,
-		std::istream* input
+		std::istream& input
 ) : variables(variables), input(input){}
-
-Lexer::~Lexer(){
-	if(input != &std::cin)
-		delete input;
-}
 
 std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 	std::vector<Language::Tokens::TokenI*> tokens;

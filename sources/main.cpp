@@ -11,10 +11,11 @@
 #include "../implem/parser/headers/Parser.h"
 #include "../implem/values/headers/Double.h"
 
-static const int CPP_LEX_ERR = 1;
-static const int SWC_LEX_ERR = 2;
-static const int CPP_PAR_ERR = 3;
-static const int SWC_PAR_ERR = 4;
+static const int MEM_ALLOC_ERR	= -1;
+static const int CPP_LEX_ERR 	= 1;
+static const int SWC_LEX_ERR 	= 2;
+static const int CPP_PAR_ERR 	= 3;
+static const int SWC_PAR_ERR 	= 4;
 
 void init_table(std::map<std::string, Language::Values::ValueI*>* table){
 	if(table){
@@ -39,7 +40,7 @@ $ swc [flags] (optionnal expressions)\n\n\
 flags:\n\
     -e, --evaluate <expression>\n\
         Evaluates the specified expression.\n\n\
-    -f, --file <path/to/file>\n\
+    -stream, --file <path/to/file>\n\
         Tries to evaluate the content of the file at the specified path. You\n\
         can separate different expressions with a semicolon `;`.\n\n\
     -h, --help\n\
@@ -79,29 +80,26 @@ char flags(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]){
-	Sawoca::Lexer* lexer;
 	std::map<std::string, Language::Values::ValueI*> variables;
-	std::ifstream* f = nullptr;
+	init_table(&variables);
+	std::istream* stream = nullptr;
 
 	//choose the input mode
 	switch(flags(argc, argv)){
 		case 'i':
-			lexer = new Sawoca::Lexer(variables);
+			stream = &std::cin;
 			break;
 		case 'e':
-			lexer = new Sawoca::Lexer(
-				variables,
-				new std::istringstream(argv[2])
-			);
+			stream = new std::istringstream(argv[2]);
 			break;
 		case 'f': {
-				f = new std::ifstream(argv[2]);
-				if(!f->is_open()){
+				std::ifstream* f = new std::ifstream(argv[2]);
+				if(!f || !f->is_open()){
 					std::cerr << "Error: cannot open file. Using default \
 interactive mode instead.\n";
-					lexer = new Sawoca::Lexer(variables);
+					stream = &std::cin;
 				} else
-					lexer = new Sawoca::Lexer(variables, f);
+					stream = f;
 			}
 			break;
 		case 'h':
@@ -110,45 +108,39 @@ interactive mode instead.\n";
 		default:
 			std::cerr << "Error: unknown flag \"" << argv[1] << ". Using \
 default interactive mode instead.\n"; 
-			lexer = new Sawoca::Lexer(variables);
+			stream = &std::cin;
 			break;
 	}
-	if(!lexer)
-		return 1;
 
+	if(!stream)
+		return MEM_ALLOC_ERR;
+
+	Sawoca::Lexer lexer(variables, *stream);
 	std::vector<Language::Tokens::TokenI*> tokens;
-
 	Sawoca::Parser parser(variables);
 
 	do { 
 		tokens.clear();
 
 		try {
-			tokens = lexer->lex();
+			tokens = lexer.lex();
 		} catch (const std::exception& e) {
 			std::cerr << "C++ error during lexing: " << e.what() << ".\n";
 
-			for(Language::Tokens::TokenI* token : tokens)
-				delete token;
-			delete lexer;
-			if(f)
-				delete f;
+			tokens.clear();
+			if(stream != &std::cin)
+				delete stream;
 
 			return CPP_LEX_ERR;
 		} catch (const std::string& e) {
 			std::cerr << "Sawoca error during lexing: " << e << ".\n";
 
-			for(Language::Tokens::TokenI* token : tokens)
-				delete token;
-			delete lexer;
-			if(f)
-				delete f;
+			tokens.clear();
+			if(stream != &std::cin)
+				delete stream;
 
 			return SWC_LEX_ERR;
 		}
-
-		//reset variables
-		init_table(&variables);
 
 		try{
 			parser.parse(tokens);
@@ -167,13 +159,14 @@ default interactive mode instead.\n";
 			variables.clear();
 			return SWC_PAR_ERR;
 		}
-		variables.clear();
 	} while (
 		static_cast<Sawoca::Token*>(tokens.back())->get_type() != Sawoca::END
 	);
 
+	variables.clear();
 	tokens.clear();
-	delete lexer;
+	if(stream != &std::cin)
+		delete stream;
 
 	return 0;
 }
