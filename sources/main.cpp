@@ -19,8 +19,17 @@ static const int SWC_PAR_ERR 	= 4;
 
 void init_table(std::map<std::string, const Language::Values::ValueI*>* table){
 	if(table){
-		(*table)["pi"] = new Sawoca::Double(3.1415926535897932385);
-		(*table)["e"]  = new Sawoca::Double(2.7182818284590452354);
+		Sawoca::Double* pi = new Sawoca::Double(3.1415926535897932385);
+		if(!pi)
+			throw "memory allocation failed";
+		Sawoca::Double* e  = new Sawoca::Double(2.7182818284590452354);
+		if(!e){
+			delete pi;
+			throw "memory allocation failed";
+		}
+
+		(*table)["pi"] = pi;
+		(*table)["e"]  = e;
 	}
 }
 

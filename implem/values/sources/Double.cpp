@@ -41,11 +41,15 @@ Language::Values::ValueI* Double::add(const ValueI* const v) const {
     const Value* const vp = cast_to_value(v);
 
     switch (vp->get_type()) {
-        case DOUBLE:
-            return new Double(val+cast_to_double(vp)->get_val()); 
+        case DOUBLE: {
+            Double* d = new Double(val+cast_to_double(vp)->get_val());
+            if(!d)
+                throw "memory allocation failed";
+            return d; 
+        }
         default:
-            throw std::string("cannot add type " + get_string_type() + " and type " + 
-                vp->get_string_type());
+            throw std::string("cannot add type " + get_string_type() + 
+            " and type " + vp->get_string_type());
             return nullptr;
     }
 }
@@ -54,8 +58,12 @@ Language::Values::ValueI* Double::sub(const ValueI* const v) const{
     const Value* const vp = cast_to_value(v);
 
     switch (vp->get_type()) {
-        case DOUBLE:
-            return new Double(val-cast_to_double(vp)->get_val()); 
+        case DOUBLE: {
+            Double* d = new Double(val-cast_to_double(vp)->get_val());
+            if(!d)
+                throw "memory allocation failed";
+            return d; 
+        }
         default:
             throw std::string("cannot sub type " + get_string_type() + " and type " + 
                 vp->get_string_type());
@@ -67,8 +75,12 @@ Language::Values::ValueI* Double::mul(const ValueI* const v) const{
     const Value* const vp = cast_to_value(v);
 
     switch (vp->get_type()) {
-        case DOUBLE:
-            return new Double(val*cast_to_double(vp)->get_val()); 
+        case DOUBLE: {
+            Double* d = new Double(val*cast_to_double(vp)->get_val());
+            if(!d)
+                throw "memory allocation failed";
+            return d; 
+        }
         default:
             throw std::string("cannot mul type " + get_string_type() + " and type " + 
                 vp->get_string_type());
@@ -85,11 +97,15 @@ Language::Values::ValueI* Double::div(const ValueI* const v) const{
                 double d = cast_to_double(vp)->get_val();
                 if(d == 0) 
                     throw std::string("division by zero");
-                return new Double(val/d); 
+                
+                Double* dp = new Double(val/d);
+                if(!dp)
+                    throw "memory allocation failed";
+                return dp; 
             }
         default:
-            throw std::string("cannot add type " + get_string_type() + " and type " + 
-                vp->get_string_type());
+            throw std::string("cannot add type " + get_string_type() +
+             " and type " + vp->get_string_type());
             return nullptr;
     }
 }

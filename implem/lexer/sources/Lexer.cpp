@@ -66,7 +66,6 @@ Language::Tokens::TokenI* Lexer::get_token(){
 		}
 
 		throw std::string("wrong keyword");
-		return new PrintToken();
 	}
 }
 
@@ -78,11 +77,22 @@ Lexer::Lexer(
 std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 	std::vector<Language::Tokens::TokenI*> tokens;
 		if(!input){
-			tokens.emplace_back(new EndToken);
+			Token* tok = new EndToken();
+			if(!tok){
+				for(Language::Tokens::TokenI* tok : tokens)
+					delete tok;
+				throw "memory allocaiton failed";
+			}				
+			tokens.push_back(tok);
 			return tokens;
 		}
 	while(true){
-		Token* tok =  static_cast<Token*>(get_token());
+		Token* tok = dynamic_cast<Token*>(get_token());
+		if(!tok){
+			for(Language::Tokens::TokenI* tok : tokens)
+				delete tok;
+			throw "memory allocation failed";
+		}
 		tokens.push_back(tok);
 		if(tok->get_type() == END || tok->get_type() == PRINT)
 			return tokens;

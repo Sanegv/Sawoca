@@ -3,10 +3,16 @@
 
 using namespace Sawoca;
 
-Number_Token::Number_Token() : Token(NUMBER), value(new Double()) {}
+Number_Token::Number_Token() : Token(NUMBER), value(new Double()) {
+    if(!value)
+        throw "memory allocation failed";
+    }
 
 Number_Token::Number_Token(double d) :
-    Token(NUMBER), value(new Double(d)) {}
+    Token(NUMBER), value(new Double(d)) {
+        if(!value)
+            throw "memory allocation failed";
+    }
 
 Number_Token::Number_Token(Language::Values::ValueI* value) : 
     Token(NUMBER), value(value) {}

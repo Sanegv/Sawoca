@@ -70,7 +70,10 @@ Language::Values::ValueI* Parser::prim(
 	{
 		const Double* v = cast_to_double(tok->get_value());
 		it++;
-		return new Double(v->get_val());
+		Double* d = new Double(v->get_val());
+		if(!d)
+			throw "memory allocation failed";
+		return d;
 	}
 	case NAME: 
 	{
@@ -90,7 +93,10 @@ Language::Values::ValueI* Parser::prim(
 
 		if(!table[name])
 			throw "unknown variable \"" + name + "\"";
-		return new Double(cast_to_double(table[name])->get_val());
+		Double* d = new Double(cast_to_double(table[name])->get_val());
+		if(!d)
+			throw "memory allocation failed";
+		return d;
 	}
 	case MINUS:
 		return -(*cast_to_value(prim(true, it)));
