@@ -17,7 +17,6 @@ Simply use the `make` command. The executable will be created as `build/swc`.
 
 ### immediate improvements
 
-- remove operator methods from TokenI (move them to token)
 - generate doc
 
 ### general ideas

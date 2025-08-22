@@ -3,7 +3,6 @@
 
 using namespace Sawoca;
 
-
 Double::Double() : Value(DOUBLE), val(0.0) {}
 
 Double::Double(double d) : Value(DOUBLE), val(d) {};

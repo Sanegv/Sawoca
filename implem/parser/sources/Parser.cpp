@@ -16,6 +16,17 @@ Token* cast_token(std::vector<Language::Tokens::TokenI*>::iterator it){
     return tok;
 }
 
+Value* cast_to_value(Language::Values::ValueI* v){
+    if(!v)
+        throw std::string("nullptr dereference");
+
+    Value* vp = dynamic_cast<Value*>(v);
+    if(!vp)
+        throw std::string("unknown type");
+
+    return vp;
+}
+
 const Double* const cast_to_double(const Language::Values::ValueI* const v){
     if(!v)
         throw std::string("nullptr dereference");
@@ -26,6 +37,8 @@ const Double* const cast_to_double(const Language::Values::ValueI* const v){
 
     return dp;
 }
+
+
 
 std::string get_name(Language::Tokens::TokenI* tok){
     if(!tok){
@@ -80,7 +93,7 @@ Language::Values::ValueI* Parser::prim(
 		return new Double(cast_to_double(table[name])->get_val());
 	}
 	case MINUS:
-		return -(*prim(true, it));
+		return -(*cast_to_value(prim(true, it)));
 	case PLUS:
 		return prim(true, it);
 	case LP:
@@ -102,15 +115,20 @@ Language::Values::ValueI* Parser::term(
     std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
 	Language::Values::ValueI* left = prim(get, it);
+	Language::Values::ValueI* right = nullptr;
 
 	while(true){
         Token* tok = cast_token(it);
 		switch(tok->get_type()){
 		case MUL:
-			*left *= *prim(true, it);
+			right = prim(true, it);
+			*cast_to_value(left) *= *right;
+			delete right;
 			break;
 		case DIV:
-            *left /= *prim(true, it);
+			right = prim(true, it);
+            *cast_to_value(left) /= *prim(true, it);
+			delete right;
             break;
 		default:
 			return left;
@@ -123,15 +141,20 @@ Language::Values::ValueI* Parser::expr(
     std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
 	Language::Values::ValueI* left = term(get, it);
+	Language::Values::ValueI* right = nullptr;
 
 	while(true){
         Token* tok = cast_token(it);
 		switch(tok->get_type()){
 		case PLUS:
-			*left += *term(true, it);
+			right = term(true, it);
+			*cast_to_value(left) += *right;
+			delete right;
 			break;
 		case MINUS:
-			*left -= *term(true, it);
+			right = term(true, it);
+			*cast_to_value(left) -= *right;
+			delete right;
 			break;
 		default:
 			return left;
