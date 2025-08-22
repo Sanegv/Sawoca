@@ -71,7 +71,7 @@ Language::Tokens::TokenI* Lexer::get_token(){
 }
 
 Lexer::Lexer(
-		std::map<std::string, Language::Values::ValueI*>& variables,
+		std::map<std::string, const Language::Values::ValueI*>& variables,
 		std::istream& input
 ) : variables(variables), input(input){}
 

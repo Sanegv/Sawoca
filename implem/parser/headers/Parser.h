@@ -20,7 +20,7 @@ namespace Sawoca {
 	*/
 	class Parser : Language::Parser::ParserI {
 	private:
-		std::map<std::string, Language::Values::ValueI*>& table;
+		std::map<std::string, const Language::Values::ValueI*>& table;
 		int number_of_errors = 0;
 
 		//don't use
@@ -34,7 +34,7 @@ namespace Sawoca {
 		 *
 		 * @param variables the map that will store the variables.
 		 */
-		Parser(std::map<std::string, Language::Values::ValueI*>& variables);
+		Parser(std::map<std::string, const Language::Values::ValueI*>& variables);
 
 
 		/**

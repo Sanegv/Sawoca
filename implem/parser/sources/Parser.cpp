@@ -2,6 +2,7 @@
 #include "../../tokens/headers/Token.h"
 #include "../../values/headers/Double.h"
 #include "../../values/headers/Value.h"
+#include "../../tokens/headers/NameToken.h"
 #include <vector>
 #include <iostream>
 
@@ -25,10 +26,21 @@ const Double* const cast_to_double(const Language::Values::ValueI* const v){
 
     return dp;
 }
+
+std::string get_name(Language::Tokens::TokenI* tok){
+    if(!tok){
+        throw std::string("nullptr dereference");
+	}
+
+	Name_Token* ntok = dynamic_cast<Name_Token*>(tok);
+	if(!ntok)
+		throw "unknown type";
+	return ntok->get_name();
+}
 //\endcond
 
 Parser::Parser(
-		std::map<std::string, Language::Values::ValueI*>& variables
+		std::map<std::string, const Language::Values::ValueI*>& variables
 ) : table(variables) {}
 
 Language::Values::ValueI* Parser::prim(
@@ -49,11 +61,22 @@ Language::Values::ValueI* Parser::prim(
 	}
 	case NAME: 
 	{
-		const Double* v = dynamic_cast<const Double*>(tok->get_value());
+		std::string name = get_name(tok);
+		const Double* v = dynamic_cast<const Double*>(table[name]);
         it++;
-		if(tok->get_type() == ASSIGN)
-				v = cast_to_double(expr(true, it));
-		return new Double(v->get_val());
+		tok = cast_token(it);
+
+		//assignment
+		if(tok->get_type() == ASSIGN){
+			const Double* right = cast_to_double(expr(true, it));
+			if(v)
+				delete v;
+			table[name] = right;
+		}
+
+		if(!table[name])
+			throw "unknown variable " + name;
+		return new Double(cast_to_double(table[name])->get_val());
 	}
 	case MINUS:
 		return -(*prim(true, it));

@@ -23,7 +23,7 @@ namespace Sawoca {
 	*/
 	class Lexer : public Language::Lexer::LexerI {
 	private:		
-		std::map<std::string, Language::Values::ValueI*>& variables;
+		std::map<std::string, const Language::Values::ValueI*>& variables;
 		std::istream& input;
 
 		//don't use (yet)
@@ -41,7 +41,7 @@ namespace Sawoca {
 		* @param input A pointer to an input stream.
 		*/
 		Lexer(
-			std::map<std::string, Language::Values::ValueI*>& variables, 
+			std::map<std::string, const Language::Values::ValueI*>& variables, 
 			std::istream& input
 		);
 
