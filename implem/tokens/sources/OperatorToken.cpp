@@ -1,4 +1,3 @@
-#include <memory>
 #include "../headers/OperatorToken.h"
 
 using namespace Sawoca;

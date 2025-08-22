@@ -10,23 +10,22 @@
 #include "../../tokens/headers/Token.h"
 
 /**
- *@file lexer.h
- *@brief This file contains the lexer class and mehtods,
- * as well as the tokens it can return.
+ *@file Lexer.h
+ *@brief This file defines the Lexer class and methods.
  *@author Sanegv
  */
 
 namespace Sawoca {
 	/**
 	* @brief The lexer class is responsible for reading an input stream and 
-	* returning tokens.
+	* returning tokens. It implements the \ref LexerI interface
 	*/
 	class Lexer : public Language::Lexer::LexerI {
 	private:		
 		std::map<std::string, const Language::Values::ValueI*>& variables;
 		std::istream& input;
 
-		//don't use (yet)
+		//don't use
 		Lexer(const Lexer&) = delete;
 		Lexer& operator=(const Lexer&) = delete;
 		Lexer() = delete;
@@ -45,7 +44,6 @@ namespace Sawoca {
 			std::istream& input
 		);
 
-
 		/**
 		 * @brief Reads the whole stream attribute, and tokenises its content.
 		 *
@@ -58,11 +56,7 @@ namespace Sawoca {
 		* type global variable, and the token value in case of a number or 
 		* name.
 		*
-		* @param parser The parser that will call error.
-		* @param error A function with prototype `double error(std::string)`
-		* that will handle errors.
-		*
-		* @return The token type.
+		* @return a pointer to the polymophic token.
 		*/
 		Language::Tokens::TokenI* get_token();
 	};

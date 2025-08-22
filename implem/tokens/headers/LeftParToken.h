@@ -4,11 +4,34 @@
 #include "Token.h"
 #include "../../../interfaces/tokens/TokenInterface.h"
 
+/**
+ *@file LeftParToken.h
+ *@brief This file defines the left paranthesis Token class.
+ *@author Sanegv
+ */
+
 namespace Sawoca {
+    /**
+    * @brief This class represents the Token for opening of a paranthesis. It is
+    * used to begin the parsing of a new expression nested within the main one.
+    * It inherits from the \ref Token abstract class.
+    */
     class LeftParToken : public Token {
     public:
+        /**
+         * @brief A simple creator for an empty token.
+         */
         LeftParToken();
+
+        /**
+         * @brief stringifies the type of the token.
+         * @return a string saying "LP" 
+         */
         virtual std::string get_string_type() const override;
+
+        /**
+         * @brief throws an exception, as the LP token does not hold a value.
+         */
         virtual const Language::Values::ValueI* get_value() const override;    
     };
 }

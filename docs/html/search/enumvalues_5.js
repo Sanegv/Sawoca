@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['name_0',['NAME',['../lexer_8h.html#a2a8667f1cad8fccd9c18f8cb779abf6aa28eed49402124a865599981ee71a7fb8',1,'Calc']]],
-  ['number_1',['NUMBER',['../lexer_8h.html#a2a8667f1cad8fccd9c18f8cb779abf6aa2e72deea473febdade03f0ade7f7e1c2',1,'Calc']]]
+  ['name_0',['NAME',['../Token_8h.html#a5d75d58b2561a25b2c37a38d1aba82ecab6449af593aad65de0029e440e9e5554',1,'Sawoca']]],
+  ['number_1',['NUMBER',['../Token_8h.html#a5d75d58b2561a25b2c37a38d1aba82eca0dc3f9b489007c37804a9e4686654f2b',1,'Sawoca']]]
 ];

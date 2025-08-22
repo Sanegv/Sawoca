@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['end_0',['END',['../lexer_8h.html#a2a8667f1cad8fccd9c18f8cb779abf6aa35d6b7081ae0c19dc3a02b84025b372c',1,'Calc']]],
-  ['error_1',['error',['../classCalc_1_1Parser.html#a101270d999ee5391b95cd199ed19200d',1,'Calc::Parser']]],
-  ['expr_2',['expr',['../classCalc_1_1Parser.html#a49c0738a987f76340702e85b123073ed',1,'Calc::Parser']]]
+  ['end_0',['END',['../Token_8h.html#a5d75d58b2561a25b2c37a38d1aba82eca221af6e652b08fd629f3f4633d41cbcb',1,'Sawoca']]],
+  ['endtoken_1',['EndToken',['../classSawoca_1_1EndToken.html',1,'Sawoca::EndToken'],['../classSawoca_1_1EndToken.html#aa9b1deddf8fe32d37990b9839e4becca',1,'Sawoca::EndToken::EndToken()']]],
+  ['endtoken_2eh_2',['EndToken.h',['../EndToken_8h.html',1,'']]],
+  ['expr_3',['expr',['../classSawoca_1_1Parser.html#ab06135e5544ccde09d46c9a9bba25932',1,'Sawoca::Parser']]]
 ];

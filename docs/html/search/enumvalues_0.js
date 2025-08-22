@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['assign_0',['ASSIGN',['../lexer_8h.html#a2a8667f1cad8fccd9c18f8cb779abf6aabeabd452c0e455c297022d124723e2bc',1,'Calc']]]
+  ['assign_0',['ASSIGN',['../Token_8h.html#a5d75d58b2561a25b2c37a38d1aba82ecac49f534901d98dbb8aec07f2dd5a5f0b',1,'Sawoca']]]
 ];

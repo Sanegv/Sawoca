@@ -2,8 +2,8 @@
 #define DEFINE_PARSER
 
 /**
- *@file parser.h
- *@brief This file contains the parser class and mehtod.
+ *@file Parser.h
+ *@brief This file defines the parser class and methods.
  *@author Sanegv
  */
 
@@ -15,8 +15,8 @@
 
 namespace Sawoca {
 	/**
-	* @brief The parser class is responsible for reading the tokens of its lexer,
-	* ordering them in a tree structure (AST) and executing them in order. 
+	* @brief The parser class is responsible for reading a vector of tokens and
+	* executing them in order. It inherits from the \ref ParserI interface.
 	*/
 	class Parser : Language::Parser::ParserI {
 	private:
@@ -32,15 +32,13 @@ namespace Sawoca {
 		/**
 		 * @brief Creates a new parser that will use the given variables.
 		 *
-		 * @param variables the map that will store the variables.
+		 * @param variables a reference to the map that will store the 
+		 * variables.
 		 */
-		Parser(std::map<std::string, const Language::Values::ValueI*>& variables);
-
-
-		/**
-		* @brief Standard destructor for the parser.
-		*/
-		~Parser() = default;
+		Parser(
+			std::map<std::string,
+			const Language::Values::ValueI*>& variables
+		);
 
 		/**
 		* @brief Parses a primary expression and returns its value.
@@ -49,7 +47,8 @@ namespace Sawoca {
 		*
 		* @param get A boolean that tells the function whether or not to get the
 		*  next token.
-		* @param it An iterator over a vector of Tokens to be parsed.
+		* @param it A reference to an iterator over a vector of Tokens to be
+		* parsed.
 		*
 		* @return The value of the primary expression.
 		*/
@@ -88,13 +87,11 @@ namespace Sawoca {
 		);
 
 		/**
-		* @brief Parses the stream of its lexer until it is closed.
+		* @brief Parses the vector of tokens until it is closed or ends.
 		*
 		* @param tokens The vector of Tokens to be parsed.
-		*
-		*@return the number of errors encountered.
 		*/
-		virtual int 
+		virtual void 
 			parse(std::vector<Language::Tokens::TokenI*> tokens) override;
 	};
 }

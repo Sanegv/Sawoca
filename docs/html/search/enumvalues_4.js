@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['minus_0',['MINUS',['../lexer_8h.html#a2a8667f1cad8fccd9c18f8cb779abf6aa331ddb521a4513a16c7cf25e76d3dc52',1,'Calc']]],
-  ['mul_1',['MUL',['../lexer_8h.html#a2a8667f1cad8fccd9c18f8cb779abf6aa00928fc15ce8e8c1f2fac66f0065cfec',1,'Calc']]]
+  ['minus_0',['MINUS',['../Token_8h.html#a5d75d58b2561a25b2c37a38d1aba82eca2e964a6aaafceeda84222eca1d034ebe',1,'Sawoca']]],
+  ['mul_1',['MUL',['../Token_8h.html#a5d75d58b2561a25b2c37a38d1aba82ecadb2909c8c2b4e8d8e941d85906912971',1,'Sawoca']]]
 ];

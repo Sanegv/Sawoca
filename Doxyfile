@@ -1,9 +1,9 @@
-PROJECT_NAME		= "Calculator"
-PROJECT_BRIEF		= "An interactive calculator with variables"
-PROJECT_AUTHORS		= "Bjarne Stroustrup" "Sanegv"
+PROJECT_NAME		= "Sawoca"
+PROJECT_BRIEF		= "Sanegv's WonderCalc is an interactive calculator that allows for the use of variables"
+PROJECT_AUTHORS		= "Sanegv"
 OUTPUT_DIRECTORY	= ./docs
 INPUT				= .
-FILE_PATTERNS		= *.cpp *.h
+FILE_PATTERNS		= *.h
 RECURSIVE			= YES
 GENERATE_LATEX		= NO
 GENERATE_HTML		= YES

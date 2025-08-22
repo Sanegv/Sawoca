@@ -168,7 +168,7 @@ Language::Values::ValueI* Parser::expr(
 	}
 }
 
-int Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
+void Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
     for(
         std::vector<Language::Tokens::TokenI*>::iterator it = tokens.begin();
         it != tokens.end();
@@ -183,6 +183,4 @@ int Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
         std::cout << static_cast<Value*>(eval)->string() << "\n";
 		delete eval;
 	}
-
-	return number_of_errors;
 }

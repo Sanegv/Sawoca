@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parser_0',['Parser',['../classCalc_1_1Parser.html',1,'Calc']]]
+  ['double_0',['Double',['../classSawoca_1_1Double.html',1,'Sawoca']]]
 ];
