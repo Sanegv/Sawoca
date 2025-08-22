@@ -81,7 +81,6 @@ char flags(int argc, char* argv[]){
 
 int main(int argc, char* argv[]){
 	std::map<std::string, const Language::Values::ValueI*> variables;
-	init_table(&variables);
 	std::istream* stream = nullptr;
 
 	//choose the input mode
@@ -115,11 +114,14 @@ default interactive mode instead.\n";
 	if(!stream)
 		return MEM_ALLOC_ERR;
 
+	init_table(&variables);
 	Sawoca::Lexer lexer(variables, *stream);
 	std::vector<Language::Tokens::TokenI*> tokens;
 	Sawoca::Parser parser(variables);
 
 	do { 
+		for(Language::Tokens::TokenI* token : tokens)
+			delete token;
 		tokens.clear();
 
 		try {
@@ -127,7 +129,10 @@ default interactive mode instead.\n";
 		} catch (const std::exception& e) {
 			std::cerr << "C++ error during lexing: " << e.what() << ".\n";
 
-			tokens.clear();
+			for(Language::Tokens::TokenI* token : tokens)
+				delete token;
+			for(auto const& [_, variable] : variables)
+				delete variable;
 			if(stream != &std::cin)
 				delete stream;
 
@@ -135,6 +140,10 @@ default interactive mode instead.\n";
 		} catch (const std::string& e) {
 			std::cerr << "Sawoca error during lexing: " << e << ".\n";
 
+			for(Language::Tokens::TokenI* token : tokens)
+				delete token;
+			for(auto const& [_, variable] : variables)
+				delete variable;
 			tokens.clear();
 			if(stream != &std::cin)
 				delete stream;
@@ -149,21 +158,28 @@ default interactive mode instead.\n";
 
 			for(Language::Tokens::TokenI* token : tokens)
 				delete token;
-			variables.clear();
+			for(auto const& [_, variable] : variables)
+				delete variable;
 			return CPP_PAR_ERR;
 		} catch (const std::string& e) {
 			std::cout << "Sawoca error during parsing: " << e << ".\n";
 
 			for(Language::Tokens::TokenI* token : tokens)
 				delete token;
-			variables.clear();
+			for(auto const& [_, variable] : variables)
+				delete variable;
 			return SWC_PAR_ERR;
 		}
 	} while (
 		static_cast<Sawoca::Token*>(tokens.back())->get_type() != Sawoca::END
 	);
-
+	
+	for(auto const& [_, variable] : variables)
+		delete variable;
 	variables.clear();
+	
+	for(Language::Tokens::TokenI* token : tokens)
+		delete token;
 	tokens.clear();
 	if(stream != &std::cin)
 		delete stream;
