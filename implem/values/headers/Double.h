@@ -10,6 +10,11 @@
  */
 
 namespace Sawoca {
+
+    //\cond PRIVATE
+    class DoubleTests;
+    //\endcond
+    
     /**
     * @brief This class represents the value for a literal, double value. It is
     * used to perform double precision floating point operations. It inherits

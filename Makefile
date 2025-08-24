@@ -15,7 +15,6 @@ $(TARGET): $(MODULE_OBJS) $(MAIN_OBJ)
 $(MAIN_OBJ): sources/main.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Appel récursif des Makefiles de modules
 $(OBJ_DIR)/values.o:
 	$(MAKE) -C implem/values
 
@@ -28,6 +27,10 @@ $(OBJ_DIR)/lexer.o:
 $(OBJ_DIR)/parser.o:
 	$(MAKE) -C implem/parser
 
+tests: all
+	$(MAKE) -C tests all
+
 clean:
 	rm -f $(OBJ_DIR)/*.o $(TARGET)
 	for d in $(MODULES); do $(MAKE) -C $$d clean; done
+	$(MAKE) -C tests clean
