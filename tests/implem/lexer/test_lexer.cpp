@@ -1,8 +1,81 @@
 #define BOOST_TEST_MODULE LexerTest
 #include <boost/test/included/unit_test.hpp>
 
-#include "../../../implem/lexer/headers/Lexer.h"
+#include <algorithm>
+#include <boost/test/tools/old/interface.hpp>
+#include <iterator>
+#include <sstream>
+#include <vector>
 
-BOOST_AUTO_TEST_CASE(test_fail){
-    BOOST_CHECK_EQUAL(0, 1);
+#include "../../../implem/lexer/headers/Lexer.h"
+#include "../../../implem/tokens/headers/Token.h"
+
+BOOST_AUTO_TEST_CASE(test_fconstructor){
+}
+
+BOOST_AUTO_TEST_CASE(test_get_token){
+    std::map<std::string, const Language::Values::ValueI*> table;
+    std::vector<Sawoca::Token_Type> expected;
+    std::string text = "test = + - * / 1.2 ()";
+    std::istringstream input(text);
+
+    expected.emplace_back(Sawoca::NAME);
+    expected.emplace_back(Sawoca::ASSIGN);
+    expected.emplace_back(Sawoca::PLUS);
+    expected.emplace_back(Sawoca::MINUS);
+    expected.emplace_back(Sawoca::MUL);
+    expected.emplace_back(Sawoca::DIV);
+    expected.emplace_back(Sawoca::NUMBER);
+    expected.emplace_back(Sawoca::LP);
+    expected.emplace_back(Sawoca::RP);
+    expected.emplace_back(Sawoca::END);
+
+    Sawoca::Lexer lexer = Sawoca::Lexer(table, input);
+
+    for(Sawoca::Token_Type type : expected){
+        Language::Tokens::TokenI* tok = lexer.get_token();
+        Sawoca::Token* stok = dynamic_cast<Sawoca::Token*>(tok);
+        BOOST_CHECK_NE(stok, nullptr);
+
+        BOOST_CHECK_EQUAL(stok->get_type(), type);
+
+        delete tok;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(test_lex){
+    std::map<std::string, const Language::Values::ValueI*> table;
+    std::vector<Sawoca::Token_Type> expected;
+    std::string text = "test = + - * / 1.2 ()";
+    std::istringstream input(text);
+
+    expected.emplace_back(Sawoca::NAME);
+    expected.emplace_back(Sawoca::ASSIGN);
+    expected.emplace_back(Sawoca::PLUS);
+    expected.emplace_back(Sawoca::MINUS);
+    expected.emplace_back(Sawoca::MUL);
+    expected.emplace_back(Sawoca::DIV);
+    expected.emplace_back(Sawoca::NUMBER);
+    expected.emplace_back(Sawoca::LP);
+    expected.emplace_back(Sawoca::RP);
+    expected.emplace_back(Sawoca::END);
+
+    Sawoca::Lexer lexer = Sawoca::Lexer(table, input);
+    std::vector<Language::Tokens::TokenI*> result = lexer.lex();
+    std::vector<Sawoca::Token_Type> result_types;
+    std::transform(result.begin(), result.end(), std::back_inserter(result_types),
+        [](const Language::Tokens::TokenI* tok){
+            const Sawoca::Token* stok = dynamic_cast<const Sawoca::Token*>(tok);
+            BOOST_CHECK_NE(stok, nullptr);
+            return stok->get_type();
+        }
+    );
+
+    BOOST_CHECK_EQUAL_COLLECTIONS(
+        result_types.begin(), result_types.end(),
+        expected.begin(), expected.end()
+    );
+
+    for(Language::Tokens::TokenI* tok : result)
+        delete tok;
 }
