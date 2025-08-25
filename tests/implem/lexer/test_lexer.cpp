@@ -10,7 +10,13 @@
 #include "../../../implem/lexer/headers/Lexer.h"
 #include "../../../implem/tokens/headers/Token.h"
 
-BOOST_AUTO_TEST_CASE(test_fconstructor){
+BOOST_AUTO_TEST_CASE(test_constructor){
+    std::map<std::string, const Language::Values::ValueI*> table;
+    std::string str = "test";
+    std::istringstream input(str);
+    Sawoca::Lexer* lexer = new Sawoca::Lexer(table, input);
+    BOOST_CHECK_NE(lexer, nullptr);
+    delete lexer;
 }
 
 BOOST_AUTO_TEST_CASE(test_get_token){
