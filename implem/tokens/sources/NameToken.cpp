@@ -1,6 +1,5 @@
 #include "../headers/NameToken.h"
 #include <stdexcept>
-#include <typeinfo>
 
 using namespace Sawoca;
 

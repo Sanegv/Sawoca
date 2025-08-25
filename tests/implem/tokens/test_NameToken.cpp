@@ -41,3 +41,10 @@ BOOST_AUTO_TEST_CASE(test_get_value){
     Sawoca::Name_Token fail("test", table);
     BOOST_CHECK_THROW(fail.get_value(), std::string);
 }
+
+BOOST_AUTO_TEST_CASE(test_get_name){
+    std::string name = "test";
+    std::map<std::string, const Language::Values::ValueI*> table;
+    Sawoca::Name_Token tok(name, table);
+    BOOST_CHECK_EQUAL(tok.get_name(), name);
+}
