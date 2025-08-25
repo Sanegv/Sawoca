@@ -85,10 +85,10 @@ BOOST_AUTO_TEST_CASE(test_operator_minus){
 }
 
 BOOST_AUTO_TEST_CASE(test_operator_minus_equal){
-    Sawoca::Double expected(7.13);
-    Sawoca::Double a = 4.89;
+    Sawoca::Double expected(4.89);
+    Sawoca::Double a = 7.13;
     Sawoca::Double b = 2.24;
-    Sawoca::Double& result = dynamic_cast<Sawoca::Double&>(a += b);
+    Sawoca::Double& result = dynamic_cast<Sawoca::Double&>(a -= b);
     BOOST_CHECK_CLOSE(result.get_val(), expected.get_val(), 1e-9);
     BOOST_CHECK_EQUAL(&result, &a);
 }
