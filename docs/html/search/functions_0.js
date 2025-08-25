@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['add_0',['add',['../classSawoca_1_1Double.html#a1b32b86fada87c237e84a55ae741ed56',1,'Sawoca::Double::add()'],['../classSawoca_1_1Value.html#a67bffee0ee1baebe1b5be00576bab464',1,'Sawoca::Value::add()']]],
-  ['assigntoken_1',['AssignToken',['../classSawoca_1_1AssignToken.html#ac6a10d373bfaba754d11ae95c682b5d4',1,'Sawoca::AssignToken']]]
+  ['add_0',['add',['../classSawoca_1_1Double.html#a6daffac43e4f839fec51889abd835d9f',1,'Sawoca::Double::add()'],['../classSawoca_1_1Value.html#a9011cfa110c1346ef44f258dcc532fc2',1,'Sawoca::Value::add()']]],
+  ['assign_5ftoken_1',['Assign_Token',['../classSawoca_1_1Assign__Token.html#a7cbe9888af4a1c236dff04f0b07b6f0a',1,'Sawoca::Assign_Token']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['endtoken_0',['EndToken',['../classSawoca_1_1EndToken.html#aa9b1deddf8fe32d37990b9839e4becca',1,'Sawoca::EndToken']]],
-  ['expr_1',['expr',['../classSawoca_1_1Parser.html#ab06135e5544ccde09d46c9a9bba25932',1,'Sawoca::Parser']]]
+  ['end_5ftoken_0',['End_Token',['../classSawoca_1_1End__Token.html#a2c3eea115afa59bf367d4d3b6ebc5bec',1,'Sawoca::End_Token']]]
 ];

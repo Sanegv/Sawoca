@@ -8,14 +8,14 @@ var hierarchy =
     ] ],
     [ "Language::Tokens::TokenI", "classLanguage_1_1Tokens_1_1TokenI.html", [
       [ "Sawoca::Token", "classSawoca_1_1Token.html", [
-        [ "Sawoca::AssignToken", "classSawoca_1_1AssignToken.html", null ],
-        [ "Sawoca::EndToken", "classSawoca_1_1EndToken.html", null ],
-        [ "Sawoca::LeftParToken", "classSawoca_1_1LeftParToken.html", null ],
+        [ "Sawoca::Assign_Token", "classSawoca_1_1Assign__Token.html", null ],
+        [ "Sawoca::End_Token", "classSawoca_1_1End__Token.html", null ],
+        [ "Sawoca::LeftPar_Token", "classSawoca_1_1LeftPar__Token.html", null ],
         [ "Sawoca::Name_Token", "classSawoca_1_1Name__Token.html", null ],
         [ "Sawoca::Number_Token", "classSawoca_1_1Number__Token.html", null ],
         [ "Sawoca::Operator_Token", "classSawoca_1_1Operator__Token.html", null ],
-        [ "Sawoca::PrintToken", "classSawoca_1_1PrintToken.html", null ],
-        [ "Sawoca::RightParToken", "classSawoca_1_1RightParToken.html", null ]
+        [ "Sawoca::Print_Token", "classSawoca_1_1Print__Token.html", null ],
+        [ "Sawoca::RightPar_Token", "classSawoca_1_1RightPar__Token.html", null ]
       ] ]
     ] ],
     [ "Language::Values::ValueI", "classLanguage_1_1Values_1_1ValueI.html", [

@@ -111,12 +111,6 @@ Inheritance diagram for Sawoca::Parser:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c84550fb008472a62ad8a6f59986498" id="r_a1c84550fb008472a62ad8a6f59986498"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c84550fb008472a62ad8a6f59986498">Parser</a> (std::map&lt; std::string, const <a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> * &gt; &amp;variables)</td></tr>
 <tr class="memdesc:a1c84550fb008472a62ad8a6f59986498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new parser that will use the given variables.  <br /></td></tr>
-<tr class="memitem:a511e2aebe3dd2ac73e4fc0db6cf37c76" id="r_a511e2aebe3dd2ac73e4fc0db6cf37c76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a511e2aebe3dd2ac73e4fc0db6cf37c76">prim</a> (bool get, std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt;::iterator &amp;it)</td></tr>
-<tr class="memdesc:a511e2aebe3dd2ac73e4fc0db6cf37c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a primary expression and returns its value. Calls <a class="el" href="#ab06135e5544ccde09d46c9a9bba25932">expr()</a> to parse Par expressions, and returns an error() in case of a wrong parameter or an unclosed Par.  <br /></td></tr>
-<tr class="memitem:a3710cd390110fbee7d58cb7ad73c9ca6" id="r_a3710cd390110fbee7d58cb7ad73c9ca6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3710cd390110fbee7d58cb7ad73c9ca6">term</a> (bool get, std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt;::iterator &amp;it)</td></tr>
-<tr class="memdesc:a3710cd390110fbee7d58cb7ad73c9ca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies or divides numbers and expressions, and calls <a class="el" href="#a511e2aebe3dd2ac73e4fc0db6cf37c76">prim()</a> for the rest. Raises an error() in case of a division by zero.  <br /></td></tr>
-<tr class="memitem:ab06135e5544ccde09d46c9a9bba25932" id="r_ab06135e5544ccde09d46c9a9bba25932"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab06135e5544ccde09d46c9a9bba25932">expr</a> (bool get, std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt;::iterator &amp;it)</td></tr>
-<tr class="memdesc:ab06135e5544ccde09d46c9a9bba25932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds or subtracts numbers and expressions, and calls <a class="el" href="#a3710cd390110fbee7d58cb7ad73c9ca6">term()</a> for the rest.  <br /></td></tr>
 <tr class="memitem:a337b8655183b29d57034c70d2191d138" id="r_a337b8655183b29d57034c70d2191d138"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a337b8655183b29d57034c70d2191d138">parse</a> (std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt; tokens) override</td></tr>
 <tr class="memdesc:a337b8655183b29d57034c70d2191d138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the vector of tokens until it is closed or ends.  <br /></td></tr>
 </table>
@@ -149,37 +143,6 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ab06135e5544ccde09d46c9a9bba25932" name="ab06135e5544ccde09d46c9a9bba25932"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab06135e5544ccde09d46c9a9bba25932">&#9670;&#160;</a></span>expr()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> * Sawoca::Parser::expr </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>get</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt;::iterator &amp;</td>          <td class="paramname"><span class="paramname"><em>it</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Adds or subtracts numbers and expressions, and calls <a class="el" href="#a3710cd390110fbee7d58cb7ad73c9ca6">term()</a> for the rest. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">get</td><td>A boolean that tells the function whether or not to get the next token. </td></tr>
-    <tr><td class="paramname">it</td><td>An iterator over a vector of Tokens to be parsed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The result of the expression. </dd></dl>
-
-</div>
-</div>
 <a id="a337b8655183b29d57034c70d2191d138" name="a337b8655183b29d57034c70d2191d138"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a337b8655183b29d57034c70d2191d138">&#9670;&#160;</a></span>parse()</h2>
 
@@ -210,68 +173,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a511e2aebe3dd2ac73e4fc0db6cf37c76" name="a511e2aebe3dd2ac73e4fc0db6cf37c76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a511e2aebe3dd2ac73e4fc0db6cf37c76">&#9670;&#160;</a></span>prim()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> * Sawoca::Parser::prim </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>get</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt;::iterator &amp;</td>          <td class="paramname"><span class="paramname"><em>it</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Parses a primary expression and returns its value. Calls <a class="el" href="#ab06135e5544ccde09d46c9a9bba25932">expr()</a> to parse Par expressions, and returns an error() in case of a wrong parameter or an unclosed Par. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">get</td><td>A boolean that tells the function whether or not to get the next token. </td></tr>
-    <tr><td class="paramname">it</td><td>A reference to an iterator over a vector of Tokens to be parsed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the primary expression. </dd></dl>
-
-</div>
-</div>
-<a id="a3710cd390110fbee7d58cb7ad73c9ca6" name="a3710cd390110fbee7d58cb7ad73c9ca6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3710cd390110fbee7d58cb7ad73c9ca6">&#9670;&#160;</a></span>term()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a> * Sawoca::Parser::term </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>get</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classLanguage_1_1Tokens_1_1TokenI.html">Language::Tokens::TokenI</a> * &gt;::iterator &amp;</td>          <td class="paramname"><span class="paramname"><em>it</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Multiplies or divides numbers and expressions, and calls <a class="el" href="#a511e2aebe3dd2ac73e4fc0db6cf37c76">prim()</a> for the rest. Raises an error() in case of a division by zero. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">get</td><td>A boolean that tells the function whether or not to get the next token. </td></tr>
-    <tr><td class="paramname">it</td><td>An iterator over a vector of Tokens to be parsed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The result of the expression. </dd></dl>
 
 </div>
 </div>

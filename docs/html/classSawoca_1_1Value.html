@@ -121,22 +121,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b69c13d6a03f7e1268c0d4b737baa4d" id="r_a9b69c13d6a03f7e1268c0d4b737baa4d"><td class="memItemLeft" align="right" valign="top"><a id="a9b69c13d6a03f7e1268c0d4b737baa4d" name="a9b69c13d6a03f7e1268c0d4b737baa4d"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Value</b> ()=default</td></tr>
 <tr class="memdesc:a9b69c13d6a03f7e1268c0d4b737baa4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A standard destructor used for polymorhism. <br /></td></tr>
-<tr class="memitem:a67bffee0ee1baebe1b5be00576bab464" id="r_a67bffee0ee1baebe1b5be00576bab464"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67bffee0ee1baebe1b5be00576bab464">add</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a67bffee0ee1baebe1b5be00576bab464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the sum of this and the other number. Throws an exception in case of an invalid type.  <br /></td></tr>
-<tr class="memitem:a12ff61a5378f235c881d3de804bce61a" id="r_a12ff61a5378f235c881d3de804bce61a"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12ff61a5378f235c881d3de804bce61a">sub</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a12ff61a5378f235c881d3de804bce61a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the difference between this and the other number. Throws an exception in case of an invalid type.  <br /></td></tr>
-<tr class="memitem:a353632ec0d63c4dc14d2cbff9756a9a6" id="r_a353632ec0d63c4dc14d2cbff9756a9a6"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a353632ec0d63c4dc14d2cbff9756a9a6">mul</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a353632ec0d63c4dc14d2cbff9756a9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the product of this and the other number. Throws an exception in case of an invalid type.  <br /></td></tr>
-<tr class="memitem:a0a3fd57259825f4c6b167edee18fd249" id="r_a0a3fd57259825f4c6b167edee18fd249"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a3fd57259825f4c6b167edee18fd249">div</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a0a3fd57259825f4c6b167edee18fd249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the division of this by the other number. Throws an exception in case of an invalid type or of a division by zero.  <br /></td></tr>
-<tr class="memitem:a169f41465a4f0256aed0ea7fcc834a34" id="r_a169f41465a4f0256aed0ea7fcc834a34"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a169f41465a4f0256aed0ea7fcc834a34">operator+</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a169f41465a4f0256aed0ea7fcc834a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the sum of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a67bffee0ee1baebe1b5be00576bab464">add</a>.  <br /></td></tr>
-<tr class="memitem:a07b53f79de74df8b35cc5b77b8e6f454" id="r_a07b53f79de74df8b35cc5b77b8e6f454"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07b53f79de74df8b35cc5b77b8e6f454">operator-</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a07b53f79de74df8b35cc5b77b8e6f454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the difference between this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a12ff61a5378f235c881d3de804bce61a">sub</a>.  <br /></td></tr>
-<tr class="memitem:ac0cf9f1280bafd9556591d14fad179d1" id="r_ac0cf9f1280bafd9556591d14fad179d1"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0cf9f1280bafd9556591d14fad179d1">operator*</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:ac0cf9f1280bafd9556591d14fad179d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the product of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a353632ec0d63c4dc14d2cbff9756a9a6">mul</a>.  <br /></td></tr>
-<tr class="memitem:a1757f75a436222617dfffd79608ce21b" id="r_a1757f75a436222617dfffd79608ce21b"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1757f75a436222617dfffd79608ce21b">operator/</a> (const ValueI *const) const =0</td></tr>
-<tr class="memdesc:a1757f75a436222617dfffd79608ce21b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the division of this by the other number. Throws an exception in case of an invalid type or of a division by zero. Effectively calls <a class="el" href="#a0a3fd57259825f4c6b167edee18fd249">div</a>.  <br /></td></tr>
+<tr class="memitem:a9011cfa110c1346ef44f258dcc532fc2" id="r_a9011cfa110c1346ef44f258dcc532fc2"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9011cfa110c1346ef44f258dcc532fc2">add</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:a9011cfa110c1346ef44f258dcc532fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the sum of this and the other number. Throws an exception in case of an invalid type.  <br /></td></tr>
+<tr class="memitem:a22f7875bc5181093cbe08cae465e2267" id="r_a22f7875bc5181093cbe08cae465e2267"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22f7875bc5181093cbe08cae465e2267">sub</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:a22f7875bc5181093cbe08cae465e2267"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the difference between this and the other number. Throws an exception in case of an invalid type.  <br /></td></tr>
+<tr class="memitem:a6483f17d4ebcf76f2aaadc76e6cac478" id="r_a6483f17d4ebcf76f2aaadc76e6cac478"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6483f17d4ebcf76f2aaadc76e6cac478">mul</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:a6483f17d4ebcf76f2aaadc76e6cac478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the product of this and the other number. Throws an exception in case of an invalid type.  <br /></td></tr>
+<tr class="memitem:a8d14d8ff25a4369355fcf1f590c4bed5" id="r_a8d14d8ff25a4369355fcf1f590c4bed5"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d14d8ff25a4369355fcf1f590c4bed5">div</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:a8d14d8ff25a4369355fcf1f590c4bed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the division of this by the other number. Throws an exception in case of an invalid type or of a division by zero.  <br /></td></tr>
+<tr class="memitem:a1ca95bf85d525c5be5874cb38270eada" id="r_a1ca95bf85d525c5be5874cb38270eada"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ca95bf85d525c5be5874cb38270eada">operator+</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:a1ca95bf85d525c5be5874cb38270eada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the sum of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a9011cfa110c1346ef44f258dcc532fc2">add</a>.  <br /></td></tr>
+<tr class="memitem:ad95140a0ff6aee4caacd841b1e189651" id="r_ad95140a0ff6aee4caacd841b1e189651"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad95140a0ff6aee4caacd841b1e189651">operator-</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:ad95140a0ff6aee4caacd841b1e189651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the difference between this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a22f7875bc5181093cbe08cae465e2267">sub</a>.  <br /></td></tr>
+<tr class="memitem:a6d7926133793ae121326cbe7afd3054d" id="r_a6d7926133793ae121326cbe7afd3054d"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d7926133793ae121326cbe7afd3054d">operator*</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:a6d7926133793ae121326cbe7afd3054d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the product of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a6483f17d4ebcf76f2aaadc76e6cac478">mul</a>.  <br /></td></tr>
+<tr class="memitem:aefff9fc06b519d6218b8c81f8e1b8e85" id="r_aefff9fc06b519d6218b8c81f8e1b8e85"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefff9fc06b519d6218b8c81f8e1b8e85">operator/</a> (const ValueI &amp;) const =0</td></tr>
+<tr class="memdesc:aefff9fc06b519d6218b8c81f8e1b8e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the division of this by the other number. Throws an exception in case of an invalid type or of a division by zero. Effectively calls <a class="el" href="#a8d14d8ff25a4369355fcf1f590c4bed5">div</a>.  <br /></td></tr>
 <tr class="memitem:a2c3cc33f63ea85c623c6e990b3f6b460" id="r_a2c3cc33f63ea85c623c6e990b3f6b460"><td class="memItemLeft" align="right" valign="top">virtual ValueI *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c3cc33f63ea85c623c6e990b3f6b460">operator-</a> ()=0</td></tr>
 <tr class="memdesc:a2c3cc33f63ea85c623c6e990b3f6b460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the sign of the value stored inside.  <br /></td></tr>
 <tr class="memitem:a2581f817dc4f4483a891814abe376306" id="r_a2581f817dc4f4483a891814abe376306"><td class="memItemLeft" align="right" valign="top">virtual ValueI &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2581f817dc4f4483a891814abe376306">operator+=</a> (const ValueI &amp;)=0</td></tr>
@@ -189,8 +189,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a67bffee0ee1baebe1b5be00576bab464" name="a67bffee0ee1baebe1b5be00576bab464"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67bffee0ee1baebe1b5be00576bab464">&#9670;&#160;</a></span>add()</h2>
+<a id="a9011cfa110c1346ef44f258dcc532fc2" name="a9011cfa110c1346ef44f258dcc532fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9011cfa110c1346ef44f258dcc532fc2">&#9670;&#160;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +201,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::add </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -221,12 +221,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a1b32b86fada87c237e84a55ae741ed56">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a6daffac43e4f839fec51889abd835d9f">Sawoca::Double</a>.</p>
 
 </div>
 </div>
-<a id="a0a3fd57259825f4c6b167edee18fd249" name="a0a3fd57259825f4c6b167edee18fd249"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a3fd57259825f4c6b167edee18fd249">&#9670;&#160;</a></span>div()</h2>
+<a id="a8d14d8ff25a4369355fcf1f590c4bed5" name="a8d14d8ff25a4369355fcf1f590c4bed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d14d8ff25a4369355fcf1f590c4bed5">&#9670;&#160;</a></span>div()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,7 +237,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::div </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -257,7 +257,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#adbc8cff7b5354dc6acb7071402a1236b">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a44bb09c5485121a9d0edf6b911aebaf8">Sawoca::Double</a>.</p>
 
 </div>
 </div>
@@ -319,8 +319,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 
 </div>
 </div>
-<a id="a353632ec0d63c4dc14d2cbff9756a9a6" name="a353632ec0d63c4dc14d2cbff9756a9a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a353632ec0d63c4dc14d2cbff9756a9a6">&#9670;&#160;</a></span>mul()</h2>
+<a id="a6483f17d4ebcf76f2aaadc76e6cac478" name="a6483f17d4ebcf76f2aaadc76e6cac478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6483f17d4ebcf76f2aaadc76e6cac478">&#9670;&#160;</a></span>mul()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +331,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::mul </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -351,12 +351,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a21f1a7c02642614a008a67637045f814">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a1452a21b86d8bc88bc7fe8dd76ad1cce">Sawoca::Double</a>.</p>
 
 </div>
 </div>
-<a id="ac0cf9f1280bafd9556591d14fad179d1" name="ac0cf9f1280bafd9556591d14fad179d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0cf9f1280bafd9556591d14fad179d1">&#9670;&#160;</a></span>operator*()</h2>
+<a id="a6d7926133793ae121326cbe7afd3054d" name="a6d7926133793ae121326cbe7afd3054d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d7926133793ae121326cbe7afd3054d">&#9670;&#160;</a></span>operator*()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,7 +367,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::operator* </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -378,7 +378,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the product of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a353632ec0d63c4dc14d2cbff9756a9a6">mul</a>. </p>
+<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the product of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a6483f17d4ebcf76f2aaadc76e6cac478">mul</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the value to multiply by. </td></tr>
@@ -387,7 +387,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a0b393638a4952ed9602e27875e6b8cad">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a540b2125612db6aacf7785ada8f597f6">Sawoca::Double</a>.</p>
 
 </div>
 </div>
@@ -427,8 +427,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 
 </div>
 </div>
-<a id="a169f41465a4f0256aed0ea7fcc834a34" name="a169f41465a4f0256aed0ea7fcc834a34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a169f41465a4f0256aed0ea7fcc834a34">&#9670;&#160;</a></span>operator+()</h2>
+<a id="a1ca95bf85d525c5be5874cb38270eada" name="a1ca95bf85d525c5be5874cb38270eada"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca95bf85d525c5be5874cb38270eada">&#9670;&#160;</a></span>operator+()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +439,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::operator+ </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -450,7 +450,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the sum of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a67bffee0ee1baebe1b5be00576bab464">add</a>. </p>
+<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the sum of this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a9011cfa110c1346ef44f258dcc532fc2">add</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the value to add. </td></tr>
@@ -459,7 +459,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a4373171255d87647cbe8248ec1c763d0">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a80ac6d43426e0574a730deb0b33706bd">Sawoca::Double</a>.</p>
 
 </div>
 </div>
@@ -529,8 +529,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 
 </div>
 </div>
-<a id="a07b53f79de74df8b35cc5b77b8e6f454" name="a07b53f79de74df8b35cc5b77b8e6f454"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07b53f79de74df8b35cc5b77b8e6f454">&#9670;&#160;</a></span>operator-() <span class="overload">[2/2]</span></h2>
+<a id="ad95140a0ff6aee4caacd841b1e189651" name="ad95140a0ff6aee4caacd841b1e189651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95140a0ff6aee4caacd841b1e189651">&#9670;&#160;</a></span>operator-() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -541,7 +541,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::operator- </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -552,7 +552,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the difference between this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a12ff61a5378f235c881d3de804bce61a">sub</a>. </p>
+<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the difference between this and the other number. Throws an exception in case of an invalid type. Effectively calls <a class="el" href="#a22f7875bc5181093cbe08cae465e2267">sub</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the value to subtract. </td></tr>
@@ -561,7 +561,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#abd6431cf3f42dc133903caaa7f3bd56b">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#acf6f91a5f8971dd744aad62a41e730b4">Sawoca::Double</a>.</p>
 
 </div>
 </div>
@@ -601,8 +601,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 
 </div>
 </div>
-<a id="a1757f75a436222617dfffd79608ce21b" name="a1757f75a436222617dfffd79608ce21b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1757f75a436222617dfffd79608ce21b">&#9670;&#160;</a></span>operator/()</h2>
+<a id="aefff9fc06b519d6218b8c81f8e1b8e85" name="aefff9fc06b519d6218b8c81f8e1b8e85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefff9fc06b519d6218b8c81f8e1b8e85">&#9670;&#160;</a></span>operator/()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -613,7 +613,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::operator/ </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -624,7 +624,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the division of this by the other number. Throws an exception in case of an invalid type or of a division by zero. Effectively calls <a class="el" href="#a0a3fd57259825f4c6b167edee18fd249">div</a>. </p>
+<p>Creates a new <a class="el" href="classSawoca_1_1Value.html" title="Represents a value, with a type and a few methods and operations. It inherits from the ValueI interfa...">Value</a> equal to the division of this by the other number. Throws an exception in case of an invalid type or of a division by zero. Effectively calls <a class="el" href="#a8d14d8ff25a4369355fcf1f590c4bed5">div</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the denominator to divide by. </td></tr>
@@ -633,7 +633,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#aad5f2b304918e761fc74e11338cbf769">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#a729d5be00ef49ad889655141ddb32cae">Sawoca::Double</a>.</p>
 
 </div>
 </div>
@@ -703,8 +703,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 
 </div>
 </div>
-<a id="a12ff61a5378f235c881d3de804bce61a" name="a12ff61a5378f235c881d3de804bce61a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12ff61a5378f235c881d3de804bce61a">&#9670;&#160;</a></span>sub()</h2>
+<a id="a22f7875bc5181093cbe08cae465e2267" name="a22f7875bc5181093cbe08cae465e2267"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22f7875bc5181093cbe08cae465e2267">&#9670;&#160;</a></span>sub()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -715,7 +715,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
         <tr>
           <td class="memname">virtual ValueI * Sawoca::Value::sub </td>
           <td>(</td>
-          <td class="paramtype">const ValueI * const</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const ValueI &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -735,7 +735,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ValueI</b> ()=def
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new value </dd></dl>
 
-<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#ac6dc443792c945636603988dd0b7edab">Sawoca::Double</a>.</p>
+<p>Implemented in <a class="el" href="classSawoca_1_1Double.html#ac4cc0a99deb48efedc3c9adbd6332647">Sawoca::Double</a>.</p>
 
 </div>
 </div>

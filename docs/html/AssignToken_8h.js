@@ -1,4 +1,4 @@
 var AssignToken_8h =
 [
-    [ "Sawoca::AssignToken", "classSawoca_1_1AssignToken.html", "classSawoca_1_1AssignToken" ]
+    [ "Sawoca::Assign_Token", "classSawoca_1_1Assign__Token.html", "classSawoca_1_1Assign__Token" ]
 ];

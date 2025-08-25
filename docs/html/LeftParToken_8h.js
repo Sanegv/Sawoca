@@ -1,4 +1,4 @@
 var LeftParToken_8h =
 [
-    [ "Sawoca::LeftParToken", "classSawoca_1_1LeftParToken.html", "classSawoca_1_1LeftParToken" ]
+    [ "Sawoca::LeftPar_Token", "classSawoca_1_1LeftPar__Token.html", "classSawoca_1_1LeftPar__Token" ]
 ];

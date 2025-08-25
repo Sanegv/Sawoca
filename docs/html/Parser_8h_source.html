@@ -113,26 +113,26 @@ $(function(){initNavTree('Parser_8h_source.html','',''); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        Parser(<span class="keyword">const</span> Parser&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        Parser&amp; operator=(<span class="keyword">const</span> Parser&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        Parser();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classSawoca_1_1Parser.html#a1c84550fb008472a62ad8a6f59986498">   38</a></span>        <a class="code hl_function" href="classSawoca_1_1Parser.html#a1c84550fb008472a62ad8a6f59986498">Parser</a>(</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            std::map&lt;std::string,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keyword">const</span> <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>*&gt;&amp; variables</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        );</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classSawoca_1_1Parser.html#a511e2aebe3dd2ac73e4fc0db6cf37c76">   55</a></span>        <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>* <a class="code hl_function" href="classSawoca_1_1Parser.html#a511e2aebe3dd2ac73e4fc0db6cf37c76">prim</a>(</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordtype">bool</span> get,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            std::vector&lt;Language::Tokens::TokenI*&gt;::iterator&amp; it</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        );</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classSawoca_1_1Parser.html#a3710cd390110fbee7d58cb7ad73c9ca6">   70</a></span>        <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>* <a class="code hl_function" href="classSawoca_1_1Parser.html#a3710cd390110fbee7d58cb7ad73c9ca6">term</a>(</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordtype">bool</span> get,</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            std::vector&lt;Language::Tokens::TokenI*&gt;::iterator&amp; it</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        );</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classSawoca_1_1Parser.html#ab06135e5544ccde09d46c9a9bba25932">   84</a></span>        <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>* <a class="code hl_function" href="classSawoca_1_1Parser.html#ab06135e5544ccde09d46c9a9bba25932">expr</a>(</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordtype">bool</span> get, </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            std::vector&lt;Language::Tokens::TokenI*&gt;::iterator&amp; it</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>* prim(</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordtype">bool</span> get,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            std::vector&lt;Language::Tokens::TokenI*&gt;::iterator&amp; it</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        );</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>* term(</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordtype">bool</span> get,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            std::vector&lt;Language::Tokens::TokenI*&gt;::iterator&amp; it</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        );</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>* expr(</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordtype">bool</span> get, </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            std::vector&lt;Language::Tokens::TokenI*&gt;::iterator&amp; it</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        );</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classSawoca_1_1Parser.html#a1c84550fb008472a62ad8a6f59986498">   84</a></span>        <a class="code hl_function" href="classSawoca_1_1Parser.html#a1c84550fb008472a62ad8a6f59986498">Parser</a>(</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            std::map&lt;std::string,</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keyword">const</span> <a class="code hl_class" href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a>*&gt;&amp; variables</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        );</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> </div>
@@ -147,9 +147,6 @@ $(function(){initNavTree('Parser_8h_source.html','',''); });
 <div class="ttc" id="aclassLanguage_1_1Values_1_1ValueI_html"><div class="ttname"><a href="classLanguage_1_1Values_1_1ValueI.html">Language::Values::ValueI</a></div><div class="ttdoc">Represents a value, used by tokens and the parser to store data.</div><div class="ttdef"><b>Definition</b> ValueInterface.h:16</div></div>
 <div class="ttc" id="aclassSawoca_1_1Parser_html_a1c84550fb008472a62ad8a6f59986498"><div class="ttname"><a href="classSawoca_1_1Parser.html#a1c84550fb008472a62ad8a6f59986498">Sawoca::Parser::Parser</a></div><div class="ttdeci">Parser(std::map&lt; std::string, const Language::Values::ValueI * &gt; &amp;variables)</div><div class="ttdoc">Creates a new parser that will use the given variables.</div></div>
 <div class="ttc" id="aclassSawoca_1_1Parser_html_a337b8655183b29d57034c70d2191d138"><div class="ttname"><a href="classSawoca_1_1Parser.html#a337b8655183b29d57034c70d2191d138">Sawoca::Parser::parse</a></div><div class="ttdeci">virtual void parse(std::vector&lt; Language::Tokens::TokenI * &gt; tokens) override</div><div class="ttdoc">Parses the vector of tokens until it is closed or ends.</div></div>
-<div class="ttc" id="aclassSawoca_1_1Parser_html_a3710cd390110fbee7d58cb7ad73c9ca6"><div class="ttname"><a href="classSawoca_1_1Parser.html#a3710cd390110fbee7d58cb7ad73c9ca6">Sawoca::Parser::term</a></div><div class="ttdeci">Language::Values::ValueI * term(bool get, std::vector&lt; Language::Tokens::TokenI * &gt;::iterator &amp;it)</div><div class="ttdoc">Multiplies or divides numbers and expressions, and calls prim() for the rest. Raises an error() in ca...</div></div>
-<div class="ttc" id="aclassSawoca_1_1Parser_html_a511e2aebe3dd2ac73e4fc0db6cf37c76"><div class="ttname"><a href="classSawoca_1_1Parser.html#a511e2aebe3dd2ac73e4fc0db6cf37c76">Sawoca::Parser::prim</a></div><div class="ttdeci">Language::Values::ValueI * prim(bool get, std::vector&lt; Language::Tokens::TokenI * &gt;::iterator &amp;it)</div><div class="ttdoc">Parses a primary expression and returns its value. Calls expr() to parse Par expressions,...</div></div>
-<div class="ttc" id="aclassSawoca_1_1Parser_html_ab06135e5544ccde09d46c9a9bba25932"><div class="ttname"><a href="classSawoca_1_1Parser.html#ab06135e5544ccde09d46c9a9bba25932">Sawoca::Parser::expr</a></div><div class="ttdeci">Language::Values::ValueI * expr(bool get, std::vector&lt; Language::Tokens::TokenI * &gt;::iterator &amp;it)</div><div class="ttdoc">Adds or subtracts numbers and expressions, and calls term() for the rest.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

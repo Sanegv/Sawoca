@@ -15,17 +15,17 @@ var annotated_dup =
       ] ]
     ] ],
     [ "Sawoca", null, [
-      [ "AssignToken", "classSawoca_1_1AssignToken.html", "classSawoca_1_1AssignToken" ],
+      [ "Assign_Token", "classSawoca_1_1Assign__Token.html", "classSawoca_1_1Assign__Token" ],
       [ "Double", "classSawoca_1_1Double.html", "classSawoca_1_1Double" ],
-      [ "EndToken", "classSawoca_1_1EndToken.html", "classSawoca_1_1EndToken" ],
-      [ "LeftParToken", "classSawoca_1_1LeftParToken.html", "classSawoca_1_1LeftParToken" ],
+      [ "End_Token", "classSawoca_1_1End__Token.html", "classSawoca_1_1End__Token" ],
+      [ "LeftPar_Token", "classSawoca_1_1LeftPar__Token.html", "classSawoca_1_1LeftPar__Token" ],
       [ "Lexer", "classSawoca_1_1Lexer.html", "classSawoca_1_1Lexer" ],
       [ "Name_Token", "classSawoca_1_1Name__Token.html", "classSawoca_1_1Name__Token" ],
       [ "Number_Token", "classSawoca_1_1Number__Token.html", "classSawoca_1_1Number__Token" ],
       [ "Operator_Token", "classSawoca_1_1Operator__Token.html", "classSawoca_1_1Operator__Token" ],
       [ "Parser", "classSawoca_1_1Parser.html", "classSawoca_1_1Parser" ],
-      [ "PrintToken", "classSawoca_1_1PrintToken.html", "classSawoca_1_1PrintToken" ],
-      [ "RightParToken", "classSawoca_1_1RightParToken.html", "classSawoca_1_1RightParToken" ],
+      [ "Print_Token", "classSawoca_1_1Print__Token.html", "classSawoca_1_1Print__Token" ],
+      [ "RightPar_Token", "classSawoca_1_1RightPar__Token.html", "classSawoca_1_1RightPar__Token" ],
       [ "Token", "classSawoca_1_1Token.html", "classSawoca_1_1Token" ],
       [ "Value", "classSawoca_1_1Value.html", "classSawoca_1_1Value" ]
     ] ]
