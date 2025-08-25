@@ -15,13 +15,8 @@ Simply use the `make` command. The executable will be created as `build/swc`.
 
 ## todo
 
-### immediate improvements
-
-- generate doc
-
-### general ideas
-
-- unit tests (oof)
+- add Value "==" and "!=" operators
+- decorelate parser and exec
 - improve error higlighting
 - **add functions**
 - **add other types**
