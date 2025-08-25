@@ -1,4 +1,6 @@
 #include "../headers/NameToken.h"
+#include <stdexcept>
+#include <typeinfo>
 
 using namespace Sawoca;
 
@@ -12,7 +14,12 @@ std::string Name_Token::get_string_type() const{
 }
 
 const Language::Values::ValueI* Name_Token::get_value() const{
-    return variables[name];
+    try {
+        const Language::Values::ValueI* result = variables.at(name);
+        return result;
+    } catch (const std::out_of_range& e){
+        throw "unknown variable: " + name;
+    }
 }
 
 std::string Name_Token::get_name(){
