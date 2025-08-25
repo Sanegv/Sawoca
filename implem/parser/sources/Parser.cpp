@@ -133,7 +133,7 @@ Language::Values::ValueI* Parser::term(
 			break;
 		case DIV:
 			right = prim(true, it);
-            *cast_to_value(left) /= *prim(true, it);
+            *cast_to_value(left) /= *right;
 			delete right;
             break;
 		default:

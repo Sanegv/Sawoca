@@ -27,18 +27,6 @@ namespace Sawoca {
 		Parser(const Parser&) = delete;
 		Parser& operator=(const Parser&) = delete;
 		Parser();
-	
-	public:
-		/**
-		 * @brief Creates a new parser that will use the given variables.
-		 *
-		 * @param variables a reference to the map that will store the 
-		 * variables.
-		 */
-		Parser(
-			std::map<std::string,
-			const Language::Values::ValueI*>& variables
-		);
 
 		/**
 		* @brief Parses a primary expression and returns its value.
@@ -84,6 +72,18 @@ namespace Sawoca {
 		Language::Values::ValueI* expr(
 			bool get, 
 			std::vector<Language::Tokens::TokenI*>::iterator& it
+		);
+
+		public:	
+		/**
+		 * @brief Creates a new parser that will use the given variables.
+		 *
+		 * @param variables a reference to the map that will store the 
+		 * variables.
+		 */
+		Parser(
+			std::map<std::string,
+			const Language::Values::ValueI*>& variables
 		);
 
 		/**
