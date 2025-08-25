@@ -16,12 +16,12 @@ namespace Sawoca {
     * lexed. It is used to close and exit the swc program properly. It 
     * inherits from the \ref Token abstract class.
      */
-    class EndToken : public Token {
+    class End_Token : public Token {
     public:
         /**
          * @brief A simple creator for an empty token.
          */
-        EndToken();
+        End_Token();
 
         /**
          * @brief stringifies the type of the token.

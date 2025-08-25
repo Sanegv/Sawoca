@@ -2,12 +2,12 @@
 
 using namespace Sawoca;
 
-PrintToken::PrintToken() : Token(PRINT) {}
+Print_Token::Print_Token() : Token(PRINT) {}
 
-std::string PrintToken::get_string_type() const{
+std::string Print_Token::get_string_type() const{
     return std::string("PRINT");
 }
 
-const Language::Values::ValueI* PrintToken::get_value() const{
+const Language::Values::ValueI* Print_Token::get_value() const{
     throw std::string("PRINT tokens do not hold any value");
 }

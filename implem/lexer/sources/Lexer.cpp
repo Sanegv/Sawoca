@@ -19,16 +19,16 @@ Language::Tokens::TokenI* Lexer::get_token(){
 	//consume whitespaces
 	do {
 		if(!input.get(ch))
-			return new EndToken();
+			return new End_Token();
 	} while (ch != '\n' && isspace(ch));
 
 	switch (ch) {
 	case 0:
-		return new EndToken();
+		return new End_Token();
 
 	//printing
 	case '\n': case ';':
-		return new PrintToken();
+		return new Print_Token();
 
 	//operators
 	case '+': case '-':	case '*': case '/':
@@ -36,12 +36,12 @@ Language::Tokens::TokenI* Lexer::get_token(){
 
 	//Paranthesis
 	case '(':
-		return new LeftParToken();
+		return new LeftPar_Token();
 	case ')':
-		return new RightParToken();
+		return new RightPar_Token();
 	
 	case '=':
-		return new AssignToken();
+		return new Assign_Token();
 
 	default:
 		//number
@@ -59,7 +59,7 @@ Language::Tokens::TokenI* Lexer::get_token(){
 
 			//exit
 			if(string_value == "exit")
-				return new EndToken();
+				return new End_Token();
 
 			input.putback(ch);
 			return new Name_Token(string_value, variables);
@@ -77,7 +77,7 @@ Lexer::Lexer(
 std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 	std::vector<Language::Tokens::TokenI*> tokens;
 		if(!input){
-			Token* tok = new EndToken();
+			Token* tok = new End_Token();
 			if(!tok){
 				for(Language::Tokens::TokenI* tok : tokens)
 					delete tok;

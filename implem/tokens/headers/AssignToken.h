@@ -16,12 +16,12 @@ namespace Sawoca {
     * define new variables, or change the values of existing variables. It 
     * inherits from the \ref Token abstract class.
     */
-    class AssignToken : public Token {
+    class Assign_Token : public Token {
     public:
         /**
          * @brief A simple creator for an empty token.
          */
-        AssignToken();
+        Assign_Token();
 
         /**
          * @brief stringifies the type of the token.

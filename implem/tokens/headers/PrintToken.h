@@ -17,12 +17,12 @@ namespace Sawoca {
     * to begin the evaluation of the next one. It inherits from the \ref Token
     * abstract class.
     */
-    class PrintToken : public Token {
+    class Print_Token : public Token {
     public:
         /**
          * @brief A simple creator for an empty token.
          */
-        PrintToken();
+        Print_Token();
 
         /**
          * @brief stringifies the type of the token.

@@ -2,12 +2,12 @@
 
 using namespace Sawoca;
 
-AssignToken::AssignToken() : Token(ASSIGN) {}
+Assign_Token::Assign_Token() : Token(ASSIGN) {}
 
-std::string AssignToken::get_string_type() const{
+std::string Assign_Token::get_string_type() const{
     return std::string("ASSIGN");
 }
 
-const Language::Values::ValueI* AssignToken::get_value() const{
+const Language::Values::ValueI* Assign_Token::get_value() const{
     throw std::string("ASSIGN tokens do not hold any value");
 }

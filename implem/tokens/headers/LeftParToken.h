@@ -16,12 +16,12 @@ namespace Sawoca {
     * used to begin the parsing of a new expression nested within the main one.
     * It inherits from the \ref Token abstract class.
     */
-    class LeftParToken : public Token {
+    class LeftPar_Token : public Token {
     public:
         /**
          * @brief A simple creator for an empty token.
          */
-        LeftParToken();
+        LeftPar_Token();
 
         /**
          * @brief stringifies the type of the token.

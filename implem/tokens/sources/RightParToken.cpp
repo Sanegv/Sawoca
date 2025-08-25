@@ -2,12 +2,12 @@
 
 using namespace Sawoca;
 
-RightParToken::RightParToken() : Token(RP) {}
+RightPar_Token::RightPar_Token() : Token(RP) {}
 
-std::string RightParToken::get_string_type() const{
+std::string RightPar_Token::get_string_type() const{
     return std::string("RP");
 }
 
-const Language::Values::ValueI* RightParToken::get_value() const{
+const Language::Values::ValueI* RightPar_Token::get_value() const{
     throw std::string("RP tokens do not hold any value");
 }

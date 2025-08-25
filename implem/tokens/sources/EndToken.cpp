@@ -2,12 +2,12 @@
 
 using namespace Sawoca;
 
-EndToken::EndToken() : Token(END) {}
+End_Token::End_Token() : Token(END) {}
 
-std::string EndToken::get_string_type() const{
+std::string End_Token::get_string_type() const{
     return std::string("END");
 }
 
-const Language::Values::ValueI* EndToken::get_value() const{
+const Language::Values::ValueI* End_Token::get_value() const{
     throw std::string("END tokens do not hold any value");
 }
