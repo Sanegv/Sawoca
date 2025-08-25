@@ -21,5 +21,16 @@ const Language::Values::ValueI* Operator_Token::get_value() const {
 }
 
 std::string Operator_Token::get_string_type() const {
-    return "OPERATOR";
+    switch (op) {
+    case '+':
+        return "PLUS";
+    case '-':
+        return "MINUS";
+    case '*':
+        return "MUL";
+    case '/':
+        return "DIV";
+    default:
+        throw "unknown operator type";
+    }
 }
