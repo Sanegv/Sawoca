@@ -70,7 +70,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to a new value
          */
-        virtual ValueI* add(const ValueI* const) const = 0;
+        virtual ValueI* add(const ValueI&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the difference between this
@@ -78,7 +78,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to a new value
          */
-        virtual ValueI* sub(const ValueI* const) const = 0;
+        virtual ValueI* sub(const ValueI&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the product of this and the 
@@ -86,7 +86,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to a new value
          */
-        virtual ValueI* mul(const ValueI* const) const = 0;
+        virtual ValueI* mul(const ValueI&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the division of this by the 
@@ -95,7 +95,7 @@ namespace Sawoca {
          * @param other the denominator to divide by.
          * @return a pointer to a new value
          */
-        virtual ValueI* div(const ValueI* const) const = 0;
+        virtual ValueI* div(const ValueI&) const = 0;
 
         //const operators
 
@@ -106,7 +106,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator+(const ValueI* const) const = 0;
+        virtual ValueI* operator+(const ValueI&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the difference between this
@@ -115,7 +115,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator-(const ValueI* const) const = 0;
+        virtual ValueI* operator-(const ValueI&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the product of this and the 
@@ -124,7 +124,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator*(const ValueI* const) const = 0;
+        virtual ValueI* operator*(const ValueI&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the division of this by the 
@@ -134,7 +134,7 @@ namespace Sawoca {
          * @param other the denominator to divide by.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator/(const ValueI* const) const = 0;
+        virtual ValueI* operator/(const ValueI&) const = 0;
 
         //reassign operators
 
