@@ -1,3 +1,4 @@
+#include <boost/test/tools/old/interface.hpp>
 #define BOOST_TEST_MODULE DoubleTests
 #include <boost/test/included/unit_test.hpp>
 
@@ -32,4 +33,123 @@ BOOST_AUTO_TEST_CASE(test_string){
     std::string expected = "45.124";
     Sawoca::Double d(45.124);
     BOOST_CHECK_EQUAL(expected, d.string());
+}
+
+BOOST_AUTO_TEST_CASE(test_add){
+    Sawoca::Double expected(4.18);
+    Sawoca::Double a = 2.57;
+    Sawoca::Double b = 1.61;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>((a.add(b)));
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_plus){
+    Sawoca::Double expected(8.34);
+    Sawoca::Double a = 5.17;
+    Sawoca::Double b = 3.17;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>(a + b);
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_plus_equal){
+    Sawoca::Double expected(7.13);
+    Sawoca::Double a = 4.89;
+    Sawoca::Double b = 2.24;
+    Sawoca::Double& result = dynamic_cast<Sawoca::Double&>(a += b);
+    BOOST_CHECK_CLOSE(result.get_val(), expected.get_val(), 1e-9);
+    BOOST_CHECK_EQUAL(&result, &a);
+}
+
+BOOST_AUTO_TEST_CASE(test_sub){
+    Sawoca::Double expected(1.61);
+    Sawoca::Double a = 4.18;
+    Sawoca::Double b = 2.57;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>((a.sub(b)));
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_minus){
+    Sawoca::Double expected(3.17);
+    Sawoca::Double a = 8.34;
+    Sawoca::Double b = 5.17;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>(a - b);
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_minus_equal){
+    Sawoca::Double expected(7.13);
+    Sawoca::Double a = 4.89;
+    Sawoca::Double b = 2.24;
+    Sawoca::Double& result = dynamic_cast<Sawoca::Double&>(a += b);
+    BOOST_CHECK_CLOSE(result.get_val(), expected.get_val(), 1e-9);
+    BOOST_CHECK_EQUAL(&result, &a);
+}
+
+BOOST_AUTO_TEST_CASE(test_mul){
+    Sawoca::Double expected(8.36);
+    Sawoca::Double a = 4.18;
+    Sawoca::Double b = 2.0;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>((a.mul(b)));
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_times){
+    Sawoca::Double expected(16.68);
+    Sawoca::Double a = 8.34;
+    Sawoca::Double b = 2.0;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>(a * b);
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_times_equal){
+    Sawoca::Double expected(9.68);
+    Sawoca::Double a = 4.84;
+    Sawoca::Double b = 2.0;
+    Sawoca::Double& result = dynamic_cast<Sawoca::Double&>(a *= b);
+    BOOST_CHECK_CLOSE(result.get_val(), expected.get_val(), 1e-9);
+    BOOST_CHECK_EQUAL(&result, &a);
+}
+
+BOOST_AUTO_TEST_CASE(test_div){
+    Sawoca::Double expected(4.18);
+    Sawoca::Double a = 8.36;
+    Sawoca::Double b = 2.0;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>((a.div(b)));
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    BOOST_CHECK_THROW(a.div(Sawoca::Double(0)), std::string);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_slash){
+    Sawoca::Double expected(8.34);
+    Sawoca::Double a = 16.68;
+    Sawoca::Double b = 2.0;
+    Sawoca::Double* result = dynamic_cast<Sawoca::Double*>(a / b);
+    BOOST_CHECK_NE(result, nullptr);
+    BOOST_CHECK_CLOSE(result->get_val(), expected.get_val(), 1e-9);
+    BOOST_CHECK_THROW(a / Sawoca::Double(0), std::string);
+    delete result;
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_slash_equal){
+    Sawoca::Double expected(4.84);
+    Sawoca::Double a = 9.68;
+    Sawoca::Double b = 2.0;
+    Sawoca::Double& result = dynamic_cast<Sawoca::Double&>(a /= b);
+    BOOST_CHECK_CLOSE(result.get_val(), expected.get_val(), 1e-9);
+    BOOST_CHECK_EQUAL(&result, &a);
+    BOOST_CHECK_THROW(a /= Sawoca::Double(0), std::string);
 }
