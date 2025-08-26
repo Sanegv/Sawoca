@@ -198,3 +198,30 @@ std::string Double::string() const{
     return stream.str();
 }
 
+bool Double::equals(const ValueI& other) const {
+    const Value& vother = cast_to_value(other);
+    if(vother.get_type() != DOUBLE)
+        throw "cannot compare DOUBLE and" + vother.get_string_type();
+    return val == cast_to_double(vother).get_val();
+}
+
+bool Double::not_equals(const ValueI& other) const {
+    const Value& vother = cast_to_value(other);
+    if(vother.get_type() != DOUBLE)
+        throw "cannot compare DOUBLE and" + vother.get_string_type();
+    return val != cast_to_double(vother).get_val();
+}
+
+bool Double::operator==(const ValueI& other) const {
+    const Value& vother = cast_to_value(other);
+    if(vother.get_type() != DOUBLE)
+        throw "cannot compare DOUBLE and" + vother.get_string_type();
+    return val == cast_to_double(vother).get_val();
+}
+
+bool Double::operator!=(const ValueI& other) const {
+    const Value& vother = cast_to_value(other);
+    if(vother.get_type() != DOUBLE)
+        throw "cannot compare DOUBLE and" + vother.get_string_type();
+    return val != cast_to_double(vother).get_val();
+}

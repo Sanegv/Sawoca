@@ -175,6 +175,36 @@ namespace Sawoca {
          * @return a pointer to this
          */
         virtual ValueI& operator/=(const ValueI&) = 0;
+
+        /**
+         * @brief Checks whether the values are the same.
+         * @param other the value to compare
+         * @return true if they are the same, false otherwise
+         */
+        virtual bool equals(const ValueI&) const = 0;
+
+        /**
+         * @brief Checks whether the values are different.
+         * @param other the value to compare
+         * @return false if they are the same, true otherwise
+         */
+        virtual bool not_equals(const ValueI&) const = 0;
+
+        /**
+         * @brief Checks whether the values are the same. Effectively calls
+         * \ref equals.
+         * @param other the value to compare
+         * @return true if they are the same, false otherwise
+         */
+        virtual bool operator==(const ValueI&) const = 0;
+
+        /**
+         * @brief Checks whether the values are different. Effectively calls
+         * \ref not_equals()
+         * @param other the value to compare
+         * @return false if they are the same, true otherwise
+         */
+        virtual bool operator!=(const ValueI&) const = 0;
     };
 }
 
