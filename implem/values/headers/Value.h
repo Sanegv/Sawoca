@@ -18,6 +18,7 @@ namespace Sawoca {
  	*/
     enum Value_Type {
         DOUBLE, ///< A double precision floating point number.
+        BOOL, ///< A boolean for logical arithmetics.
     };
 
     /**
@@ -182,7 +183,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual bool equals(const ValueI&) const = 0;
+        virtual const Value* equals(const ValueI&) const = 0;
 
         /**
          * @brief Checks whether the values are different. Throws an exception
@@ -190,7 +191,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual bool not_equals(const ValueI&) const = 0;
+        virtual const Value* not_equals(const ValueI&) const = 0;
 
         /**
          * @brief Checks whether the values are the same. Effectively calls
@@ -198,7 +199,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual bool operator==(const ValueI&) const = 0;
+        virtual const Value* operator==(const ValueI&) const = 0;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -206,26 +207,26 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual bool operator!=(const ValueI&) const = 0;
+        virtual const Value* operator!=(const ValueI&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual bool logical_or(const ValueI&) const = 0;
+        virtual const Value* logical_or(const ValueI&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool. Effectively calls
          * \ref loical_or().
          */
-        virtual bool operator||(const ValueI&) const = 0;
+        virtual const Value* operator||(const ValueI&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual bool logical_and(const ValueI&) const = 0;
+        virtual const Value* logical_and(const ValueI&) const = 0;
 
 
         /**
@@ -233,14 +234,14 @@ namespace Sawoca {
          * an exception if one of the types is not a bool.Effectively calls
          * \ref loical_and().
          */
-        virtual bool operator&&(const ValueI&) const = 0;
+        virtual const Value* operator&&(const ValueI&) const = 0;
 
         /**
          * @brief Logically inverts the value. Throws an exception if it's not a
          * bool.
          * @return true if false, false if true.
          */
-        virtual bool logical_not() const = 0;
+        virtual const Value* logical_not() const = 0;
 
 
         /**
@@ -248,7 +249,7 @@ namespace Sawoca {
          * bool. Effectively calls \ref logical_not().
          * @return true if false, false if true.
          */
-        virtual bool operator!() const = 0;
+        virtual const Value* operator!() const = 0;
     };
 }
 

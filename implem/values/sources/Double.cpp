@@ -1,4 +1,5 @@
 #include "../headers/Double.h"
+#include "../headers/Bool.h"
 #include <sstream>
 #include <typeinfo>
 
@@ -200,58 +201,58 @@ std::string Double::string() const{
     return stream.str();
 }
 
-bool Double::equals(const ValueI& other) const {
+const Value* Double::equals(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
             + vother.get_string_type();
-    return val == cast_to_double(vother).get_val();
+    return new Bool(val == cast_to_double(vother).get_val());
 }
 
-bool Double::not_equals(const ValueI& other) const {
+const Value* Double::not_equals(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
             + vother.get_string_type();
-    return val != cast_to_double(vother).get_val();
+    return new Bool(val != cast_to_double(vother).get_val());
 }
 
-bool Double::operator==(const ValueI& other) const {
+const Value* Double::operator==(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
             + vother.get_string_type();
-    return val == cast_to_double(vother).get_val();
+    return new Bool(val == cast_to_double(vother).get_val());
 }
 
-bool Double::operator!=(const ValueI& other) const {
+const Value* Double::operator!=(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
             + vother.get_string_type();
-    return val != cast_to_double(vother).get_val();
+    return new Bool(val != cast_to_double(vother).get_val());
 }
 
-bool Double::logical_or(const ValueI& other) const{
+const Value* Double::logical_or(const ValueI& other) const{
     throw "cannot OR a " + double_type;
 }
 
-bool Double::logical_and(const ValueI& other) const{
+const Value* Double::logical_and(const ValueI& other) const{
     throw "cannot AND a " + double_type;
 }
 
-bool Double::operator||(const ValueI& other) const{
+const Value* Double::operator||(const ValueI& other) const{
     return logical_or(other);
 }
 
-bool Double::operator&&(const ValueI& other) const{
+const Value* Double::operator&&(const ValueI& other) const{
     return logical_and(other);
 }
 
-bool Double::logical_not() const{
+const Value* Double::logical_not() const{
     throw "cannot logically invert " + double_type;
 }
 
-bool Double::operator!() const{
+const Value* Double::operator!() const{
     return logical_not();
 }

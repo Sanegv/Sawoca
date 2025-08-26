@@ -9,12 +9,7 @@
  *@author Sanegv
  */
 
-namespace Sawoca {
-
-    //\cond PRIVATE
-    class DoubleTests;
-    //\endcond
-    
+namespace Sawoca {    
     /**
     * @brief This class represents the value for a literal, double value. It is
     * used to perform double precision floating point operations. It inherits
@@ -176,14 +171,14 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual bool equals(const ValueI&) const override;
+        virtual const Value* equals(const ValueI&) const override;
 
         /**
          * @brief Checks whether the values are different.
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual bool not_equals(const ValueI&) const override;
+        virtual const Value* not_equals(const ValueI&) const override;
 
         /**
          * @brief Checks whether the values are the same. Effectively calls
@@ -191,7 +186,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual bool operator==(const ValueI&) const override;
+        virtual const Value* operator==(const ValueI&) const override;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -199,57 +194,39 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual bool operator!=(const ValueI&) const override;
+        virtual const Value* operator!=(const ValueI&) const override;
 
         /**
-         * @brief Checks whether at least one of the two values is true. Throws
-         * an exception if one of the types is not a bool.
-         * @param other the value to compare.
-         * @return false if the two values are false, true otherwise.
+         * @brief Throws an exception.
          */
-        virtual bool logical_or(const ValueI&) const override;
+        virtual const Value* logical_or(const ValueI&) const override;
 
         /**
-         * @brief Checks whether at least one of the two values is true. Throws
-         * an exception if one of the types is not a bool. Effectively calls
-         * \ref logical_or().
-         * @param other the value to compare.
-         * @return false if the two values are false, true otherwise.
+         * @brief Throws an exception.
          */
-        virtual bool operator||(const ValueI&) const override;
+        virtual const Value* operator||(const ValueI&) const override;
 
         /**
-         * @brief Checks whether at least one of the two values is true. Throws
-         * an exception if one of the types is not a bool.
-         * @param other the value to compare.
-         * @return true if the two values are true, false otherwise.
+         * @brief Throws an exception.
          */
-        virtual bool logical_and(const ValueI&) const override;
+        virtual const Value* logical_and(const ValueI&) const override;
 
 
         /**
-         * @brief Checks whether the two values is true. Throws
-         * an exception if one of the types is not a bool.Effectively calls
-         * \ref logical_and().
-         * @param other the value to compare.
-         * @return true if the two values are true, false otherwise.
+         * @brief Throws an exception.
          */
-        virtual bool operator&&(const ValueI&) const override;
+        virtual const Value* operator&&(const ValueI&) const override;
 
         /**
-         * @brief Logically inverts the value. Throws an exception if it's not a
-         * bool.
-         * @return true if false, false if true.
+         * @brief Throws an exception.
          */
-        virtual bool logical_not() const override;
+        virtual const Value* logical_not() const override;
 
 
         /**
-         * @brief Logically inverts the value. Throws an exception if it's not a
-         * bool. Effectively calls \ref logical_not().
-         * @return true if false, false if true.
+         * @brief Throws an exception.
          */
-        virtual bool operator!() const override;
+        virtual const Value* operator!() const override;
     };
 }
 
