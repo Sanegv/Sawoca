@@ -153,3 +153,43 @@ BOOST_AUTO_TEST_CASE(test_operator_slash_equal){
     BOOST_CHECK_EQUAL(&result, &a);
     BOOST_CHECK_THROW(a /= Sawoca::Double(0), std::string);
 }
+
+BOOST_AUTO_TEST_CASE(test_equal){
+    Sawoca::Double a(3.14);
+    Sawoca::Double b(3.14);
+    Sawoca::Double c(3.15);
+
+    BOOST_CHECK_EQUAL(a.equals(b), true);
+    BOOST_CHECK_EQUAL(a.equals(a), true);
+    BOOST_CHECK_EQUAL(a.equals(c), false);
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_equal_equal){
+    Sawoca::Double a(3.14);
+    Sawoca::Double b(3.14);
+    Sawoca::Double c(3.15);
+
+    BOOST_CHECK_EQUAL((a == b), true);
+    BOOST_CHECK_EQUAL((a == a), true);
+    BOOST_CHECK_EQUAL((a == c), false);
+}
+
+BOOST_AUTO_TEST_CASE(test__not_equal){
+    Sawoca::Double a(3.14);
+    Sawoca::Double b(3.14);
+    Sawoca::Double c(3.15);
+
+    BOOST_CHECK_EQUAL(a.not_equals(b), false);
+    BOOST_CHECK_EQUAL(a.not_equals(a), false);
+    BOOST_CHECK_EQUAL(a.not_equals(c), true);
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_not_equal){
+    Sawoca::Double a(3.14);
+    Sawoca::Double b(3.14);
+    Sawoca::Double c(3.15);
+
+    BOOST_CHECK_EQUAL((a != b), false);
+    BOOST_CHECK_EQUAL((a != a), false);
+    BOOST_CHECK_EQUAL((a != c), true);
+}
