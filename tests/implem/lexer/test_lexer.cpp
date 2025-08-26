@@ -11,7 +11,7 @@
 #include "../../../implem/tokens/headers/Token.h"
 
 BOOST_AUTO_TEST_CASE(test_constructor){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     std::string str = "test";
     std::istringstream input(str);
     Sawoca::Lexer* lexer = new Sawoca::Lexer(table, input);
@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE(test_constructor){
 }
 
 BOOST_AUTO_TEST_CASE(test_get_token){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     std::vector<Sawoca::Token_Type> expected;
     std::string text = "test = + - * / 1.2 ()";
     std::istringstream input(text);
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(test_get_token){
 }
 
 BOOST_AUTO_TEST_CASE(test_lex){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     std::vector<Sawoca::Token_Type> expected;
     std::string text = "test = + - * / 1.2 ()";
     std::istringstream input(text);

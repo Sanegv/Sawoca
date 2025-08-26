@@ -3,6 +3,7 @@
 
 #include "../../../interfaces/tokens/TokenInterface.h"
 #include "Token.h"
+#include "../../values/headers/Value.h"
 
 /**
  *@file NumberToken.h
@@ -17,7 +18,7 @@ namespace Sawoca {
 	*/
 	class Number_Token : public Token {
 	private:
-		Language::Values::ValueI* value;
+		Value* value;
 	public:
 		/**
 		 * @brief Creates a number token with value 0.0.
@@ -37,7 +38,7 @@ namespace Sawoca {
 		 * @param value a pointer to a Value. \note the value will be freed at
 		 * the end of the token's life.
 		 */
-		Number_Token(Language::Values::ValueI* value);
+		Number_Token(Value* value);
 
 		/** 
 		* @brief Deletes the token and clears its value.
@@ -49,7 +50,7 @@ namespace Sawoca {
 		 *
 		 * @return the value stored in the token.
 		 */
-		virtual const Language::Values::ValueI* get_value() const override;
+		virtual const Value* get_value() const override;
 
         /**
          * @brief stringifies the type of the token.

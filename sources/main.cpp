@@ -17,7 +17,7 @@ static const int SWC_LEX_ERR 	= 2;
 static const int CPP_PAR_ERR 	= 3;
 static const int SWC_PAR_ERR 	= 4;
 
-void init_table(std::map<std::string, const Language::Values::ValueI*>* table){
+void init_table(std::map<std::string, const Sawoca::Value*>* table){
 	if(table){
 		Sawoca::Double* pi = new Sawoca::Double(3.1415926535897932385);
 		if(!pi)
@@ -89,7 +89,7 @@ char flags(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]){
-	std::map<std::string, const Language::Values::ValueI*> variables;
+	std::map<std::string, const Sawoca::Value*> variables;
 	std::istream* stream = nullptr;
 
 	//choose the input mode

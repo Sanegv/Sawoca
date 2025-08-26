@@ -60,7 +60,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to a new value
          */
-        virtual ValueI* add(const ValueI&) const override;
+        virtual Value* add(const Value&) const override;
 
         /**
          *@brief Creates a new Double value equal to the difference between this
@@ -68,7 +68,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to a new value
          */
-        virtual ValueI* sub(const ValueI&) const override;
+        virtual Value* sub(const Value&) const override;
 
         /**
          *@brief Creates a new Double value equal to the product of this and the 
@@ -76,7 +76,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to a new value
          */
-        virtual ValueI* mul(const ValueI&) const override;
+        virtual Value* mul(const Value&) const override;
 
         /**
          *@brief Creates a new Double value equal to the division of this by the 
@@ -85,7 +85,7 @@ namespace Sawoca {
          * @param other the denominator to divide by.
          * @return a pointer to a new value
          */
-        virtual ValueI* div(const ValueI&) const override;
+        virtual Value* div(const Value&) const override;
 
         //const operators
 
@@ -96,7 +96,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator+(const ValueI&) const override;
+        virtual Value* operator+(const Value&) const override;
 
         /**
          *@brief Creates a new Double value equal to the difference between this
@@ -105,7 +105,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator-(const ValueI&) const override;
+        virtual Value* operator-(const Value&) const override;
 
         /**
          *@brief Creates a new Double value equal to the product of this and the 
@@ -114,7 +114,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator*(const ValueI&) const override;
+        virtual Value* operator*(const Value&) const override;
 
         /**
          *@brief Creates a new Double value equal to the division of this by the 
@@ -124,7 +124,7 @@ namespace Sawoca {
          * @param other the denominator to divide by.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator/(const ValueI&) const override;
+        virtual Value* operator/(const Value&) const override;
 
         //reassign operators
 
@@ -132,7 +132,7 @@ namespace Sawoca {
          * @brief Changes the sign of the value stored inside.
          * @return a pointer to this.
          */
-        virtual ValueI* operator-() override;
+        virtual Value* operator-() const override;
 
         /**
          *@brief Changes the value to the sum of this and the 
@@ -140,7 +140,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to this
          */
-        virtual ValueI& operator+=(const ValueI&) override;
+        virtual Value& operator+=(const Value&) override;
 
         /**
          *@brief Changes the value to the difference of this and the 
@@ -148,7 +148,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to this
          */
-        virtual ValueI& operator-=(const ValueI&) override;
+        virtual Value& operator-=(const Value&) override;
 
         /**
          *@brief Changes the value to the product of this and the 
@@ -156,7 +156,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to this
          */
-        virtual ValueI& operator*=(const ValueI&) override;
+        virtual Value& operator*=(const Value&) override;
 
         /**
          *@brief Changes the value to the division of this by the 
@@ -164,21 +164,21 @@ namespace Sawoca {
          * @param other the value to divide by.
          * @return a pointer to this
          */
-        virtual ValueI& operator/=(const ValueI&) override;
+        virtual Value& operator/=(const Value&) override;
 
         /**
          * @brief Checks whether the values are the same.
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* equals(const ValueI&) const override;
+        virtual const Value* equals(const Value&) const override;
 
         /**
          * @brief Checks whether the values are different.
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* not_equals(const ValueI&) const override;
+        virtual const Value* not_equals(const Value&) const override;
 
         /**
          * @brief Checks whether the values are the same. Effectively calls
@@ -186,7 +186,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* operator==(const ValueI&) const override;
+        virtual const Value* operator==(const Value&) const override;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -194,28 +194,28 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* operator!=(const ValueI&) const override;
+        virtual const Value* operator!=(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* logical_or(const ValueI&) const override;
+        virtual const Value* logical_or(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator||(const ValueI&) const override;
+        virtual const Value* operator||(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* logical_and(const ValueI&) const override;
+        virtual const Value* logical_and(const Value&) const override;
 
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator&&(const ValueI&) const override;
+        virtual const Value* operator&&(const Value&) const override;
 
         /**
          * @brief Throws an exception.

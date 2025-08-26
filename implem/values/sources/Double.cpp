@@ -19,15 +19,6 @@ std::string Double::get_string_type() const {
     return double_type;
 }
 
-const Value& cast_to_value(const Language::Values::ValueI& v){
-    try {
-        const Value& vp = dynamic_cast<const Value&>(v);
-        return vp;
-    } catch (const std::bad_cast& e) {
-        throw std::string("values must inherit the Value abstract class");
-    }
-}
-
 const Double& cast_to_double(const Value& v){
     try {
         const Double& dp = dynamic_cast<const Double&>(v);
@@ -37,64 +28,56 @@ const Double& cast_to_double(const Value& v){
     }
 }
 
-Language::Values::ValueI* Double::add(const ValueI& v) const {    
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value* Double::add(const Value& v) const {    
+    switch (v.get_type()) {
         case DOUBLE: {
-            Double* d = new Double(val+cast_to_double(vp).get_val());
+            Double* d = new Double(val+cast_to_double(v).get_val());
             if(!d)
                 throw "memory allocation failed";
             return d; 
         }
         default:
             throw std::string("cannot add type " + double_type + 
-            " and type " + vp.get_string_type());
+            " and type " + v.get_string_type());
             return nullptr;
     }
 }
 
-Language::Values::ValueI* Double::sub(const ValueI& v) const{    
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value* Double::sub(const Value& v) const{
+    switch (v.get_type()) {
         case DOUBLE: {
-            Double* d = new Double(val-cast_to_double(vp).get_val());
+            Double* d = new Double(val-cast_to_double(v).get_val());
             if(!d)
                 throw "memory allocation failed";
             return d; 
         }
         default:
             throw std::string("cannot sub type " + double_type + " and type " + 
-                vp.get_string_type());
+                v.get_string_type());
             return nullptr;
     }
 }
 
-Language::Values::ValueI* Double::mul(const ValueI& v) const{    
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value* Double::mul(const Value& v) const{
+    switch (v.get_type()) {
         case DOUBLE: {
-            Double* d = new Double(val*cast_to_double(vp).get_val());
+            Double* d = new Double(val*cast_to_double(v).get_val());
             if(!d)
                 throw "memory allocation failed";
             return d; 
         }
         default:
             throw std::string("cannot mul type " + double_type + " and type " + 
-                vp.get_string_type());
+                v.get_string_type());
             return nullptr;
     }
 }
 
-Language::Values::ValueI* Double::div(const ValueI& v) const{    
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value* Double::div(const Value& v) const{
+    switch (v.get_type()) {
         case DOUBLE:
             {
-                double d = cast_to_double(vp).get_val();
+                double d = cast_to_double(v).get_val();
                 if(d == 0) 
                     throw std::string("division by zero");
                 
@@ -105,82 +88,73 @@ Language::Values::ValueI* Double::div(const ValueI& v) const{
             }
         default:
             throw std::string("cannot add type " + double_type +
-             " and type " + vp.get_string_type());
+             " and type " + v.get_string_type());
             return nullptr;
     }
 }
 
-Language::Values::ValueI* Double::operator-(){
-    val = -val;
-    return this;
+Value* Double::operator-() const{
+    return new Double(-val);
 }
 
-Language::Values::ValueI* Double::operator+(const ValueI& v) const {
+Value* Double::operator+(const Value& v) const {
     return this->add(v);
 }
-Language::Values::ValueI* Double::operator-(const ValueI& v) const {
+Value* Double::operator-(const Value& v) const {
     return this->sub(v);
 }
-Language::Values::ValueI* Double::operator*(const ValueI& v) const {
+Value* Double::operator*(const Value& v) const {
     return this->mul(v);
 }
-Language::Values::ValueI* Double::operator/(const ValueI& v) const {
+Value* Double::operator/(const Value& v) const {
     return this->div(v);
 }
 
-Language::Values::ValueI& Double::operator+=(const Language::Values::ValueI& v){
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value& Double::operator+=(const Value& v){
+    switch (v.get_type()) {
         case DOUBLE:
-            val += cast_to_double(vp).get_val();
+            val += cast_to_double(v).get_val();
             break;
         default:
             throw std::string("cannot add type " + double_type + " and type " +
-                vp.get_string_type());
+                v.get_string_type());
             break;
     }
 
     return *this;
 }
 
-Language::Values::ValueI& Double::operator-=(const Language::Values::ValueI& v){
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value& Double::operator-=(const Value& v){
+    switch (v.get_type()) {
         case DOUBLE:
-            val -= cast_to_double(vp).get_val();
+            val -= cast_to_double(v).get_val();
             break;
         default:
             throw std::string("cannot sub type " + double_type + " and type " +
-                vp.get_string_type());
+                v.get_string_type());
             break;
     }
 
     return *this;
 }
-Language::Values::ValueI& Double::operator*=(const Language::Values::ValueI& v){
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value& Double::operator*=(const Value& v){
+    switch (v.get_type()) {
         case DOUBLE:
-            val *= cast_to_double(vp).get_val();
+            val *= cast_to_double(v).get_val();
             break;
         default:
             throw std::string("cannot mul type " + double_type + " and type " +
-                vp.get_string_type());
+                v.get_string_type());
             break;
     }
 
     return *this;
 }
-Language::Values::ValueI& Double::operator/=(const Language::Values::ValueI& v){
-    const Value& vp = cast_to_value(v);
-
-    switch (vp.get_type()) {
+Value& Double::operator/=(const Value& v){
+    switch (v.get_type()) {
         case DOUBLE:
             {
-                double d = cast_to_double(vp).get_val();
+                double d = cast_to_double(v).get_val();
                 if(d == 0) 
                     throw std::string("division by zero");
                 val /= d; 
@@ -188,7 +162,7 @@ Language::Values::ValueI& Double::operator/=(const Language::Values::ValueI& v){
             break;
         default:
             throw std::string("cannot div type " + double_type + " and type " +
-                vp.get_string_type());
+                v.get_string_type());
             break;
     }
 
@@ -201,51 +175,47 @@ std::string Double::string() const{
     return stream.str();
 }
 
-const Value* Double::equals(const ValueI& other) const {
-    const Value& vother = cast_to_value(other);
-    if(vother.get_type() != DOUBLE)
+const Value* Double::equals(const Value& other) const {
+    if(other.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
-            + vother.get_string_type();
-    return new Bool(val == cast_to_double(vother).get_val());
+            + other.get_string_type();
+    return new Bool(val == cast_to_double(other).get_val());
 }
 
-const Value* Double::not_equals(const ValueI& other) const {
-    const Value& vother = cast_to_value(other);
-    if(vother.get_type() != DOUBLE)
+const Value* Double::not_equals(const Value& other) const {
+    if(other.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
-            + vother.get_string_type();
-    return new Bool(val != cast_to_double(vother).get_val());
+            + other.get_string_type();
+    return new Bool(val != cast_to_double(other).get_val());
 }
 
-const Value* Double::operator==(const ValueI& other) const {
-    const Value& vother = cast_to_value(other);
-    if(vother.get_type() != DOUBLE)
+const Value* Double::operator==(const Value& other) const {
+    if(other.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
-            + vother.get_string_type();
-    return new Bool(val == cast_to_double(vother).get_val());
+            + other.get_string_type();
+    return new Bool(val == cast_to_double(other).get_val());
 }
 
-const Value* Double::operator!=(const ValueI& other) const {
-    const Value& vother = cast_to_value(other);
-    if(vother.get_type() != DOUBLE)
+const Value* Double::operator!=(const Value& other) const {
+    if(other.get_type() != DOUBLE)
         throw "cannot compare " + double_type + " and " 
-            + vother.get_string_type();
-    return new Bool(val != cast_to_double(vother).get_val());
+            + other.get_string_type();
+    return new Bool(val != cast_to_double(other).get_val());
 }
 
-const Value* Double::logical_or(const ValueI& other) const{
+const Value* Double::logical_or(const Value& other) const{
     throw "cannot OR a " + double_type;
 }
 
-const Value* Double::logical_and(const ValueI& other) const{
+const Value* Double::logical_and(const Value& other) const{
     throw "cannot AND a " + double_type;
 }
 
-const Value* Double::operator||(const ValueI& other) const{
+const Value* Double::operator||(const Value& other) const{
     return logical_or(other);
 }
 
-const Value* Double::operator&&(const ValueI& other) const{
+const Value* Double::operator&&(const Value& other) const{
     return logical_and(other);
 }
 

@@ -6,6 +6,7 @@
 
 #include "../../../interfaces/tokens/TokenInterface.h"
 #include "Token.h"
+#include "../../values/headers/Value.h"
 
 /**
  *@file NameToken.h
@@ -22,7 +23,7 @@ namespace Sawoca {
 	class Name_Token : public Token {
 	private:
 		std::string name;
-		std::map<std::string, const Language::Values::ValueI*>& variables;
+		std::map<std::string, const Value*>& variables;
 
 		//do not use
 		Name_Token() = delete;
@@ -36,7 +37,7 @@ namespace Sawoca {
 		 */
 		Name_Token(
 			std::string name,
-			std::map<std::string, const Language::Values::ValueI*>& variables
+			std::map<std::string, const Value*>& variables
 		);
 		~Name_Token() = default;
 
@@ -46,7 +47,7 @@ namespace Sawoca {
 		 *
 		 * @return the value of the variable of name `name` in the table.
 		 */
-		virtual const Language::Values::ValueI* get_value() const override;
+		virtual const Value* get_value() const override;
 
         /**
          * @brief stringifies the type of the token.

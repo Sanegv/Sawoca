@@ -19,14 +19,14 @@
 #include "../../../implem/tokens/headers/AssignToken.h"
 
 BOOST_AUTO_TEST_CASE(test_constructor){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser* parser = new Sawoca::Parser(table);
     BOOST_CHECK_NE(parser, nullptr);
     delete parser;
 }
 
 BOOST_AUTO_TEST_CASE(test_parse_number){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(test_parse_number){
 }
 
 BOOST_AUTO_TEST_CASE(test_parse_addition){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_CASE(test_parse_addition){
 }
 
 BOOST_AUTO_TEST_CASE(test_parse_precedence){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE(test_parse_precedence){
 }
 
 BOOST_AUTO_TEST_CASE(test_parse_paranthesis){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE(test_parse_paranthesis){
 }
 
 BOOST_AUTO_TEST_CASE(test_parse_variables){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
@@ -156,7 +156,7 @@ BOOST_AUTO_TEST_CASE(test_parse_variables){
 }
 
 BOOST_AUTO_TEST_CASE(test_parser_error){
-    std::map<std::string, const Language::Values::ValueI*> table;
+    std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> undeclared_var {

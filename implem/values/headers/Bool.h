@@ -20,7 +20,7 @@ namespace Sawoca {
          * @brief Accessor for the val field.
          * @return Either true or false.
          */
-        bool get_val();
+        bool get_val() const;
         
         /**
 		* @brief Accessor for the type field of a token, in human readable form.
@@ -38,62 +38,67 @@ namespace Sawoca {
         /**
          *@brief throws an error.
          */
-        virtual ValueI* add(const ValueI&) const override;
+        virtual Value* add(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* sub(const ValueI&) const override;
+        virtual Value* sub(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* mul(const ValueI&) const override;
+        virtual Value* mul(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* div(const ValueI&) const override;
+        virtual Value* div(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* operator+(const ValueI&) const override;
+        virtual Value* operator+(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* operator-(const ValueI&) const override;
+        virtual Value* operator-(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* operator*(const ValueI&) const override;
+        virtual Value* operator*(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI* operator/(const ValueI&) const override;
+        virtual Value* operator/(const Value&) const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI& operator+=(const ValueI&) override;
+         virtual Value* operator-() const override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI& operator-=(const ValueI&) override;
+        virtual Value& operator+=(const Value&) override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI& operator*=(const ValueI&) override;
+        virtual Value& operator-=(const Value&) override;
 
         /**
          *@brief throws an error.
          */
-        virtual ValueI& operator/=(const ValueI&) override;
+        virtual Value& operator*=(const Value&) override;
+
+        /**
+         *@brief throws an error.
+         */
+        virtual Value& operator/=(const Value&) override;
 
         /**
          * @brief Checks whether the values are the same. Throws an exception
@@ -101,7 +106,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value& equals(const ValueI&) const override;
+        virtual const Value* equals(const Value&) const override;
 
         /**
          * @brief Checks whether the values are different. Throws an exception
@@ -109,7 +114,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value& not_equals(const ValueI&) const override;
+        virtual const Value* not_equals(const Value&) const override;
 
         /**
          * @brief Checks whether the values are the same. Effectively calls
@@ -117,7 +122,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value& operator==(const ValueI&) const override;
+        virtual const Value* operator==(const Value&) const override;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -125,26 +130,26 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value& operator!=(const ValueI&) const override;
+        virtual const Value* operator!=(const Value&) const override;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual const Value& logical_or(const ValueI&) const override;
+        virtual const Value* logical_or(const Value&) const override;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool. Effectively calls
          * \ref loical_or().
          */
-        virtual const Value& operator||(const ValueI&) const override;
+        virtual const Value* operator||(const Value&) const override;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual const Value& logical_and(const ValueI&) const override;
+        virtual const Value* logical_and(const Value&) const override;
 
 
         /**
@@ -152,14 +157,14 @@ namespace Sawoca {
          * an exception if one of the types is not a bool.Effectively calls
          * \ref loical_and().
          */
-        virtual const Value& operator&&(const ValueI&) const override;
+        virtual const Value* operator&&(const Value&) const override;
 
         /**
          * @brief Logically inverts the value. Throws an exception if it's not a
          * bool.
          * @return true if false, false if true.
          */
-        virtual const Value& logical_not() const override;
+        virtual const Value* logical_not() const override;
 
 
         /**
@@ -167,7 +172,7 @@ namespace Sawoca {
          * bool. Effectively calls \ref logical_not().
          * @return true if false, false if true.
          */
-        virtual const Value& operator!() const override;
+        virtual const Value* operator!() const override;
     };
 }
 

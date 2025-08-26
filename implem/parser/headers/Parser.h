@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include "../../../interfaces/parser/ParserInterface.h"
+#include "../../values/headers/Value.h"
 
 namespace Sawoca {
 	/**
@@ -20,7 +21,7 @@ namespace Sawoca {
 	*/
 	class Parser : Language::Parser::ParserI {
 	private:
-		std::map<std::string, const Language::Values::ValueI*>& table;
+		std::map<std::string, const Value*>& table;
 		int number_of_errors = 0;
 
 		//don't use
@@ -40,7 +41,7 @@ namespace Sawoca {
 		*
 		* @return The value of the primary expression.
 		*/
-		Language::Values::ValueI* prim(
+		Value* prim(
 			bool get,
 			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
@@ -55,7 +56,7 @@ namespace Sawoca {
 		* @param it An iterator over a vector of Tokens to be parsed.
 		* @return The result of the expression.
 		*/
-		Language::Values::ValueI* term(
+		Value* term(
 			bool get,
 			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
@@ -69,7 +70,7 @@ namespace Sawoca {
 		* @param it An iterator over a vector of Tokens to be parsed.
 		* @return The result of the expression.
 		*/
-		Language::Values::ValueI* expr(
+		Value* expr(
 			bool get, 
 			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
@@ -83,7 +84,7 @@ namespace Sawoca {
 		 */
 		Parser(
 			std::map<std::string,
-			const Language::Values::ValueI*>& variables
+			const Value*>& variables
 		);
 
 		/**

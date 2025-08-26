@@ -14,14 +14,14 @@ Number_Token::Number_Token(double d) :
             throw "memory allocation failed";
     }
 
-Number_Token::Number_Token(Language::Values::ValueI* value) : 
+Number_Token::Number_Token(Value* value) : 
     Token(NUMBER), value(value) {}
 
 Number_Token::~Number_Token(){
     delete value;
 }
 
-const Language::Values::ValueI* Number_Token::get_value() const {
+const Value* Number_Token::get_value() const {
     return value;
 }
 

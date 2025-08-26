@@ -16,7 +16,7 @@ Token* cast_token(std::vector<Language::Tokens::TokenI*>::iterator it){
     return tok;
 }
 
-Value* cast_to_value(Language::Values::ValueI* v){
+Value* cast_to_value(Value* v){
     if(!v)
         throw std::string("nullptr dereference");
 
@@ -27,7 +27,7 @@ Value* cast_to_value(Language::Values::ValueI* v){
     return vp;
 }
 
-const Double* const cast_to_double(const Language::Values::ValueI* const v){
+const Double* const cast_to_double(const Value* const v){
     if(!v)
         throw std::string("nullptr dereference");
 
@@ -53,10 +53,10 @@ std::string get_name(Language::Tokens::TokenI* tok){
 //\endcond
 
 Parser::Parser(
-		std::map<std::string, const Language::Values::ValueI*>& variables
+		std::map<std::string, const Value*>& variables
 ) : table(variables) {}
 
-Language::Values::ValueI* Parser::prim(
+Value* Parser::prim(
     bool get,
     std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
@@ -68,15 +68,15 @@ Language::Values::ValueI* Parser::prim(
 	switch(tok->get_type()) {
 	case NUMBER:
 	{
-		const Double* v = cast_to_double(tok->get_value());
+		const Value* val = dynamic_cast<const Value*>(tok->get_value());
+		const Double* v = cast_to_double(val);
 		it++;
 		Double* d = new Double(v->get_val());
 		if(!d)
 			throw "memory allocation failed";
 		return d;
 	}
-	case NAME: 
-	{
+	case NAME:{
 		std::string name = get_name(tok);
         it++;
 		tok = cast_token(it);
@@ -84,7 +84,7 @@ Language::Values::ValueI* Parser::prim(
 		//assignment
 		if(tok->get_type() == ASSIGN){
 			const Double* right = cast_to_double(expr(true, it));
-			if(const Language::Values::ValueI* v = table[name]){
+			if(const Value* v = table[name]){
 				table.erase(table.find(name));
 				delete v;
 			}
@@ -98,13 +98,16 @@ Language::Values::ValueI* Parser::prim(
 			throw "memory allocation failed";
 		return d;
 	}
-	case MINUS:
-		return -(*cast_to_value(prim(true, it)));
+	case MINUS:{
+		Value* val = cast_to_value(prim(true, it));
+		Value* result = -(*val);
+		delete val;
+		return result;
+	}
 	case PLUS:
 		return prim(true, it);
-	case LP:
-	{
-		Language::Values::ValueI* e = expr(true, it);
+	case LP:{
+		Value* e = expr(true, it);
 		if(cast_token(it)->get_type() != RP)
 			throw std::string("expected ')'");
 
@@ -116,24 +119,24 @@ Language::Values::ValueI* Parser::prim(
 	}
 }
 
-Language::Values::ValueI* Parser::term(
+Value* Parser::term(
     bool get,
     std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
-	Language::Values::ValueI* left = prim(get, it);
-	Language::Values::ValueI* right = nullptr;
+	Value* left = prim(get, it);
+	Value* right = nullptr;
 
 	while(true){
         Token* tok = cast_token(it);
 		switch(tok->get_type()){
 		case MUL:
 			right = prim(true, it);
-			*cast_to_value(left) *= *right;
+			*left *= *right;
 			delete right;
 			break;
 		case DIV:
 			right = prim(true, it);
-            *cast_to_value(left) /= *right;
+            *left /= *right;
 			delete right;
             break;
 		default:
@@ -142,12 +145,12 @@ Language::Values::ValueI* Parser::term(
 	}
 }
 
-Language::Values::ValueI* Parser::expr(
+Value* Parser::expr(
     bool get, 
     std::vector<Language::Tokens::TokenI*>::iterator& it
 ){
-	Language::Values::ValueI* left = term(get, it);
-	Language::Values::ValueI* right = nullptr;
+	Value* left = term(get, it);
+	Value* right = nullptr;
 
 	while(true){
         Token* tok = cast_token(it);
@@ -179,7 +182,7 @@ void Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
 			break;
 		if(tok->get_type() == PRINT)
 			continue;
-		Language::Values::ValueI* eval = expr(false, it);
+		Value* eval = expr(false, it);
         std::cout << cast_to_value(eval)->string() << "\n";
 		delete eval;
 	}

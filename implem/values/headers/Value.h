@@ -71,7 +71,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to a new value
          */
-        virtual ValueI* add(const ValueI&) const = 0;
+        virtual Value* add(const Value&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the difference between this
@@ -79,7 +79,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to a new value
          */
-        virtual ValueI* sub(const ValueI&) const = 0;
+        virtual Value* sub(const Value&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the product of this and the 
@@ -87,7 +87,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to a new value
          */
-        virtual ValueI* mul(const ValueI&) const = 0;
+        virtual Value* mul(const Value&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the division of this by the 
@@ -96,7 +96,7 @@ namespace Sawoca {
          * @param other the denominator to divide by.
          * @return a pointer to a new value
          */
-        virtual ValueI* div(const ValueI&) const = 0;
+        virtual Value* div(const Value&) const = 0;
 
         //const operators
 
@@ -107,7 +107,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator+(const ValueI&) const = 0;
+        virtual Value* operator+(const Value&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the difference between this
@@ -116,7 +116,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator-(const ValueI&) const = 0;
+        virtual Value* operator-(const Value&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the product of this and the 
@@ -125,7 +125,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator*(const ValueI&) const = 0;
+        virtual Value* operator*(const Value&) const = 0;
 
         /**
          *@brief Creates a new Value equal to the division of this by the 
@@ -135,7 +135,7 @@ namespace Sawoca {
          * @param other the denominator to divide by.
          * @return a pointer to a new value
          */
-        virtual ValueI* operator/(const ValueI&) const = 0;
+        virtual Value* operator/(const Value&) const = 0;
 
         //reassign operators
 
@@ -143,7 +143,7 @@ namespace Sawoca {
          * @brief Changes the sign of the value stored inside.
          * @return a pointer to this.
          */
-        virtual ValueI* operator-() = 0; //unary
+        virtual Value* operator-() const = 0; //unary
 
         /**
          *@brief Changes the value to the sum of this and the 
@@ -151,7 +151,7 @@ namespace Sawoca {
          * @param other the value to add.
          * @return a pointer to this
          */
-        virtual ValueI& operator+=(const ValueI&) = 0;
+        virtual Value& operator+=(const Value&) = 0;
 
         /**
          *@brief Changes the value to the difference of this and the 
@@ -159,7 +159,7 @@ namespace Sawoca {
          * @param other the value to subtract.
          * @return a pointer to this
          */
-        virtual ValueI& operator-=(const ValueI&) = 0;
+        virtual Value& operator-=(const Value&) = 0;
 
         /**
          *@brief Changes the value to the product of this and the 
@@ -167,7 +167,7 @@ namespace Sawoca {
          * @param other the value to multiply by.
          * @return a pointer to this
          */
-        virtual ValueI& operator*=(const ValueI&) = 0;
+        virtual Value& operator*=(const Value&) = 0;
 
         /**
          *@brief Changes the value to the division of this by the 
@@ -175,7 +175,7 @@ namespace Sawoca {
          * @param other the value to divide by.
          * @return a pointer to this
          */
-        virtual ValueI& operator/=(const ValueI&) = 0;
+        virtual Value& operator/=(const Value&) = 0;
 
         /**
          * @brief Checks whether the values are the same. Throws an exception
@@ -183,7 +183,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* equals(const ValueI&) const = 0;
+        virtual const Value* equals(const Value&) const = 0;
 
         /**
          * @brief Checks whether the values are different. Throws an exception
@@ -191,7 +191,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* not_equals(const ValueI&) const = 0;
+        virtual const Value* not_equals(const Value&) const = 0;
 
         /**
          * @brief Checks whether the values are the same. Effectively calls
@@ -199,7 +199,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* operator==(const ValueI&) const = 0;
+        virtual const Value* operator==(const Value&) const = 0;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -207,26 +207,26 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* operator!=(const ValueI&) const = 0;
+        virtual const Value* operator!=(const Value&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual const Value* logical_or(const ValueI&) const = 0;
+        virtual const Value* logical_or(const Value&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool. Effectively calls
          * \ref loical_or().
          */
-        virtual const Value* operator||(const ValueI&) const = 0;
+        virtual const Value* operator||(const Value&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual const Value* logical_and(const ValueI&) const = 0;
+        virtual const Value* logical_and(const Value&) const = 0;
 
 
         /**
@@ -234,7 +234,7 @@ namespace Sawoca {
          * an exception if one of the types is not a bool.Effectively calls
          * \ref loical_and().
          */
-        virtual const Value* operator&&(const ValueI&) const = 0;
+        virtual const Value* operator&&(const Value&) const = 0;
 
         /**
          * @brief Logically inverts the value. Throws an exception if it's not a
