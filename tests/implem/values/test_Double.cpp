@@ -192,3 +192,33 @@ BOOST_AUTO_TEST_CASE(test_operator_not_equal){
     BOOST_CHECK_EQUAL((a != a), false);
     BOOST_CHECK_EQUAL((a != c), true);
 }
+
+BOOST_AUTO_TEST_CASE(test_logical_or){
+    Sawoca::Double a;
+    BOOST_CHECK_THROW(a.logical_or(a), std::string);
+}
+
+BOOST_AUTO_TEST_CASE(test_logical_and){
+    Sawoca::Double a;
+    BOOST_CHECK_THROW(a.logical_and(a), std::string);
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_or){
+    Sawoca::Double a;
+    BOOST_CHECK_THROW((a || a), std::string);
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_and){
+    Sawoca::Double a;
+    BOOST_CHECK_THROW((a && a), std::string);
+}
+
+BOOST_AUTO_TEST_CASE(test_logical_not){
+    Sawoca::Double a;
+    BOOST_CHECK_THROW((a.logical_not()), std::string);
+}
+
+BOOST_AUTO_TEST_CASE(test_operator_not){
+    Sawoca::Double a;
+    BOOST_CHECK_THROW((!a), std::string);
+}

@@ -4,6 +4,8 @@
 
 using namespace Sawoca;
 
+const std::string double_type("double");
+
 Double::Double() : Value(DOUBLE), val(0.0) {}
 
 Double::Double(double d) : Value(DOUBLE), val(d) {};
@@ -13,7 +15,7 @@ double Double::get_val() const{
 }
 
 std::string Double::get_string_type() const {
-    return std::string("double");
+    return double_type;
 }
 
 const Value& cast_to_value(const Language::Values::ValueI& v){
@@ -30,7 +32,7 @@ const Double& cast_to_double(const Value& v){
         const Double& dp = dynamic_cast<const Double&>(v);
         return dp;
     } catch (const std::bad_cast& e){
-        throw "not a double";
+        throw "not a " + double_type;
     }
 }
 
@@ -45,7 +47,7 @@ Language::Values::ValueI* Double::add(const ValueI& v) const {
             return d; 
         }
         default:
-            throw std::string("cannot add type " + get_string_type() + 
+            throw std::string("cannot add type " + double_type + 
             " and type " + vp.get_string_type());
             return nullptr;
     }
@@ -62,7 +64,7 @@ Language::Values::ValueI* Double::sub(const ValueI& v) const{
             return d; 
         }
         default:
-            throw std::string("cannot sub type " + get_string_type() + " and type " + 
+            throw std::string("cannot sub type " + double_type + " and type " + 
                 vp.get_string_type());
             return nullptr;
     }
@@ -79,7 +81,7 @@ Language::Values::ValueI* Double::mul(const ValueI& v) const{
             return d; 
         }
         default:
-            throw std::string("cannot mul type " + get_string_type() + " and type " + 
+            throw std::string("cannot mul type " + double_type + " and type " + 
                 vp.get_string_type());
             return nullptr;
     }
@@ -101,7 +103,7 @@ Language::Values::ValueI* Double::div(const ValueI& v) const{
                 return dp; 
             }
         default:
-            throw std::string("cannot add type " + get_string_type() +
+            throw std::string("cannot add type " + double_type +
              " and type " + vp.get_string_type());
             return nullptr;
     }
@@ -133,7 +135,7 @@ Language::Values::ValueI& Double::operator+=(const Language::Values::ValueI& v){
             val += cast_to_double(vp).get_val();
             break;
         default:
-            throw std::string("cannot add type " + get_string_type() + " and type " +
+            throw std::string("cannot add type " + double_type + " and type " +
                 vp.get_string_type());
             break;
     }
@@ -149,7 +151,7 @@ Language::Values::ValueI& Double::operator-=(const Language::Values::ValueI& v){
             val -= cast_to_double(vp).get_val();
             break;
         default:
-            throw std::string("cannot sub type " + get_string_type() + " and type " +
+            throw std::string("cannot sub type " + double_type + " and type " +
                 vp.get_string_type());
             break;
     }
@@ -164,7 +166,7 @@ Language::Values::ValueI& Double::operator*=(const Language::Values::ValueI& v){
             val *= cast_to_double(vp).get_val();
             break;
         default:
-            throw std::string("cannot mul type " + get_string_type() + " and type " +
+            throw std::string("cannot mul type " + double_type + " and type " +
                 vp.get_string_type());
             break;
     }
@@ -184,7 +186,7 @@ Language::Values::ValueI& Double::operator/=(const Language::Values::ValueI& v){
             }
             break;
         default:
-            throw std::string("cannot div type " + get_string_type() + " and type " +
+            throw std::string("cannot div type " + double_type + " and type " +
                 vp.get_string_type());
             break;
     }
@@ -201,27 +203,55 @@ std::string Double::string() const{
 bool Double::equals(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
-        throw "cannot compare DOUBLE and" + vother.get_string_type();
+        throw "cannot compare " + double_type + " and " 
+            + vother.get_string_type();
     return val == cast_to_double(vother).get_val();
 }
 
 bool Double::not_equals(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
-        throw "cannot compare DOUBLE and" + vother.get_string_type();
+        throw "cannot compare " + double_type + " and " 
+            + vother.get_string_type();
     return val != cast_to_double(vother).get_val();
 }
 
 bool Double::operator==(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
-        throw "cannot compare DOUBLE and" + vother.get_string_type();
+        throw "cannot compare " + double_type + " and " 
+            + vother.get_string_type();
     return val == cast_to_double(vother).get_val();
 }
 
 bool Double::operator!=(const ValueI& other) const {
     const Value& vother = cast_to_value(other);
     if(vother.get_type() != DOUBLE)
-        throw "cannot compare DOUBLE and" + vother.get_string_type();
+        throw "cannot compare " + double_type + " and " 
+            + vother.get_string_type();
     return val != cast_to_double(vother).get_val();
+}
+
+bool Double::logical_or(const ValueI& other) const{
+    throw "cannot OR a " + double_type;
+}
+
+bool Double::logical_and(const ValueI& other) const{
+    throw "cannot AND a " + double_type;
+}
+
+bool Double::operator||(const ValueI& other) const{
+    return logical_or(other);
+}
+
+bool Double::operator&&(const ValueI& other) const{
+    return logical_and(other);
+}
+
+bool Double::logical_not() const{
+    throw "cannot logically invert " + double_type;
+}
+
+bool Double::operator!() const{
+    return logical_not();
 }

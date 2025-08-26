@@ -180,7 +180,7 @@ void Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
 		if(tok->get_type() == PRINT)
 			continue;
 		Language::Values::ValueI* eval = expr(false, it);
-        std::cout << static_cast<Value*>(eval)->string() << "\n";
+        std::cout << cast_to_value(eval)->string() << "\n";
 		delete eval;
 	}
 }

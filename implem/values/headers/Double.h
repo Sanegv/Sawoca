@@ -200,6 +200,56 @@ namespace Sawoca {
          * @return false if they are the same, true otherwise
          */
         virtual bool operator!=(const ValueI&) const override;
+
+        /**
+         * @brief Checks whether at least one of the two values is true. Throws
+         * an exception if one of the types is not a bool.
+         * @param other the value to compare.
+         * @return false if the two values are false, true otherwise.
+         */
+        virtual bool logical_or(const ValueI&) const override;
+
+        /**
+         * @brief Checks whether at least one of the two values is true. Throws
+         * an exception if one of the types is not a bool. Effectively calls
+         * \ref logical_or().
+         * @param other the value to compare.
+         * @return false if the two values are false, true otherwise.
+         */
+        virtual bool operator||(const ValueI&) const override;
+
+        /**
+         * @brief Checks whether at least one of the two values is true. Throws
+         * an exception if one of the types is not a bool.
+         * @param other the value to compare.
+         * @return true if the two values are true, false otherwise.
+         */
+        virtual bool logical_and(const ValueI&) const override;
+
+
+        /**
+         * @brief Checks whether the two values is true. Throws
+         * an exception if one of the types is not a bool.Effectively calls
+         * \ref logical_and().
+         * @param other the value to compare.
+         * @return true if the two values are true, false otherwise.
+         */
+        virtual bool operator&&(const ValueI&) const override;
+
+        /**
+         * @brief Logically inverts the value. Throws an exception if it's not a
+         * bool.
+         * @return true if false, false if true.
+         */
+        virtual bool logical_not() const override;
+
+
+        /**
+         * @brief Logically inverts the value. Throws an exception if it's not a
+         * bool. Effectively calls \ref logical_not().
+         * @return true if false, false if true.
+         */
+        virtual bool operator!() const override;
     };
 }
 
