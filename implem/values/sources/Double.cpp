@@ -24,7 +24,7 @@ const Double& cast_to_double(const Value& v){
         const Double& dp = dynamic_cast<const Double&>(v);
         return dp;
     } catch (const std::bad_cast& e){
-        throw "not a " + double_type;
+        throw std::string("not a " + double_type);
     }
 }
 
@@ -33,7 +33,7 @@ Value* Double::add(const Value& v) const {
         case DOUBLE: {
             Double* d = new Double(val+cast_to_double(v).get_val());
             if(!d)
-                throw "memory allocation failed";
+                throw std::string("memory allocation failed");
             return d; 
         }
         default:
@@ -48,7 +48,7 @@ Value* Double::sub(const Value& v) const{
         case DOUBLE: {
             Double* d = new Double(val-cast_to_double(v).get_val());
             if(!d)
-                throw "memory allocation failed";
+                throw std::string("memory allocation failed");
             return d; 
         }
         default:
@@ -63,7 +63,7 @@ Value* Double::mul(const Value& v) const{
         case DOUBLE: {
             Double* d = new Double(val*cast_to_double(v).get_val());
             if(!d)
-                throw "memory allocation failed";
+                throw std::string("memory allocation failed");
             return d; 
         }
         default:
@@ -83,7 +83,7 @@ Value* Double::div(const Value& v) const{
                 
                 Double* dp = new Double(val/d);
                 if(!dp)
-                    throw "memory allocation failed";
+                    throw std::string("memory allocation failed");
                 return dp; 
             }
         default:
@@ -177,38 +177,40 @@ std::string Double::string() const{
 
 const Value* Double::equals(const Value& other) const {
     if(other.get_type() != DOUBLE)
-        throw "cannot compare " + double_type + " and " 
-            + other.get_string_type();
+        throw std::string("cannot compare " + double_type + " and " 
+            + other.get_string_type());
     return new Bool(val == cast_to_double(other).get_val());
 }
 
 const Value* Double::not_equals(const Value& other) const {
     if(other.get_type() != DOUBLE)
-        throw "cannot compare " + double_type + " and " 
-            + other.get_string_type();
+        throw std::string("cannot compare " + double_type + " and " 
+            + other.get_string_type());
     return new Bool(val != cast_to_double(other).get_val());
 }
 
 const Value* Double::operator==(const Value& other) const {
     if(other.get_type() != DOUBLE)
-        throw "cannot compare " + double_type + " and " 
-            + other.get_string_type();
+        throw std::string("cannot compare " + double_type + " and " 
+            + other.get_string_type());
     return new Bool(val == cast_to_double(other).get_val());
 }
 
 const Value* Double::operator!=(const Value& other) const {
     if(other.get_type() != DOUBLE)
-        throw "cannot compare " + double_type + " and " 
-            + other.get_string_type();
+        throw std::string("cannot compare " + double_type + " and " 
+            + other.get_string_type());
     return new Bool(val != cast_to_double(other).get_val());
 }
 
 const Value* Double::logical_or(const Value& other) const{
-    throw "cannot OR a " + double_type;
+    (void)other;
+    throw std::string("cannot OR a " + double_type);
 }
 
 const Value* Double::logical_and(const Value& other) const{
-    throw "cannot AND a " + double_type;
+    (void)other;
+    throw std::string("cannot AND a " + double_type);
 }
 
 const Value* Double::operator||(const Value& other) const{
@@ -220,7 +222,7 @@ const Value* Double::operator&&(const Value& other) const{
 }
 
 const Value* Double::logical_not() const{
-    throw "cannot logically invert " + double_type;
+    throw std::string("cannot logically invert " + double_type);
 }
 
 const Value* Double::operator!() const{
