@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(test_get_token){
     expected.emplace_back(Sawoca::MINUS);
     expected.emplace_back(Sawoca::MUL);
     expected.emplace_back(Sawoca::DIV);
-    expected.emplace_back(Sawoca::NUMBER);
+    expected.emplace_back(Sawoca::VALUE);
     expected.emplace_back(Sawoca::LP);
     expected.emplace_back(Sawoca::RP);
     expected.emplace_back(Sawoca::END);
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(test_lex){
     expected.emplace_back(Sawoca::MINUS);
     expected.emplace_back(Sawoca::MUL);
     expected.emplace_back(Sawoca::DIV);
-    expected.emplace_back(Sawoca::NUMBER);
+    expected.emplace_back(Sawoca::VALUE);
     expected.emplace_back(Sawoca::LP);
     expected.emplace_back(Sawoca::RP);
     expected.emplace_back(Sawoca::END);

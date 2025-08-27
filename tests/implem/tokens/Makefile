@@ -11,11 +11,11 @@ HEADERS_DIR = $(IMPLEM_TOKENS_DIR)/headers
 VALUES_HEADERS_DIR = $(IMPLEM_VALUES_DIR)/headers
 INTERFACES_DIR = $(ROOT_DIR)/interfaces
 
-TEST_SOURCES = test_AssignToken.cpp test_EndToken.cpp test_LeftParToken.cpp test_NameToken.cpp test_NumberToken.cpp test_OperatorToken.cpp test_PrintToken.cpp test_RightParToken.cpp
+TEST_SOURCES = test_AssignToken.cpp test_EndToken.cpp test_LeftParToken.cpp test_NameToken.cpp test_ValueToken.cpp test_OperatorToken.cpp test_PrintToken.cpp test_RightParToken.cpp
 TEST_OBJECTS = $(patsubst %.cpp,$(TEST_BUILD_DIR)/%.o,$(TEST_SOURCES))
 TEST_EXECUTABLES = $(patsubst %.cpp,$(TEST_BUILD_DIR)/%,$(TEST_SOURCES))
 
-TOKEN_OBJECTS = $(BUILD_DIR)/AssignToken.o $(BUILD_DIR)/EndToken.o $(BUILD_DIR)/LeftParToken.o $(BUILD_DIR)/NameToken.o $(BUILD_DIR)/NumberToken.o $(BUILD_DIR)/OperatorToken.o $(BUILD_DIR)/PrintToken.o $(BUILD_DIR)/RightParToken.o
+TOKEN_OBJECTS = $(BUILD_DIR)/AssignToken.o $(BUILD_DIR)/EndToken.o $(BUILD_DIR)/LeftParToken.o $(BUILD_DIR)/NameToken.o $(BUILD_DIR)/ValueToken.o $(BUILD_DIR)/OperatorToken.o $(BUILD_DIR)/PrintToken.o $(BUILD_DIR)/RightParToken.o
 VALUE_OBJECTS = $(BUILD_DIR)/Double.o $(BUILD_DIR)/Bool.o
 
 INCLUDES = -I$(HEADERS_DIR) -I$(VALUES_HEADERS_DIR) -I$(INTERFACES_DIR)

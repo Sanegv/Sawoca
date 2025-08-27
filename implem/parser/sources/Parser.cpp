@@ -66,9 +66,11 @@ Value* Parser::prim(
     Token* tok = cast_token(it);
 
 	switch(tok->get_type()) {
-	case NUMBER:
+	case VALUE:
 	{
 		const Value* val = dynamic_cast<const Value*>(tok->get_value());
+		if(val->get_type() != DOUBLE)
+			throw std::string("booleans not yet handled");
 		const Double* v = cast_to_double(val);
 		it++;
 		Double* d = new Double(v->get_val());

@@ -1,12 +1,13 @@
 #include "../headers/Lexer.h"
 #include "../../tokens/headers/EndToken.h"
 #include "../../tokens/headers/NameToken.h"
-#include "../../tokens/headers/NumberToken.h"
+#include "../../tokens/headers/ValueToken.h"
 #include "../../tokens/headers/OperatorToken.h"
 #include "../../tokens/headers/PrintToken.h"
 #include "../../tokens/headers/LeftParToken.h"
 #include "../../tokens/headers/RightParToken.h"
 #include "../../tokens/headers/AssignToken.h"
+#include "../../values/headers/Double.h"
 #include <vector>
 
 using namespace Sawoca;
@@ -44,11 +45,11 @@ Language::Tokens::TokenI* Lexer::get_token(){
 		return new Assign_Token();
 
 	default:
-		//number
+		//value
 		if(isdigit(ch) || ch == '.'){
 			input.putback(ch);
 			input >> number_value;
-			return new Number_Token(number_value);
+			return new Value_Token(new Double(number_value));
 		}
 
 		//name

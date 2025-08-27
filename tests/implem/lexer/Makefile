@@ -17,7 +17,7 @@ TEST_SRC = test_lexer.cpp
 TEST_EXEC = $(TEST_BUILD_DIR)/test_lexer
 
 LEXER_OBJECTS = $(BUILD_DIR)/Lexer.o
-TOKEN_OBJECTS = $(BUILD_DIR)/AssignToken.o $(BUILD_DIR)/EndToken.o $(BUILD_DIR)/LeftParToken.o $(BUILD_DIR)/NameToken.o $(BUILD_DIR)/NumberToken.o $(BUILD_DIR)/OperatorToken.o $(BUILD_DIR)/PrintToken.o $(BUILD_DIR)/RightParToken.o
+TOKEN_OBJECTS = $(BUILD_DIR)/AssignToken.o $(BUILD_DIR)/EndToken.o $(BUILD_DIR)/LeftParToken.o $(BUILD_DIR)/NameToken.o $(BUILD_DIR)/ValueToken.o $(BUILD_DIR)/OperatorToken.o $(BUILD_DIR)/PrintToken.o $(BUILD_DIR)/RightParToken.o
 VALUE_OBJECTS = $(BUILD_DIR)/Double.o $(BUILD_DIR)/Bool.o
 
 INCLUDES = -I$(LEXER_HEADERS_DIR) -I$(TOKENS_HEADERS_DIR) -I$(VALUES_HEADERS_DIR) -I$(INTERFACES_DIR)

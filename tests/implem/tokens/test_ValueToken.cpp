@@ -1,12 +1,12 @@
 #include <boost/test/tools/old/interface.hpp>
-#define BOOST_TEST_MODULE NumberTokenTests
+#define BOOST_TEST_MODULE ValueTokenTests
 #include <boost/test/included/unit_test.hpp>
 
-#include "../../../implem/tokens/headers/NumberToken.h"
+#include "../../../implem/tokens/headers/ValueToken.h"
 #include "../../../implem/values/headers/Double.h"
 
 BOOST_AUTO_TEST_CASE(test_default_constructor){
-    Sawoca::Number_Token* tok = new Sawoca::Number_Token();
+    Sawoca::Value_Token* tok = new Sawoca::Value_Token((new Sawoca::Double()));
     BOOST_CHECK_NE(tok, nullptr);
     const Sawoca::Double* val = dynamic_cast<const Sawoca::Double*>(tok->get_value());
     BOOST_CHECK_NE(val, nullptr);
@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(test_default_constructor){
 
 BOOST_AUTO_TEST_CASE(test_primitive_double_constructor){
     double expected = 3.14;
-    Sawoca::Number_Token* tok = new Sawoca::Number_Token(expected);
+    Sawoca::Value_Token* tok = new Sawoca::Value_Token((new Sawoca::Double(expected)));
     BOOST_CHECK_NE(tok, nullptr);
     const Sawoca::Double* val = dynamic_cast<const Sawoca::Double*>(tok->get_value());
     BOOST_CHECK_NE(val, nullptr);
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(test_primitive_double_constructor){
 
 BOOST_AUTO_TEST_CASE(test_sawoca_double_constructor){
     Sawoca::Double* expected = new Sawoca::Double(3.14);
-    Sawoca::Number_Token* tok = new Sawoca::Number_Token(expected);
+    Sawoca::Value_Token* tok = new Sawoca::Value_Token(expected);
     BOOST_CHECK_NE(tok, nullptr);
     const Sawoca::Double* val = dynamic_cast<const Sawoca::Double*>(tok->get_value());
     BOOST_CHECK_NE(val, nullptr);
@@ -36,12 +36,12 @@ BOOST_AUTO_TEST_CASE(test_sawoca_double_constructor){
 }
 
 BOOST_AUTO_TEST_CASE(test_get_string_type){
-    Sawoca::Number_Token tok;
-    BOOST_CHECK_EQUAL(tok.get_string_type(), "NUMBER");
+    Sawoca::Value_Token tok(new Sawoca::Double());
+    BOOST_CHECK_EQUAL(tok.get_string_type(), "double");
 }
 
 BOOST_AUTO_TEST_CASE(test_get_value){
-    Sawoca::Number_Token tok(3.14);
+    Sawoca::Value_Token tok(new Sawoca::Double(3.14));
     Sawoca::Double* d = new Sawoca::Double(3.14);
     const Sawoca::Double* val = dynamic_cast<const Sawoca::Double*>(tok.get_value());
     BOOST_CHECK_NE(val, nullptr);
@@ -50,6 +50,6 @@ BOOST_AUTO_TEST_CASE(test_get_value){
 }
 
 BOOST_AUTO_TEST_CASE(test_get_type){
-    Sawoca::Number_Token tok;
-    BOOST_CHECK_EQUAL(tok.get_type(), Sawoca::NUMBER);
+    Sawoca::Value_Token tok(new Sawoca::Double());
+    BOOST_CHECK_EQUAL(tok.get_type(), Sawoca::VALUE);
 }

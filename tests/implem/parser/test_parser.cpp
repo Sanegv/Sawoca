@@ -1,4 +1,3 @@
-#include <boost/test/tools/old/interface.hpp>
 #include <iostream>
 #include <sstream>
 #include <streambuf>
@@ -11,12 +10,14 @@
 
 #include "../../../implem/tokens/headers/EndToken.h"
 #include "../../../implem/tokens/headers/NameToken.h"
-#include "../../../implem/tokens/headers/NumberToken.h"
+#include "../../../implem/tokens/headers/ValueToken.h"
 #include "../../../implem/tokens/headers/OperatorToken.h"
 #include "../../../implem/tokens/headers/PrintToken.h"
 #include "../../../implem/tokens/headers/LeftParToken.h"
 #include "../../../implem/tokens/headers/RightParToken.h"
 #include "../../../implem/tokens/headers/AssignToken.h"
+
+#include "../../../implem/values/headers/Double.h"
 
 BOOST_AUTO_TEST_CASE(test_constructor){
     std::map<std::string, const Sawoca::Value*> table;
@@ -25,12 +26,12 @@ BOOST_AUTO_TEST_CASE(test_constructor){
     delete parser;
 }
 
-BOOST_AUTO_TEST_CASE(test_parse_number){
+BOOST_AUTO_TEST_CASE(test_parse_value){
     std::map<std::string, const Sawoca::Value*> table;
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
-        new Sawoca::Number_Token(3.14),
+        new Sawoca::Value_Token(new Sawoca::Double(3.14)),
         new Sawoca::End_Token
     };
 
@@ -52,9 +53,9 @@ BOOST_AUTO_TEST_CASE(test_parse_addition){
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
-        new Sawoca::Number_Token(3.14),
+        new Sawoca::Value_Token(new Sawoca::Double(3.14)),
         new Sawoca::Operator_Token('+'),
-        new Sawoca::Number_Token(2.46),
+        new Sawoca::Value_Token(new Sawoca::Double(2.46)),
         new Sawoca::End_Token
     };
 
@@ -76,11 +77,11 @@ BOOST_AUTO_TEST_CASE(test_parse_precedence){
     Sawoca::Parser parser(table);
 
     std::vector<Language::Tokens::TokenI*> tokens {
-        new Sawoca::Number_Token(1),
+        new Sawoca::Value_Token(new Sawoca::Double(1)),
         new Sawoca::Operator_Token('+'),
-        new Sawoca::Number_Token(2),
+        new Sawoca::Value_Token(new Sawoca::Double(2)),
         new Sawoca::Operator_Token('*'),
-        new Sawoca::Number_Token(3),
+        new Sawoca::Value_Token(new Sawoca::Double(3)),
         new Sawoca::End_Token
     };
 
@@ -103,12 +104,12 @@ BOOST_AUTO_TEST_CASE(test_parse_paranthesis){
 
     std::vector<Language::Tokens::TokenI*> tokens {
         new Sawoca::LeftPar_Token(),
-        new Sawoca::Number_Token(1),
+        new Sawoca::Value_Token(new Sawoca::Double(1)),
         new Sawoca::Operator_Token('+'),
-        new Sawoca::Number_Token(2),
+        new Sawoca::Value_Token(new Sawoca::Double(2)),
         new Sawoca::RightPar_Token(),
         new Sawoca::Operator_Token('*'),
-        new Sawoca::Number_Token(3),
+        new Sawoca::Value_Token(new Sawoca::Double(3)),
         new Sawoca::End_Token
     };
 
@@ -132,11 +133,11 @@ BOOST_AUTO_TEST_CASE(test_parse_variables){
     std::vector<Language::Tokens::TokenI*> tokens {
         new Sawoca::Name_Token("test", table),
         new Sawoca::Assign_Token(),
-        new Sawoca::Number_Token(4.5),
+        new Sawoca::Value_Token(new Sawoca::Double(4.5)),
         new Sawoca::Print_Token(),
         new Sawoca::Name_Token("test", table),
         new Sawoca::Operator_Token('*'),
-        new Sawoca::Number_Token(2),
+        new Sawoca::Value_Token(new Sawoca::Double(2)),
         new Sawoca::End_Token
     };
 
@@ -168,9 +169,9 @@ BOOST_AUTO_TEST_CASE(test_parser_error){
         delete tok;
 
     std::vector<Language::Tokens::TokenI*> div_by_zero{
-        new Sawoca::Number_Token(1),
+        new Sawoca::Value_Token(new Sawoca::Double(1)),
         new Sawoca::Operator_Token('/'),
-        new Sawoca::Number_Token(),
+        new Sawoca::Value_Token(new Sawoca::Double()),
         new Sawoca::End_Token()
     };
     BOOST_CHECK_THROW(parser.parse(div_by_zero), std::string);

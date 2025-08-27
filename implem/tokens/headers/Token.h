@@ -18,7 +18,10 @@ namespace Sawoca {
  	*/
 	enum Token_Type{
 		NAME, ///< The name of a variable
-		NUMBER, ///< A litteral double
+		VALUE, ///< A litteral double
+		L_OR, ///< A logical "or"
+		L_AND, ///< A logical "and"
+		L_NOT, ///< A logical "not"
 		END, ///< The end of the stream to parse
 		PLUS = '+', ///< An addition
 		MINUS = '-', ///< A subtraction
