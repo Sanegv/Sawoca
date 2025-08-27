@@ -22,6 +22,8 @@ namespace Sawoca {
 		L_OR, ///< A logical "or"
 		L_AND, ///< A logical "and"
 		L_NOT, ///< A logical "not"
+		EQ, ///< The mathematical equality
+		NEQ, ///< The mathematical inequality
 		END, ///< The end of the stream to parse
 		PLUS = '+', ///< An addition
 		MINUS = '-', ///< A subtraction
