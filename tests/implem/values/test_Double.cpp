@@ -159,6 +159,10 @@ BOOST_AUTO_TEST_CASE(test_unary_operator_minus){
     double expected(5.87);
     Sawoca::Double positive(expected);
     Sawoca::Value* negative = -positive;
+    const Sawoca::Double* dneg = dynamic_cast<const Sawoca::Double*>(negative);
+    BOOST_CHECK_NE(dneg, nullptr);
+    BOOST_CHECK_EQUAL(dneg->get_val(), -expected);
+    delete negative;
 }
 
 BOOST_AUTO_TEST_CASE(test_equal){
@@ -209,7 +213,7 @@ BOOST_AUTO_TEST_CASE(test_operator_equal_equal){
     delete result;
 }
 
-BOOST_AUTO_TEST_CASE(test__not_equal){
+BOOST_AUTO_TEST_CASE(test_not_equal){
     Sawoca::Double a(3.14);
     Sawoca::Double b(3.14);
     Sawoca::Double c(3.15);
@@ -217,19 +221,19 @@ BOOST_AUTO_TEST_CASE(test__not_equal){
     const Sawoca::Value* result = a.not_equals(b);
     const Sawoca::Bool* bresult = dynamic_cast<const Sawoca::Bool*>(result);
     BOOST_CHECK_NE(bresult, nullptr);
-    BOOST_CHECK_EQUAL(bresult->get_val(), true);
+    BOOST_CHECK_EQUAL(bresult->get_val(), false);
     delete result;
 
     result = a.not_equals(a);
     bresult = dynamic_cast<const Sawoca::Bool*>(result);
     BOOST_CHECK_NE(bresult, nullptr);
-    BOOST_CHECK_EQUAL(bresult->get_val(), true);
+    BOOST_CHECK_EQUAL(bresult->get_val(), false);
     delete result;
 
     result = a.not_equals(c);
     bresult = dynamic_cast<const Sawoca::Bool*>(result);
     BOOST_CHECK_NE(bresult, nullptr);
-    BOOST_CHECK_EQUAL(bresult->get_val(), false);
+    BOOST_CHECK_EQUAL(bresult->get_val(), true);
     delete result;
 }
 
@@ -240,19 +244,19 @@ BOOST_AUTO_TEST_CASE(test_operator_not_equal){
     const Sawoca::Value* result = a != b;
     const Sawoca::Bool* bresult = dynamic_cast<const Sawoca::Bool*>(result);
     BOOST_CHECK_NE(bresult, nullptr);
-    BOOST_CHECK_EQUAL(bresult->get_val(), true);
+    BOOST_CHECK_EQUAL(bresult->get_val(), false);
     delete result;
 
     result = a != a;
     bresult = dynamic_cast<const Sawoca::Bool*>(result);
     BOOST_CHECK_NE(bresult, nullptr);
-    BOOST_CHECK_EQUAL(bresult->get_val(), true);
+    BOOST_CHECK_EQUAL(bresult->get_val(), false);
     delete result;
 
     result = a != c;
     bresult = dynamic_cast<const Sawoca::Bool*>(result);
     BOOST_CHECK_NE(bresult, nullptr);
-    BOOST_CHECK_EQUAL(bresult->get_val(), false);
+    BOOST_CHECK_EQUAL(bresult->get_val(), true);
     delete result;
 }
 
