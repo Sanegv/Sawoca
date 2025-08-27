@@ -17,7 +17,7 @@ const Value* Name_Token::get_value() const{
         const Value* result = variables.at(name);
         return result;
     } catch (const std::out_of_range& e){
-        throw "unknown variable: " + name;
+        throw std::string("unknown variable: " + name);
     }
 }
 

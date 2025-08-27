@@ -27,7 +27,7 @@ Value* cast_to_value(Value* v){
     return vp;
 }
 
-const Double* const cast_to_double(const Value* const v){
+const Double* cast_to_double(const Value* const v){
     if(!v)
         throw std::string("nullptr dereference");
 
@@ -47,7 +47,7 @@ std::string get_name(Language::Tokens::TokenI* tok){
 
 	Name_Token* ntok = dynamic_cast<Name_Token*>(tok);
 	if(!ntok)
-		throw "unknown type";
+		throw std::string("unknown type");
 	return ntok->get_name();
 }
 //\endcond
@@ -73,7 +73,7 @@ Value* Parser::prim(
 		it++;
 		Double* d = new Double(v->get_val());
 		if(!d)
-			throw "memory allocation failed";
+			throw std::string("memory allocation failed");
 		return d;
 	}
 	case NAME:{
@@ -92,10 +92,10 @@ Value* Parser::prim(
 		}
 
 		if(!table[name])
-			throw "unknown variable \"" + name + "\"";
+			throw std::string("unknown variable \"" + name + "\"");
 		Double* d = new Double(cast_to_double(table[name])->get_val());
 		if(!d)
-			throw "memory allocation failed";
+			throw std::string("memory allocation failed");
 		return d;
 	}
 	case MINUS:{

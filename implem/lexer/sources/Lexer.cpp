@@ -81,7 +81,7 @@ std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 			if(!tok){
 				for(Language::Tokens::TokenI* tok : tokens)
 					delete tok;
-				throw "memory allocaiton failed";
+				throw std::string("memory allocaiton failed");
 			}				
 			tokens.push_back(tok);
 			return tokens;
@@ -91,7 +91,7 @@ std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 		if(!tok){
 			for(Language::Tokens::TokenI* tok : tokens)
 				delete tok;
-			throw "memory allocation failed";
+			throw std::string("memory allocation failed");
 		}
 		tokens.push_back(tok);
 		if(tok->get_type() == END || tok->get_type() == PRINT)

@@ -31,6 +31,6 @@ std::string Operator_Token::get_string_type() const {
     case '/':
         return "DIV";
     default:
-        throw "unknown operator type";
+        throw std::string("unknown operator type");
     }
 }

@@ -21,11 +21,11 @@ void init_table(std::map<std::string, const Sawoca::Value*>* table){
 	if(table){
 		Sawoca::Double* pi = new Sawoca::Double(3.1415926535897932385);
 		if(!pi)
-			throw "memory allocation failed";
+			throw std::string("memory allocation failed");
 		Sawoca::Double* e  = new Sawoca::Double(2.7182818284590452354);
 		if(!e){
 			delete pi;
-			throw "memory allocation failed";
+			throw std::string("memory allocation failed");
 		}
 
 		(*table)["pi"] = pi;
