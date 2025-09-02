@@ -110,7 +110,7 @@ Value* Parser::prim(
 
 		//assignment
 		if(tok->get_type() == ASSIGN){
-			const Double* right = cast_to_double(expr(true, it));
+			const Double* right = cast_to_double(logical(true, it));
 			if(const Value* v = table[name]){
 				table.erase(table.find(name));
 				delete v;
@@ -132,7 +132,7 @@ Value* Parser::prim(
 	case PLUS:
 		return prim(true, it);
 	case LP:{
-		Value* e = expr(true, it);
+		Value* e = logical(true, it);
 		if(cast_token(it)->get_type() != RP)
 			throw std::string("expected ')'");
 
