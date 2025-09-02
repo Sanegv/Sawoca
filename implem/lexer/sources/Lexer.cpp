@@ -56,6 +56,20 @@ Language::Tokens::TokenI* Lexer::get_token(){
 		}
 		return new Operator_Token(L_NOT);
 
+	case '<':
+		if(input.peek() == '='){
+			input.get(ch); //consume '<='
+			return new Operator_Token(LESS_EQ);
+		}
+		return new Operator_Token(LESSER);
+
+	case '>':
+		if(input.peek() == '='){
+			input.get(ch); //consume '>='
+			return new Operator_Token(GREAT_EQ);
+		}
+		return new Operator_Token(GREATER);
+
 	case '|':
 		if(input.get() != '|')
 			throw "invalid operator \'|\'";

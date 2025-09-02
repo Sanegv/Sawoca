@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(test_constructor){
 BOOST_AUTO_TEST_CASE(test_get_token){
     std::map<std::string, const Sawoca::Value*> table;
     std::vector<Sawoca::Token_Type> expected;
-    std::string text = "test true false = + - * / 1.2 () || && ! == !=";
+    std::string text = "test true false = + - * / 1.2 () || && ! == != < > <= >=";
     std::istringstream input(text);
 
     expected.emplace_back(Sawoca::NAME);
@@ -41,6 +41,10 @@ BOOST_AUTO_TEST_CASE(test_get_token){
     expected.emplace_back(Sawoca::L_NOT);
     expected.emplace_back(Sawoca::EQ);
     expected.emplace_back(Sawoca::NEQ);
+    expected.emplace_back(Sawoca::LESSER);
+    expected.emplace_back(Sawoca::GREATER);
+    expected.emplace_back(Sawoca::LESS_EQ);
+    expected.emplace_back(Sawoca::GREAT_EQ);
     expected.emplace_back(Sawoca::END);
 
     Sawoca::Lexer lexer = Sawoca::Lexer(table, input);
@@ -59,7 +63,7 @@ BOOST_AUTO_TEST_CASE(test_get_token){
 BOOST_AUTO_TEST_CASE(test_lex){
     std::map<std::string, const Sawoca::Value*> table;
     std::vector<Sawoca::Token_Type> expected;
-    std::string text = "test true false = + - * / 1.2 () || && ! == !=";
+    std::string text = "test true false = + - * / 1.2 () || && ! == != < > <= >=";
     std::istringstream input(text);
 
     expected.emplace_back(Sawoca::NAME);
@@ -78,6 +82,10 @@ BOOST_AUTO_TEST_CASE(test_lex){
     expected.emplace_back(Sawoca::L_NOT);
     expected.emplace_back(Sawoca::EQ);
     expected.emplace_back(Sawoca::NEQ);
+    expected.emplace_back(Sawoca::LESSER);
+    expected.emplace_back(Sawoca::GREATER);
+    expected.emplace_back(Sawoca::LESS_EQ);
+    expected.emplace_back(Sawoca::GREAT_EQ);
     expected.emplace_back(Sawoca::END);
 
     Sawoca::Lexer lexer = Sawoca::Lexer(table, input);
