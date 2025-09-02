@@ -212,26 +212,38 @@ Value* Parser::relational(
 	while(true){
         Token* tok = cast_token(it);
 		switch(tok->get_type()){
-		case LESSER:
+		case LESSER:{
 			right = expr(true, it);
-			left = *cast_to_value(left) < *right;
+			Value* tmp = *cast_to_value(left) < *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
-		case LESS_EQ:
+		}
+		case LESS_EQ:{
 			right = expr(true, it);
-			left = *cast_to_value(left) <= *right;
+			Value* tmp = *cast_to_value(left) <= *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
-		case GREATER:
+		}
+		case GREATER:{
 			right = expr(true, it);
-			left = *cast_to_value(left) > *right;
+			Value* tmp = *cast_to_value(left) > *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
-		case GREAT_EQ:
+		}
+		case GREAT_EQ:{
 			right = expr(true, it);
-			left = *cast_to_value(left) >= *right;
+			Value* tmp = *cast_to_value(left) >= *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
+		}
 		default:
 			return left;
 		}
@@ -249,16 +261,22 @@ Value* Parser::equality(
 	while(true){
         Token* tok = cast_token(it);
 		switch(tok->get_type()){
-		case EQ:
+		case EQ:{
 			right = relational(true, it);
-			left = *cast_to_value(left) == *right;
+			Value* tmp = *cast_to_value(left) == *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
-		case NEQ:
+		}
+		case NEQ:{
 			right = relational(true, it);
-			left = *cast_to_value(left) != *right;
+			Value* tmp = *cast_to_value(left) != *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
+		}
 		default:
 			return left;
 		}
@@ -275,16 +293,22 @@ Value* Parser::logical(
 	while(true){
         Token* tok = cast_token(it);
 		switch(tok->get_type()){
-		case L_OR:
+		case L_OR:{
 			right = equality(true, it);
-			left = *cast_to_value(left) || *right;
+			Value* tmp = *cast_to_value(left) || *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
-		case L_AND:
+		}
+		case L_AND:{
 			right = equality(true, it);
-			left = *cast_to_value(left) && *right;
+			Value* tmp = *cast_to_value(left) && *right;
 			delete right;
+			delete left;
+			left = tmp;
 			break;
+		}
 		default:
 			return left;
 		}
