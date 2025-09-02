@@ -8,6 +8,7 @@
 #include "../../tokens/headers/RightParToken.h"
 #include "../../tokens/headers/AssignToken.h"
 #include "../../values/headers/Double.h"
+#include "../../values/headers/Bool.h"
 #include <vector>
 
 using namespace Sawoca;
@@ -42,7 +43,28 @@ Language::Tokens::TokenI* Lexer::get_token(){
 		return new RightPar_Token();
 	
 	case '=':
+		if(input.peek() == '='){
+			input.get(ch); //consume '=='
+			return new Operator_Token(EQ);
+		}
 		return new Assign_Token();
+
+	case '!':
+		if(input.peek() == '='){
+			input.get(ch); //consume '!='
+			return new Operator_Token(NEQ);
+		}
+		return new Operator_Token(L_NOT);
+
+	case '|':
+		if(input.get() != '|')
+			throw "invalid operator \'|\'";
+		return new Operator_Token(L_OR);
+
+	case '&':
+		if(input.get() != '&')
+			throw "invalid operator \'&\'";
+		return new Operator_Token(L_AND);
 
 	default:
 		//value
@@ -57,12 +79,18 @@ Language::Tokens::TokenI* Lexer::get_token(){
 			string_value = ch;
 			while(input.get(ch) && isalnum(ch))
 				string_value.push_back(ch);
+			input.putback(ch);
 
 			//exit
 			if(string_value == "exit")
 				return new End_Token();
 
-			input.putback(ch);
+			//booleans
+			if(string_value == "true")
+				return new Value_Token(new Bool(true));			
+			if(string_value == "false")
+				return new Value_Token(new Bool(false));
+
 			return new Name_Token(string_value, variables);
 		}
 
@@ -99,6 +127,5 @@ std::vector<Language::Tokens::TokenI*> Lexer::lex(){
 			return tokens;
 	}
 
-	std::cout << "lexing complete.\n";
 	return tokens;
 }

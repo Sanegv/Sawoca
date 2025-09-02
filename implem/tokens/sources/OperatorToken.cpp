@@ -10,9 +10,14 @@ Operator_Token::Operator_Token(char op)
 		case '-': 
 		case '*': 
 		case '/': 
+        case L_OR:
+        case L_AND:
+        case EQ:
+        case NEQ:
+        case L_NOT:
             break;
         default:
-            throw std::string("unknown operator: ") + op;
+            throw std::string("unknown operator.");
     }
 }
 
@@ -30,6 +35,16 @@ std::string Operator_Token::get_string_type() const {
         return "MUL";
     case '/':
         return "DIV";
+    case L_OR:
+        return "OR";
+    case L_AND:
+        return "AND";
+    case L_NOT:
+        return "NOT";
+    case EQ:
+        return "EQUALS";
+    case NEQ:
+        return "NOT EQUALS";
     default:
         throw std::string("unknown operator type");
     }
