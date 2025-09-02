@@ -86,7 +86,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* operator==(const Value&) const override;
+        virtual Value* operator==(const Value&) const override;
 
         /**
          * @brief Checks whether the values are different. Throws an exception 
@@ -94,40 +94,40 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* operator!=(const Value&) const override;
+        virtual Value* operator!=(const Value&) const override;
         
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator<(const Value&) const override;
+        virtual Value* operator<(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator<=(const Value&) const override;
+        virtual Value* operator<=(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator>(const Value&) const override;
+        virtual Value* operator>(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator>=(const Value&) const override;
+        virtual Value* operator>=(const Value&) const override;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual const Value* operator||(const Value&) const override;
+        virtual Value* operator||(const Value&) const override;
 
 
         /**
          * @brief Checks whether the two values is true. Throws
          * an exception if one of the types is not a bool.
          */
-        virtual const Value* operator&&(const Value&) const override;
+        virtual Value* operator&&(const Value&) const override;
 
 
         /**
@@ -135,7 +135,7 @@ namespace Sawoca {
          * bool.
          * @return true if false, false if true.
          */
-        virtual const Value* operator!() const override;
+        virtual Value* operator!() const override;
     };
 }
 

@@ -75,54 +75,54 @@ Value& Bool::operator/=(const Value& other) {
     throw  std::string("cannot div a bool");
 }
 
-const Value* Bool::operator==(const Value& other) const{
+Value* Bool::operator==(const Value& other) const{
     if(other.get_type() != BOOL)
         throw std::string("cannot compare " + bool_type + " and " 
             + other.get_string_type());
     return new Bool(val == cast_to_bool(other).val);
 }
 
-const Value* Bool::operator!=(const Value& other) const{
+Value* Bool::operator!=(const Value& other) const{
     if(other.get_type() != BOOL)
         throw std::string("cannot compare " + bool_type + " and " 
             + other.get_string_type());
     return new Bool(val != cast_to_bool(other).val);
 }
 
-const Value* Bool::operator||(const Value& other) const{
+Value* Bool::operator||(const Value& other) const{
     if(other.get_type() != BOOL)
         throw std::string("cannot compare " + bool_type + " and " 
             + other.get_string_type());
     return new Bool(val || cast_to_bool(other).val);
 }
 
-const Value* Bool::operator&&(const Value& other) const{
+Value* Bool::operator&&(const Value& other) const{
     if(other.get_type() != BOOL)
         throw std::string("cannot compare " + bool_type + " and " 
             + other.get_string_type());
     return new Bool(val && cast_to_bool(other).val);
 }
 
-const Value* Bool::operator!() const{
+Value* Bool::operator!() const{
     return new Bool(!val);
 }
 
-const Value* Bool::operator<(const Value& other) const {
+Value* Bool::operator<(const Value& other) const {
     (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
 
-const Value* Bool::operator<=(const Value& other) const {
+Value* Bool::operator<=(const Value& other) const {
     (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
 
-const Value* Bool::operator>(const Value& other) const {
+Value* Bool::operator>(const Value& other) const {
     (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
 
-const Value* Bool::operator>=(const Value& other) const {
+Value* Bool::operator>=(const Value& other) const {
     (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }

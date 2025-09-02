@@ -137,7 +137,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* operator==(const Value&) const override;
+        virtual Value* operator==(const Value&) const override;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -145,14 +145,14 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* operator!=(const Value&) const override;
+        virtual Value* operator!=(const Value&) const override;
 
         /**
          * @brief Checks whether this is smaller than the right hand side value.
          * @param other the value to compare.
          * @return true if this is strictly smaller, false otherwise.
          */
-        virtual const Value* operator<(const Value&) const override;
+        virtual Value* operator<(const Value&) const override;
 
         /**
          * @brief Checks whether this is smaller or equal to the right hand side
@@ -160,38 +160,38 @@ namespace Sawoca {
          * @param other the value to compare.
          * @return false if this is strictly greater, true otherwise.
          */
-        virtual const Value* operator<=(const Value&) const override;
+        virtual Value* operator<=(const Value&) const override;
 
         /**
          * @brief Checks whether this is greater than the right hand side value.
          * @param other the value to compare.
          * @return true if this is strictly greater, false otherwise.
          */
-        virtual const Value* operator>(const Value&) const override;
+        virtual Value* operator>(const Value&) const override;
 
         /**
          * @brief Checks whether this is smaller than the right hand side value.
          * @param other the value to compare.
          * @return false if this is strictly smaller, true otherwise.
          */
-        virtual const Value* operator>=(const Value&) const override;
+        virtual Value* operator>=(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator||(const Value&) const override;
-
-
-        /**
-         * @brief Throws an exception.
-         */
-        virtual const Value* operator&&(const Value&) const override;
+        virtual Value* operator||(const Value&) const override;
 
 
         /**
          * @brief Throws an exception.
          */
-        virtual const Value* operator!() const override;
+        virtual Value* operator&&(const Value&) const override;
+
+
+        /**
+         * @brief Throws an exception.
+         */
+        virtual Value* operator!() const override;
     };
 }
 

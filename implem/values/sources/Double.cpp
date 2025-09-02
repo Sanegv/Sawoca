@@ -162,35 +162,35 @@ std::string Double::string() const{
     return stream.str();
 }
 
-const Value* Double::operator==(const Value& other) const {
+Value* Double::operator==(const Value& other) const {
     if(other.get_type() != DOUBLE)
         throw std::string("cannot compare " + double_type + " and " 
             + other.get_string_type());
     return new Bool(val == cast_to_double(other).get_val());
 }
 
-const Value* Double::operator!=(const Value& other) const {
+Value* Double::operator!=(const Value& other) const {
     if(other.get_type() != DOUBLE)
         throw std::string("cannot compare " + double_type + " and " 
             + other.get_string_type());
     return new Bool(val != cast_to_double(other).get_val());
 }
 
-const Value* Double::operator||(const Value& other) const{
+Value* Double::operator||(const Value& other) const{
     (void)other;
     throw std::string("cannot OR a " + double_type);
 }
 
-const Value* Double::operator&&(const Value& other) const{
+Value* Double::operator&&(const Value& other) const{
     (void)other;
     throw std::string("cannot AND a " + double_type);
 }
 
-const Value* Double::operator!() const{
+Value* Double::operator!() const{
     throw std::string("cannot logically invert " + double_type);
 }
 
-const Value* Double::operator<(const Value& v) const {
+Value* Double::operator<(const Value& v) const {
     switch (v.get_type()) {
         case DOUBLE: {
             Bool* b = new Bool(val<cast_to_double(v).get_val());
@@ -205,7 +205,7 @@ const Value* Double::operator<(const Value& v) const {
     }    
 }
 
-const Value* Double::operator<=(const Value& v) const {
+Value* Double::operator<=(const Value& v) const {
     switch (v.get_type()) {
         case DOUBLE: {
             Bool* b = new Bool(val<=cast_to_double(v).get_val());
@@ -220,7 +220,7 @@ const Value* Double::operator<=(const Value& v) const {
     }    
 }
 
-const Value* Double::operator>(const Value& v) const {
+Value* Double::operator>(const Value& v) const {
     switch (v.get_type()) {
         case DOUBLE: {
             Bool* b = new Bool(val>cast_to_double(v).get_val());
@@ -235,7 +235,7 @@ const Value* Double::operator>(const Value& v) const {
     }    
 }
 
-const Value* Double::operator>=(const Value& v) const {
+Value* Double::operator>=(const Value& v) const {
     switch (v.get_type()) {
         case DOUBLE: {
             Bool* b = new Bool(val>=cast_to_double(v).get_val());

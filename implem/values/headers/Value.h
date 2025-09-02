@@ -101,8 +101,8 @@ namespace Sawoca {
         //-----------------------reassign operators-----------------------------
 
         /**
-         * @brief Changes the sign of the value stored inside.
-         * @return a pointer to this.
+         * @brief Returns a copy with the sign changed.
+         * @return a pointer to the copy.
          */
         virtual Value* operator-() const = 0; //unary
 
@@ -144,7 +144,7 @@ namespace Sawoca {
          * @param other the value to compare
          * @return true if they are the same, false otherwise
          */
-        virtual const Value* operator==(const Value&) const = 0;
+        virtual Value* operator==(const Value&) const = 0;
 
         /**
          * @brief Checks whether the values are different. Effectively calls
@@ -152,14 +152,14 @@ namespace Sawoca {
          * @param other the value to compare
          * @return false if they are the same, true otherwise
          */
-        virtual const Value* operator!=(const Value&) const = 0;
+        virtual Value* operator!=(const Value&) const = 0;
 
         /**
          * @brief Checks whether this is smaller than the right hand side value.
          * @param other the value to compare.
          * @return true if this is strictly smaller, false otherwise.
          */
-        virtual const Value* operator<(const Value&) const = 0;
+        virtual Value* operator<(const Value&) const = 0;
 
         /**
          * @brief Checks whether this is smaller or equal to the right hand side
@@ -167,21 +167,21 @@ namespace Sawoca {
          * @param other the value to compare.
          * @return false if this is strictly greater, true otherwise.
          */
-        virtual const Value* operator<=(const Value&) const = 0;
+        virtual Value* operator<=(const Value&) const = 0;
 
         /**
          * @brief Checks whether this is greater than the right hand side value.
          * @param other the value to compare.
          * @return true if this is strictly greater, false otherwise.
          */
-        virtual const Value* operator>(const Value&) const = 0;
+        virtual Value* operator>(const Value&) const = 0;
 
         /**
          * @brief Checks whether this is smaller than the right hand side value.
          * @param other the value to compare.
          * @return false if this is strictly smaller, true otherwise.
          */
-        virtual const Value* operator>=(const Value&) const = 0;
+        virtual Value* operator>=(const Value&) const = 0;
 
         /**
          * @brief Checks whether at least one of the two values is true. Throws
@@ -189,7 +189,7 @@ namespace Sawoca {
          * @param other the value to logically compare.
          * @return false if none of the values is true, true otherwise.
          */
-        virtual const Value* operator||(const Value&) const = 0;
+        virtual Value* operator||(const Value&) const = 0;
 
 
         /**
@@ -198,7 +198,7 @@ namespace Sawoca {
          * @param other the value to logically compare.
          * @return true if both of the values are true, false otherwise.
          */
-        virtual const Value* operator&&(const Value&) const = 0;
+        virtual Value* operator&&(const Value&) const = 0;
 
 
         /**
@@ -206,7 +206,7 @@ namespace Sawoca {
          * bool.
          * @return true if false, false if true.
          */
-        virtual const Value* operator!() const = 0;
+        virtual Value* operator!() const = 0;
     };
 }
 
