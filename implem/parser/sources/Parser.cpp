@@ -1,6 +1,7 @@
 #include "../headers/Parser.h"
 #include "../../tokens/headers/Token.h"
 #include "../../values/headers/Double.h"
+#include "../../values/headers/Bool.h"
 #include "../../values/headers/Value.h"
 #include "../../tokens/headers/NameToken.h"
 #include <vector>
@@ -38,7 +39,37 @@ const Double* cast_to_double(const Value* const v){
     return dp;
 }
 
+const Bool* cast_to_bool(const Value* const v){
+    if(!v)
+        throw std::string("nullptr dereference");
 
+    const Bool* const bp = dynamic_cast<const Bool* const>(v);
+    if(!bp)
+        throw std::string("unknown type");
+
+    return bp;	
+}
+
+Value* copy_val(const Value* val){
+	switch (val->get_type()) {
+		case DOUBLE:{
+			const Double* v = cast_to_double(val);
+			Double* d = new Double(v->get_val());
+			if(!d)
+				throw std::string("memory allocation failed");
+			return d;
+		}
+		case BOOL:{
+			const Bool* v = cast_to_bool(val);
+			Bool* b = new Bool(v->get_val());
+			if(!b)
+				throw std::string("memory allocation failed");
+			return b;
+		}
+		default:
+			throw std::string("unknown type");
+	}
+}
 
 std::string get_name(Language::Tokens::TokenI* tok){
     if(!tok){
@@ -69,14 +100,8 @@ Value* Parser::prim(
 	case VALUE:
 	{
 		const Value* val = dynamic_cast<const Value*>(tok->get_value());
-		if(val->get_type() != DOUBLE)
-			throw std::string("booleans not yet handled");
-		const Double* v = cast_to_double(val);
 		it++;
-		Double* d = new Double(v->get_val());
-		if(!d)
-			throw std::string("memory allocation failed");
-		return d;
+		return copy_val(val);	
 	}
 	case NAME:{
 		std::string name = get_name(tok);
@@ -95,10 +120,8 @@ Value* Parser::prim(
 
 		if(!table[name])
 			throw std::string("unknown variable \"" + name + "\"");
-		Double* d = new Double(cast_to_double(table[name])->get_val());
-		if(!d)
-			throw std::string("memory allocation failed");
-		return d;
+		const Value* val = dynamic_cast<const Value*>(tok->get_value());
+		return copy_val(val);
 	}
 	case MINUS:{
 		Value* val = cast_to_value(prim(true, it));
@@ -115,6 +138,12 @@ Value* Parser::prim(
 
 		it++;
 		return e;
+	}
+	case L_NOT:{
+		Value* val = cast_to_value(prim(true, it));
+		Value* result = !(*val);
+		delete val;
+		return result;
 	}
 	default:
 		throw std::string("expected primary");
@@ -173,6 +202,95 @@ Value* Parser::expr(
 	}
 }
 
+Value* Parser::relational(
+	bool get, 
+	std::vector<Language::Tokens::TokenI*>::iterator& it
+){
+	Value* left = expr(get, it);
+	Value* right = nullptr;
+
+	while(true){
+        Token* tok = cast_token(it);
+		switch(tok->get_type()){
+		case LESSER:
+			right = expr(true, it);
+			left = *cast_to_value(left) < *right;
+			delete right;
+			break;
+		case LESS_EQ:
+			right = expr(true, it);
+			left = *cast_to_value(left) <= *right;
+			delete right;
+			break;
+		case GREATER:
+			right = expr(true, it);
+			left = *cast_to_value(left) > *right;
+			delete right;
+			break;
+		case GREAT_EQ:
+			right = expr(true, it);
+			left = *cast_to_value(left) >= *right;
+			delete right;
+			break;
+		default:
+			return left;
+		}
+	}
+}
+
+
+Value* Parser::equality(
+	bool get, 
+	std::vector<Language::Tokens::TokenI*>::iterator& it
+){
+	Value* left = relational(get, it);
+	Value* right = nullptr;
+
+	while(true){
+        Token* tok = cast_token(it);
+		switch(tok->get_type()){
+		case EQ:
+			right = relational(true, it);
+			left = *cast_to_value(left) == *right;
+			delete right;
+			break;
+		case NEQ:
+			right = relational(true, it);
+			left = *cast_to_value(left) != *right;
+			delete right;
+			break;
+		default:
+			return left;
+		}
+	}
+}
+
+Value* Parser::logical(
+	bool get, 
+	std::vector<Language::Tokens::TokenI*>::iterator& it
+){
+	Value* left = equality(get, it);
+	Value* right = nullptr;
+
+	while(true){
+        Token* tok = cast_token(it);
+		switch(tok->get_type()){
+		case L_OR:
+			right = equality(true, it);
+			left = *cast_to_value(left) || *right;
+			delete right;
+			break;
+		case L_AND:
+			right = equality(true, it);
+			left = *cast_to_value(left) && *right;
+			delete right;
+			break;
+		default:
+			return left;
+		}
+	}
+}
+
 void Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
     for(
         std::vector<Language::Tokens::TokenI*>::iterator it = tokens.begin();
@@ -184,7 +302,7 @@ void Parser::parse(std::vector<Language::Tokens::TokenI*> tokens){
 			break;
 		if(tok->get_type() == PRINT)
 			continue;
-		Value* eval = expr(false, it);
+		Value* eval = logical(false, it);
         std::cout << cast_to_value(eval)->string() << "\n";
 		delete eval;
 	}

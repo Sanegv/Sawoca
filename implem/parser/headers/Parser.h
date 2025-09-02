@@ -75,6 +75,48 @@ namespace Sawoca {
 			std::vector<Language::Tokens::TokenI*>::iterator& it
 		);
 
+		/**
+		* @brief Compares numbers and expressions, and calls @ref 
+		* expr() for the rest.
+		*
+		* @param get A boolean that tells the function whether or not to get the
+		* next token.
+		* @param it An iterator over a vector of Tokens to be parsed.
+		* @return The result of the expression.
+		*/
+		Value* relational(
+			bool get, 
+			std::vector<Language::Tokens::TokenI*>::iterator& it
+		);
+
+		/**
+		* @brief Checks equality and inequality of numbers and expressions, 
+		and calls @ref relational() for the rest.
+		*
+		* @param get A boolean that tells the function whether or not to get the
+		* next token.
+		* @param it An iterator over a vector of Tokens to be parsed.
+		* @return The result of the expression.
+		*/
+		Value* equality(
+			bool get, 
+			std::vector<Language::Tokens::TokenI*>::iterator& it
+		);
+
+		/**
+		* @brief Applies boolean logic to expressions, and calls @ref 
+		* equality() for the rest.
+		*
+		* @param get A boolean that tells the function whether or not to get the
+		* next token.
+		* @param it An iterator over a vector of Tokens to be parsed.
+		* @return The result of the expression.
+		*/
+		Value* logical(
+			bool get, 
+			std::vector<Language::Tokens::TokenI*>::iterator& it
+		);
+
 		public:	
 		/**
 		 * @brief Creates a new parser that will use the given variables.
