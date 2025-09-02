@@ -15,6 +15,10 @@ Operator_Token::Operator_Token(char op)
         case EQ:
         case NEQ:
         case L_NOT:
+        case LESSER:
+        case LESS_EQ:
+        case GREATER:
+        case GREAT_EQ:
             break;
         default:
             throw std::string("unknown operator.");
@@ -45,6 +49,14 @@ std::string Operator_Token::get_string_type() const {
         return "EQUALS";
     case NEQ:
         return "NOT EQUALS";
+    case LESSER:
+        return "LESS";
+    case LESS_EQ:
+        return "LESS EQ";
+    case GREATER:
+        return "GREAT";
+    case GREAT_EQ:
+        return "GREAT EQ";
     default:
         throw std::string("unknown operator type");
     }

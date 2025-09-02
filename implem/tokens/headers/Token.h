@@ -24,6 +24,8 @@ namespace Sawoca {
 		L_NOT, ///< A logical "not"
 		EQ, ///< The mathematical equality
 		NEQ, ///< The mathematical inequality
+		LESS_EQ, ///< A "lesser or equal" comparison
+		GREAT_EQ, ///< A "greater or equal" comparison
 		END, ///< The end of the stream to parse
 		PLUS = '+', ///< An addition
 		MINUS = '-', ///< A subtraction
@@ -31,6 +33,8 @@ namespace Sawoca {
 		DIV = '/', ///< A division
 		PRINT = ';', ///< The end of an expression
 		ASSIGN = '=', ///< An assignment
+		LESSER = '<', ///< A "lesser than" comparison
+		GREATER = '>', ///< A "greater than" comparison
 		LP = '(', ///< Beginning of a Par
 		RP = ')' ///< End of a Par
 	};

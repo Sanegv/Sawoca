@@ -108,17 +108,21 @@ const Value* Bool::operator!() const{
 }
 
 const Value* Bool::operator<(const Value& other) const {
+    (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
 
 const Value* Bool::operator<=(const Value& other) const {
+    (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
 
 const Value* Bool::operator>(const Value& other) const {
+    (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
 
 const Value* Bool::operator>=(const Value& other) const {
+    (void)other;
     throw "cannot arithmetically compare a " + bool_type;
 }
