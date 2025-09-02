@@ -52,42 +52,7 @@ namespace Sawoca {
          */
         virtual std::string string() const override;
 
-        //const operations
-
-        /**
-         *@brief Creates a new Double value equal to the sum of this and the 
-         * other number. Throws an exception in case of an invalid type.
-         * @param other the value to add.
-         * @return a pointer to a new value
-         */
-        virtual Value* add(const Value&) const override;
-
-        /**
-         *@brief Creates a new Double value equal to the difference between this
-         * and the other number. Throws an exception in case of an invalid type.
-         * @param other the value to subtract.
-         * @return a pointer to a new value
-         */
-        virtual Value* sub(const Value&) const override;
-
-        /**
-         *@brief Creates a new Double value equal to the product of this and the 
-         * other number. Throws an exception in case of an invalid type.
-         * @param other the value to multiply by.
-         * @return a pointer to a new value
-         */
-        virtual Value* mul(const Value&) const override;
-
-        /**
-         *@brief Creates a new Double value equal to the division of this by the 
-         * other number. Throws an exception in case of an invalid type or of a
-         * division by zero.
-         * @param other the denominator to divide by.
-         * @return a pointer to a new value
-         */
-        virtual Value* div(const Value&) const override;
-
-        //const operators
+        //-------------------------const operators------------------------------
 
         /**
          *@brief Creates a new Double value equal to the sum of this and the 
@@ -167,20 +132,6 @@ namespace Sawoca {
         virtual Value& operator/=(const Value&) override;
 
         /**
-         * @brief Checks whether the values are the same.
-         * @param other the value to compare
-         * @return true if they are the same, false otherwise
-         */
-        virtual const Value* equals(const Value&) const override;
-
-        /**
-         * @brief Checks whether the values are different.
-         * @param other the value to compare
-         * @return false if they are the same, true otherwise
-         */
-        virtual const Value* not_equals(const Value&) const override;
-
-        /**
          * @brief Checks whether the values are the same. Effectively calls
          * \ref equals.
          * @param other the value to compare
@@ -197,30 +148,44 @@ namespace Sawoca {
         virtual const Value* operator!=(const Value&) const override;
 
         /**
-         * @brief Throws an exception.
+         * @brief Checks whether this is smaller than the right hand side value.
+         * @param other the value to compare.
+         * @return true if this is strictly smaller, false otherwise.
          */
-        virtual const Value* logical_or(const Value&) const override;
+        virtual const Value* operator<(const Value&) const override;
+
+        /**
+         * @brief Checks whether this is smaller or equal to the right hand side
+         * value.
+         * @param other the value to compare.
+         * @return false if this is strictly greater, true otherwise.
+         */
+        virtual const Value* operator<=(const Value&) const override;
+
+        /**
+         * @brief Checks whether this is greater than the right hand side value.
+         * @param other the value to compare.
+         * @return true if this is strictly greater, false otherwise.
+         */
+        virtual const Value* operator>(const Value&) const override;
+
+        /**
+         * @brief Checks whether this is smaller than the right hand side value.
+         * @param other the value to compare.
+         * @return false if this is strictly smaller, true otherwise.
+         */
+        virtual const Value* operator>=(const Value&) const override;
 
         /**
          * @brief Throws an exception.
          */
         virtual const Value* operator||(const Value&) const override;
 
-        /**
-         * @brief Throws an exception.
-         */
-        virtual const Value* logical_and(const Value&) const override;
-
 
         /**
          * @brief Throws an exception.
          */
         virtual const Value* operator&&(const Value&) const override;
-
-        /**
-         * @brief Throws an exception.
-         */
-        virtual const Value* logical_not() const override;
 
 
         /**

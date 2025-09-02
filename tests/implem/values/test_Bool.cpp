@@ -41,11 +41,6 @@ BOOST_AUTO_TEST_CASE(test_maths){
     Sawoca::Bool bt(true);
     Sawoca::Bool bf(false);
 
-    BOOST_CHECK_THROW(bt.add(bf), std::string);
-    BOOST_CHECK_THROW(bt.sub(bf), std::string);
-    BOOST_CHECK_THROW(bt.mul(bf), std::string);
-    BOOST_CHECK_THROW(bt.div(bf), std::string);
-
     BOOST_CHECK_THROW(bt + bf, std::string);
     BOOST_CHECK_THROW(bt - bf, std::string);
     BOOST_CHECK_THROW(bt * bf, std::string);
@@ -56,40 +51,11 @@ BOOST_AUTO_TEST_CASE(test_maths){
     BOOST_CHECK_THROW(bt -= bf, std::string);
     BOOST_CHECK_THROW(bt *= bf, std::string);
     BOOST_CHECK_THROW(bt /= bf, std::string);
-}
 
-BOOST_AUTO_TEST_CASE(test_equal){
-    Sawoca::Bool bt(true);
-    Sawoca::Bool bf(false);
-
-    const Sawoca::Value* compare = bf.equals(bt);
-    const Sawoca::Bool* bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), false);
-    delete compare;
-    compare = bf.equals(bf);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), true);
-    delete compare;
-
-    Sawoca::Double d;
-    BOOST_CHECK_THROW(bf.not_equals(d), std::string);
-}
-
-BOOST_AUTO_TEST_CASE(test_not_equal){
-    Sawoca::Bool bt(true);
-    Sawoca::Bool bf(false);
-
-    const Sawoca::Value* compare = bf.not_equals(bt);
-    const Sawoca::Bool* bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), true);
-    delete compare;
-    compare = bf.not_equals(bf);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), false);
-    delete compare;
-
-    Sawoca::Double d;
-    BOOST_CHECK_THROW(bf.not_equals(d), std::string);
+    BOOST_CHECK_THROW(bt < bf, std::string);
+    BOOST_CHECK_THROW(bt <= bf, std::string);
+    BOOST_CHECK_THROW(bt > bf, std::string);
+    BOOST_CHECK_THROW(bt >= bf, std::string);
 }
 
 BOOST_AUTO_TEST_CASE(test_operator_equal){
@@ -106,7 +72,7 @@ BOOST_AUTO_TEST_CASE(test_operator_equal){
     delete compare;
 
     Sawoca::Double d;
-    BOOST_CHECK_THROW((bf != d), std::string);
+    BOOST_CHECK_THROW((bf == d), std::string);
 }
 
 BOOST_AUTO_TEST_CASE(test_operator_not_equal){
@@ -124,34 +90,6 @@ BOOST_AUTO_TEST_CASE(test_operator_not_equal){
 
     Sawoca::Double d;
     BOOST_CHECK_THROW((bf != d), std::string);
-}
-
-BOOST_AUTO_TEST_CASE(test_logical_or){
-    Sawoca::Bool bt(true);
-    Sawoca::Bool bf(false);
-
-    const Sawoca::Value* compare = bf.logical_or(bt);
-    const Sawoca::Bool* bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), true);
-    delete compare;
-
-    compare = bt.logical_or(bf);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), true);
-    delete compare;
-
-    compare = bt.logical_or(bt);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), true);
-    delete compare;
-
-    compare = bf.logical_or(bf);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), false);
-    delete compare;
-
-    Sawoca::Double d;
-    BOOST_CHECK_THROW(bt.logical_or(d), std::string);
 }
 
 BOOST_AUTO_TEST_CASE(test_operator_logical_or){
@@ -182,34 +120,6 @@ BOOST_AUTO_TEST_CASE(test_operator_logical_or){
     BOOST_CHECK_THROW(bt || d, std::string);
 }
 
-BOOST_AUTO_TEST_CASE(test_logical_and){
-    Sawoca::Bool bt(true);
-    Sawoca::Bool bf(false);
-
-    const Sawoca::Value* compare = bf.logical_and(bt);
-    const Sawoca::Bool* bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), false);
-    delete compare;
-
-    compare = bt.logical_and(bf);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), false);
-    delete compare;
-
-    compare = bt.logical_and(bt);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), true);
-    delete compare;
-
-    compare = bf.logical_and(bf);
-    bcomp = dynamic_cast<const Sawoca::Bool*>(compare);
-    BOOST_CHECK_EQUAL(bcomp->get_val(), false);
-    delete compare;
-
-    Sawoca::Double d;
-    BOOST_CHECK_THROW(bt.logical_and(d), std::string);
-}
-
 BOOST_AUTO_TEST_CASE(test_operator_logical_and){
     Sawoca::Bool bt(true);
     Sawoca::Bool bf(false);
@@ -235,41 +145,5 @@ BOOST_AUTO_TEST_CASE(test_operator_logical_and){
     delete compare;
 
     Sawoca::Double d;
-    BOOST_CHECK_THROW(bt || d, std::string);
-}
-
-BOOST_AUTO_TEST_CASE(test_logical_not){
-    Sawoca::Bool bt(true);
-    Sawoca::Bool bf(false);
-
-    const Sawoca::Value* lnot = bf.logical_not();
-    const Sawoca::Bool* blnot = dynamic_cast<const Sawoca::Bool*>(lnot);
-    BOOST_CHECK_EQUAL(blnot->get_val(), true);
-    delete lnot;
-
-    lnot = bt.logical_not();
-    blnot = dynamic_cast<const Sawoca::Bool*>(lnot);
-    BOOST_CHECK_EQUAL(blnot->get_val(), false);
-    delete lnot;
-
-    Sawoca::Double d;
-    BOOST_CHECK_THROW(bt.logical_or(d), std::string);
-}
-
-BOOST_AUTO_TEST_CASE(test_operator_logical_not){
-    Sawoca::Bool bt(true);
-    Sawoca::Bool bf(false);
-
-    const Sawoca::Value* lnot = !bf;
-    const Sawoca::Bool* blnot = dynamic_cast<const Sawoca::Bool*>(lnot);
-    BOOST_CHECK_EQUAL(blnot->get_val(), true);
-    delete lnot;
-
-    lnot = !bt;
-    blnot = dynamic_cast<const Sawoca::Bool*>(lnot);
-    BOOST_CHECK_EQUAL(blnot->get_val(), false);
-    delete lnot;
-
-    Sawoca::Double d;
-    BOOST_CHECK_THROW(bt.logical_or(d), std::string);
+    BOOST_CHECK_THROW(bt && d, std::string);
 }
