@@ -15,13 +15,14 @@ Simply use the `make` command. The executable will be created as `build/swc`.
 
 ## todo
 
-- add Value "==" and "!=" operators
+- make REPL recover from exceptions
 - decorelate parser and exec
 - improve error higlighting
 - **add functions**
 - **add other types**
     - int
-    - bool
+    - char? 
+    - string?
 
 ## See also
 
