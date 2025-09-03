@@ -110,7 +110,7 @@ Value* Parser::prim(
 
 		//assignment
 		if(tok->get_type() == ASSIGN){
-			const Double* right = cast_to_double(logical(true, it));
+			Value* right = logical(true, it);
 			if(const Value* v = table[name]){
 				table.erase(table.find(name));
 				delete v;
@@ -120,8 +120,7 @@ Value* Parser::prim(
 
 		if(!table[name])
 			throw std::string("unknown variable \"" + name + "\"");
-		const Value* val = dynamic_cast<const Value*>(tok->get_value());
-		return copy_val(val);
+		return copy_val(table[name]);
 	}
 	case MINUS:{
 		Value* val = cast_to_value(prim(true, it));
