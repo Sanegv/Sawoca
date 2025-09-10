@@ -19,7 +19,7 @@ namespace Sawoca {
 	* @brief The parser class is responsible for reading a vector of tokens and
 	* executing them in order. It inherits from the \ref ParserI interface.
 	*/
-	class Parser : Language::Parser::ParserI {
+	class Parser : public Language::Parser::ParserI {
 	private:
 		std::map<std::string, const Value*>& table;
 		int number_of_errors = 0;
